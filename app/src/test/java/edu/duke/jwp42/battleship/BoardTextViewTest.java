@@ -45,4 +45,26 @@ public class BoardTextViewTest {
     assertThrows(IllegalArgumentException.class, () -> new BoardTextView(wideBoard));
     assertThrows(IllegalArgumentException.class, () -> new BoardTextView(tallBoard));
   }
+  
+  @Test
+  public void test_display_nonempty_4by3() {
+    Board<Character> b = new BattleShipBoard<Character>(4, 3);
+    BoardTextView view = new BoardTextView(b);
+    String expectedHeader = "  0|1|2|3\n";
+    assertEquals(expectedHeader, view.makeHeader());
+    Coordinate c1 = new Coordinate(0, 0);
+    Coordinate c2 = new Coordinate(2, 3);
+    Coordinate c3 = new Coordinate(1, 2);
+    Ship<Character> s1 = new BasicShip(c1);
+    Ship<Character> s2 = new BasicShip(c2);
+    Ship<Character> s3 = new BasicShip(c3);
+    b.tryAddShip(s1);
+    String expectedBody = "As| | | A\n" + "B | | | B\n" + "C | | | C\n";
+    String expected = expectedHeader + expectedBody + expectedHeader;
+    assertEquals(expected, view.displayMyOwnBoard());
+    b.tryAddShip(s2);
+    expectedBody = "As| | | A\n" + "B | | | B\n" + "C | | |sC\n";
+    expected = expectedHeader + expectedBody + expectedHeader;
+    assertEquals(expected, view.displayMyOwnBoard());
+  }
 }
