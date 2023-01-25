@@ -40,22 +40,30 @@ public class BoardTextView {
   /**
    * Returns string representation of empty board row
    *
-   * @param y is the number of the row to return
+   * @param row is the number of the row to return
    * @throws IllegalArgumentException if y is not in [0, 25]
    */
-  public String makeRow(int y) {
-    if (y > 25 || y < 0) {
-      throw new IllegalArgumentException("Argument y must be in [0, 25] but is " + y);
+  public String makeRow(int row) {
+    if (row > 25 || row < 0) {
+      throw new IllegalArgumentException("Argument row must be in [0, 25] but is " + row);
     }
     String alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
-    char letter = alphabet.charAt(y);
+    char letter = alphabet.charAt(row);
     int w = toDisplay.getWidth();
     StringBuilder ans = new StringBuilder();
     ans.append(letter);
-    for (int i = 0; i < w - 1; i++) {
-      ans.append(" |");
+    for (int column = 0; column < w; column++) {
+      String filler = " ";
+      Coordinate c = new Coordinate(row, column);
+      if (toDisplay.whatIsAt(c) != null) {
+        filler = "s";
+      }
+      ans.append(filler);
+      if (column < w - 1) {
+        ans.append("|");
+      }
     }
-    ans.append(" " + letter);
+    ans.append(letter);
     return ans.toString();
   }
 
