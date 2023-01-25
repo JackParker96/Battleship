@@ -6,7 +6,7 @@ package edu.duke.jwp42.battleship;
  * This class can display either the user's own board or the enemy's board
  */
 public class BoardTextView {
-  private final Board toDisplay;
+  private final Board<Character> toDisplay;
 
   /**
    * Constructs a BoardView, given the board it will display
@@ -14,7 +14,7 @@ public class BoardTextView {
    * @param toDisplay is the Board it will display
    * @throws IllegalArgumentException if toDisplay is larger than 10x26
    */
-  public BoardTextView(Board toDisplay) {
+  public BoardTextView(Board<Character> toDisplay) {
     this.toDisplay = toDisplay;
     if (toDisplay.getWidth() > 10 || toDisplay.getHeight() > 26) {
       throw new IllegalArgumentException(
