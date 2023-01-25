@@ -1,0 +1,53 @@
+package edu.duke.jwp42.battleship;
+
+public class Placement {
+  private final Coordinate where;
+  private final char orientation;
+
+  public Placement(Coordinate where, char orientation) {
+    char upperOrientation = Character.toUpperCase(orientation);
+    if (upperOrientation != 'H' && upperOrientation != 'V') {
+      throw new IllegalArgumentException("Orientation should be 'h', 'H', 'v', or 'V' but instead is " + orientation);
+    }
+    this.where = where;
+    this.orientation = orientation;
+  }
+  
+  public Coordinate getWhere() {
+    return where;
+  }
+
+  public char getOrientation() {
+    return orientation;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder ans = new StringBuilder();
+    String alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
+    int row = where.getRow();
+    int column = where.getColumn();
+    char upperOrientation = Character.toUpperCase(orientation);
+    char rowLetter = alphabet.charAt(row);
+    ans.append(rowLetter);
+    ans.append(column);
+    ans.append(upperOrientation);;
+    return ans.toString();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o.getClass().equals(getClass())) {
+      Placement p = (Placement) o;
+      return where.equals(p.where) && orientation == p.orientation; 
+    }
+    return false;
+  }
+  
+  /**
+  @Override
+  public int hashCode() {
+    
+  }
+  */
+}

@@ -1,0 +1,43 @@
+package edu.duke.jwp42.battleship;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class PlacementTest {
+  @Test
+  public void test_placement_standard_constructor() {
+    Coordinate c1 = new Coordinate("A1");
+    Placement p1 = new Placement(c1, 'H');
+    Placement p2 = new Placement(c1, 'h');
+    Placement p3 = new Placement(c1, 'v');
+    Placement p4 = new Placement(c1, 'V');
+    assertEquals(c1, p1.getWhere());
+    assertEquals('H', p1.getOrientation());
+    assertEquals('h', p2.getOrientation());
+    assertEquals('v', p3.getOrientation());
+    assertEquals('V', p4.getOrientation());
+    assertThrows(IllegalArgumentException.class, () -> new Placement(c1, 'a'));
+  }
+
+  @Test
+  public void test_toString() {
+    Coordinate c1 = new Coordinate(2, 3);
+    Placement p1 = new Placement(c1, 'h');
+    assertEquals(p1.toString(), "C3H");
+  }
+
+  @Test
+  public void test_equals() {
+    Coordinate c1 = new Coordinate("A1");
+    Placement p1 = new Placement(c1, 'V');
+    Placement p2 = new Placement(c1, 'v');
+    assertEquals(p1, p2);
+  }
+
+  @Test
+  public void test_hashCode() {
+    
+  }
+
+}
