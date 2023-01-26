@@ -1,5 +1,9 @@
 package edu.duke.jwp42.battleship;
 
+/**
+ * The BasicShip class is just a 1x1 ship (takes up only one square on the board).
+ * When a BasicShip is on the board, it's represented graphically by the letter 's'
+ */
 public class BasicShip implements Ship<Character> {
   private final Coordinate myLocation;
 
