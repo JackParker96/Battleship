@@ -7,6 +7,8 @@ import java.util.HashSet;
  * (in V1, T is always a Character)
  */
 public class RectangleShip<T> extends BasicShip<T> {
+  public final String name;
+
   /**
    * The purpose of this method is so that we can pass it to super() in the
    * constructor below
@@ -33,8 +35,9 @@ public class RectangleShip<T> extends BasicShip<T> {
    * Constructs a RectangleShip by calling the super constructor (the constructor
    * for a BasicShip)
    */
-  public RectangleShip(Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> myDisplayInfo) {
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> myDisplayInfo) {
     super(makeCoords(upperLeft, width, height), myDisplayInfo);
+    this.name = name;
   }
 
   /**
@@ -44,13 +47,18 @@ public class RectangleShip<T> extends BasicShip<T> {
    * This is a convenient constructor to have, because it takes care of declaring
    * a SimpleShipDisplayInfo. All we have to do is pass in data and onHit
    */
-  public RectangleShip(Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
+    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
   }
 
   // Same as above, but creates a ship that only occupies one square
   public RectangleShip(Coordinate upperLeft, T data, T onHit) {
-    this(upperLeft, 1, 1, data, onHit);
+    this("testship", upperLeft, 1, 1, data, onHit);
+  }
+
+  @Override
+  public String getName() {
+    return name;
   }
 
 }

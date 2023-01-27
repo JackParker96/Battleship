@@ -9,7 +9,8 @@ import org.junit.jupiter.api.Test;
 public class RectangleShipTest {
   @Test
   public void test_getDisplayInfoAt() {
-    BasicShip<Character> s = new RectangleShip<Character>(new Coordinate("B1"), 2, 3, 's', '*');
+    BasicShip<Character> s = new RectangleShip<Character>("submarine", new Coordinate("B1"), 2, 3, 's', '*');
+    assertEquals("submarine", s.getName());
     assertThrows(IllegalArgumentException.class, () -> s.getDisplayInfoAt(new Coordinate("A1")));
     s.recordHitAt(new Coordinate(1, 1));
     assertEquals('*', s.getDisplayInfoAt(new Coordinate(1, 1)));
@@ -18,7 +19,7 @@ public class RectangleShipTest {
   
   @Test
   public void test_rectangle_ship_constructor() {
-    BasicShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 3, 2, 's', '*');
+    BasicShip<Character> s1 = new RectangleShip<Character>("carrier", new Coordinate(1, 2), 3, 2, 's', '*');
     assert(s1.occupiesCoordinates(new Coordinate(1, 2)));
     assert(s1.occupiesCoordinates(new Coordinate(1, 3)));
     assert(s1.occupiesCoordinates(new Coordinate(1, 4)));
@@ -29,7 +30,7 @@ public class RectangleShipTest {
 
   @Test
   public void test_recordHitAt_and_wasHitAt() {
-    BasicShip<Character> s1 = new RectangleShip<Character>(new Coordinate("A0"), 2, 3, 's', '*');
+    BasicShip<Character> s1 = new RectangleShip<Character>("battleship", new Coordinate("A0"), 2, 3, 's', '*');
     assertFalse(s1.isSunk());
     assertThrows(IllegalArgumentException.class, () -> s1.recordHitAt(new Coordinate(0, 2)));
     assertThrows(IllegalArgumentException.class, () -> s1.wasHitAt(new Coordinate("D0")));

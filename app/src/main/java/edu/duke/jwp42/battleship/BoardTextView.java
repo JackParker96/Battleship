@@ -56,7 +56,9 @@ public class BoardTextView {
       String filler = " ";
       Coordinate c = new Coordinate(row, column);
       if (toDisplay.whatIsAt(c) != null) {
-        filler = "s";
+        Character ch = toDisplay.whatIsAt(c);
+        filler = Character.toString(ch);
+        //filler = "s";
       }
       ans.append(filler);
       if (column < w - 1) {

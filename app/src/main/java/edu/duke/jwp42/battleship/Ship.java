@@ -6,6 +6,13 @@ package edu.duke.jwp42.battleship;
  * display this ship.
  */
 public interface Ship<T> {
+
+  /**
+   * Get the name of this Ship, such as "submarine".
+   * @return the name of this ship
+   */
+ public String getName();
+
   /**
    * Check if this ship occupies the given coordinate.
    * 
