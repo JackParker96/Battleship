@@ -55,9 +55,9 @@ public class BoardTextViewTest {
     Coordinate c1 = new Coordinate(0, 0);
     Coordinate c2 = new Coordinate(2, 3);
     Coordinate c3 = new Coordinate(1, 2);
-    Ship<Character> s1 = new BasicShip(c1);
-    Ship<Character> s2 = new BasicShip(c2);
-    Ship<Character> s3 = new BasicShip(c3);
+    RectangleShip<Character> s1 = new RectangleShip<Character>(c1, 's', '*');
+    RectangleShip<Character> s2 = new RectangleShip<Character>(c2, 's', '*');
+    RectangleShip<Character> s3 = new RectangleShip<Character>(c3, 's', '*');
     b.tryAddShip(s1);
     String expectedBody = "As| | | A\n" + "B | | | B\n" + "C | | | C\n";
     String expected = expectedHeader + expectedBody + expectedHeader;

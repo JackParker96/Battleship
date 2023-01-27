@@ -2,7 +2,22 @@ package edu.duke.jwp42.battleship;
 
 import java.util.HashSet;
 
-public class RectangleShip extends BasicShip {
+/**
+ * Class RectangleShip<T> is generic in the way that it is displayed to the user
+ * (in V1, T is always a Character)
+ */
+public class RectangleShip<T> extends BasicShip<T> {
+  /**
+   * The purpose of this method is so that we can pass it to super() in the
+   * constructor below
+   *
+   * @param upperLeft is the coordinate for the upper left part of the ship
+   * @param width     is the width of the ship
+   * @param height    is the height of the ship
+   *
+   *                  Returns a HashSet containing all the coordinates that a ship
+   *                  with the specified upperLeft, width, and height would occupy
+   */
   public static HashSet<Coordinate> makeCoords(Coordinate upperLeft, int width, int height) {
     HashSet<Coordinate> ans = new HashSet<Coordinate>();
     for (int w = 0; w < width; w++) {
@@ -14,8 +29,28 @@ public class RectangleShip extends BasicShip {
     return ans;
   }
 
-  public RectangleShip(Coordinate upperLeft, int width, int height) {
-    super(makeCoords(upperLeft, width, height));
+  /**
+   * Constructs a RectangleShip by calling the super constructor (the constructor
+   * for a BasicShip)
+   */
+  public RectangleShip(Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> myDisplayInfo) {
+    super(makeCoords(upperLeft, width, height), myDisplayInfo);
+  }
+
+  /**
+   * Constructs a RectangleShip using constructor chaining
+   * i.e. this constructor calls the constructor above.
+   *
+   * This is a convenient constructor to have, because it takes care of declaring
+   * a SimpleShipDisplayInfo. All we have to do is pass in data and onHit
+   */
+  public RectangleShip(Coordinate upperLeft, int width, int height, T data, T onHit) {
+    this(upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
+  }
+
+  // Same as above, but creates a ship that only occupies one square
+  public RectangleShip(Coordinate upperLeft, T data, T onHit) {
+    this(upperLeft, 1, 1, data, onHit);
   }
 
 }

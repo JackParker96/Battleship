@@ -22,7 +22,7 @@ public class BattleShipBoardTest {
     Character[][] expected = new Character[3][2];
     checkWhatIsAtBoard(b1, expected);
     Coordinate c1 = new Coordinate(1, 0);
-    Ship<Character> s1 = new BasicShip(c1);
+    RectangleShip<Character> s1 = new RectangleShip<Character>(c1, 's', '*');
     b1.tryAddShip(s1);
     expected[1][0] = 's';
     checkWhatIsAtBoard(b1, expected);

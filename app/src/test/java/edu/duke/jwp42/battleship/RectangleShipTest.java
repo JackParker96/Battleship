@@ -7,7 +7,7 @@ import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 
 public class RectangleShipTest {
-
+  /**
   public void test_makeCoords_helper(Coordinate c, int w, int h, HashSet<Coordinate> expected) {
     RectangleShip s1 = new RectangleShip();
     HashSet<Coordinate> actual = s1.makeCoords(c, w, h);
@@ -25,6 +25,18 @@ public class RectangleShipTest {
     expected1.add(new Coordinate(2, 3));
     expected1.add(new Coordinate(2, 4));
     test_makeCoords_helper(c, 3, 2, expected1);
+  }
+  */
+
+  @Test
+  public void test_rectangle_ship_constructor() {
+    BasicShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 3, 2, 's', '*');
+    assert(s1.occupiesCoordinates(new Coordinate(1, 2)));
+    assert(s1.occupiesCoordinates(new Coordinate(1, 3)));
+    assert(s1.occupiesCoordinates(new Coordinate(1, 4)));
+    assert(s1.occupiesCoordinates(new Coordinate(2, 2)));
+    assert(s1.occupiesCoordinates(new Coordinate(2, 3)));
+    assert(s1.occupiesCoordinates(new Coordinate(2, 4)));
   }
 
 }

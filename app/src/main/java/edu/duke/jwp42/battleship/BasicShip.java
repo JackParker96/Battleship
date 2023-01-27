@@ -3,23 +3,49 @@ package edu.duke.jwp42.battleship;
 import java.util.HashMap;
 
 /**
- * The BasicShip class is just a 1x1 ship (takes up only one square on the board).
- * When a BasicShip is on the board, it's represented graphically by the letter 's'
+ * The BasicShip class is just a 1x1 ship (takes up only one square on the
+ * board).
+ * When a BasicShip is on the board, it's represented graphically by the letter
+ * 's'
  */
-public class BasicShip implements Ship<Character> {
+public abstract class BasicShip<T> implements Ship<T> {
+
+  protected ShipDisplayInfo<T> myDisplayInfo;
+
+  /**
+   * myPieces is a HashMap that keeps track of information about the squares that
+   * a BasicShip occupies
+   *
+   * Let c be any coordinate. If you do myPieces.get(c), there are three
+   * possibilities for the return value:
+   * (a) null: The BasicShip does not occupy Coordinate c
+   * (b) True: The BasicShip does occupy Coordinate c and has been hit
+   * (c) False: The BasicShip does occupy Coordinate c and has not been hit
+   */
   protected HashMap<Coordinate, Boolean> myPieces;
 
-  public BasicShip(Coordinate c) {
-    myPieces = new HashMap<Coordinate, Boolean>();
-    myPieces.put(c, false);
-  }
-
-  public BasicShip(Iterable<Coordinate> where) {
+  /**
+   * Constructs a BasicShip
+   *
+   * @param where         is any Iterable of Coordinates (likely a HashSet) that
+   *                      we want the constructed BasicShip to occupy
+   * @param myDisplayInfo is an object that contains information about how we want
+   *                      the BasicShip to be displayed (see documentation for
+   *                      ShipDisplayInfo)
+   *
+   *                      Initializes this.myPieces by putting every coordinate in
+   *                      the Iterable into the HashTable and labeling it false
+   *                      (not hit)
+   */
+  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo) {
+    this.myDisplayInfo = myDisplayInfo;
+    this.myPieces = new HashMap<Coordinate, Boolean>();
     for (Coordinate c : where) {
-      myPieces.put(c, false);
+      this.myPieces.put(c, false);
     }
   }
-  
+
+  //This method allows us to check whether or not a BasicShip occupies a particular Coordinate on the board
   @Override
   public boolean occupiesCoordinates(Coordinate where) {
     if (myPieces.get(where) != null) {
@@ -37,7 +63,7 @@ public class BasicShip implements Ship<Character> {
   @Override
   public void recordHitAt(Coordinate where) {
     // TODO Auto-generated method stub
-    
+
   }
 
   @Override
@@ -47,8 +73,10 @@ public class BasicShip implements Ship<Character> {
   }
 
   @Override
-  public Character getDisplayInfoAt(Coordinate where) {
-    return 's';
+  public T getDisplayInfoAt(Coordinate where) {
+    // TODO this is not right. We need to
+    // look up the hit status of this coordinate
+    return myDisplayInfo.getInfo(where, false);
   }
-  
+
 }
