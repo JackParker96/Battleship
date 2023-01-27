@@ -12,6 +12,8 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   protected ShipDisplayInfo<T> myDisplayInfo;
 
+  
+
   /**
    * myPieces is a HashMap that keeps track of information about the squares that
    * a BasicShip occupies
@@ -45,6 +47,16 @@ public abstract class BasicShip<T> implements Ship<T> {
     }
   }
 
+  /**
+   *Helper method that checks if a ship occupies Coordinate c
+   *@throws IllegalArgumentException if the ship does not occupy Coordinate c
+  */
+  protected void checkCoordinateInThisShip(Coordinate c) throws IllegalArgumentException {
+    if (myPieces.get(c) == null) {
+      throw new IllegalArgumentException();
+    }
+  }
+
   //This method allows us to check whether or not a BasicShip occupies a particular Coordinate on the board
   @Override
   public boolean occupiesCoordinates(Coordinate where) {
@@ -56,27 +68,30 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   @Override
   public boolean isSunk() {
-    // TODO Auto-generated method stub
-    return false;
+    for (boolean bool : myPieces.values()) {
+      if (bool == false) {
+        return false;
+      }
+    }
+    return true;
   }
 
   @Override
-  public void recordHitAt(Coordinate where) {
-    // TODO Auto-generated method stub
-
+  public void recordHitAt(Coordinate where) throws IllegalArgumentException {
+    checkCoordinateInThisShip(where);
+    myPieces.put(where, true);
   }
 
   @Override
   public boolean wasHitAt(Coordinate where) {
-    // TODO Auto-generated method stub
-    return false;
+    checkCoordinateInThisShip(where);
+    return myPieces.get(where);
   }
 
   @Override
   public T getDisplayInfoAt(Coordinate where) {
-    // TODO this is not right. We need to
-    // look up the hit status of this coordinate
-    return myDisplayInfo.getInfo(where, false);
+    boolean hit = wasHitAt(where);
+    return myDisplayInfo.getInfo(where, hit);
   }
 
 }
