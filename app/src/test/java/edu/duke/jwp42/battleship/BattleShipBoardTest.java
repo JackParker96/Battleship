@@ -15,6 +15,19 @@ public class BattleShipBoardTest {
       }
     }
   }
+
+  @Test
+  public void test_tryAddShip_with_placement_checking() {
+    Board<Character> b = new BattleShipBoard<Character>(3, 4);
+    V1ShipFactory f = new V1ShipFactory();
+    Ship<Character> sub_B1V = f.makeSubmarine(new Placement(new Coordinate("B1"), 'v'));
+    Ship<Character> bship_A0H = f.makeBattleship(new Placement(new Coordinate("A0"), 'H'));
+    Ship<Character> sub_B0H = f.makeSubmarine(new Placement(new Coordinate("B0"), 'h'));
+    assert(b.tryAddShip(sub_B1V));
+    assertFalse(b.tryAddShip(sub_B1V));
+    assertFalse(b.tryAddShip(bship_A0H));
+    assertFalse(b.tryAddShip(sub_B0H));
+  }
   
   @Test
   public void test_whatIsAt() {
