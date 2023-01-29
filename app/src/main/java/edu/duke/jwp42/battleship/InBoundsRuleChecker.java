@@ -2,6 +2,7 @@ package edu.duke.jwp42.battleship;
 
 public class InBoundsRuleChecker<T> extends PlacementRuleChecker<T> {
 
+  // Method to check if theShip can be placed on theBoard without going out of bounds
   @Override
   protected boolean checkMyRule(Ship<T> theShip, Board<T> theBoard) {
     Iterable<Coordinate> coords = theShip.getCoordinates();
