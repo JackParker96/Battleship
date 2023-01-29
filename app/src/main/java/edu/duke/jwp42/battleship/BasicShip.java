@@ -12,8 +12,6 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   protected ShipDisplayInfo<T> myDisplayInfo;
 
-  
-
   /**
    * myPieces is a HashMap that keeps track of information about the squares that
    * a BasicShip occupies
@@ -48,16 +46,18 @@ public abstract class BasicShip<T> implements Ship<T> {
   }
 
   /**
-   *Helper method that checks if a ship occupies Coordinate c
-   *@throws IllegalArgumentException if the ship does not occupy Coordinate c
-  */
+   * Helper method that checks if a ship occupies Coordinate c
+   * 
+   * @throws IllegalArgumentException if the ship does not occupy Coordinate c
+   */
   protected void checkCoordinateInThisShip(Coordinate c) throws IllegalArgumentException {
     if (myPieces.get(c) == null) {
       throw new IllegalArgumentException();
     }
   }
 
-  //This method allows us to check whether or not a BasicShip occupies a particular Coordinate on the board
+  // This method allows us to check whether or not a BasicShip occupies a
+  // particular Coordinate on the board
   @Override
   public boolean occupiesCoordinates(Coordinate where) {
     if (myPieces.get(where) != null) {
@@ -92,6 +92,11 @@ public abstract class BasicShip<T> implements Ship<T> {
   public T getDisplayInfoAt(Coordinate where) {
     boolean hit = wasHitAt(where);
     return myDisplayInfo.getInfo(where, hit);
+  }
+
+  @Override
+  public Iterable<Coordinate> getCoordinates() {
+    return myPieces.keySet();
   }
 
 }

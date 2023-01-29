@@ -9,9 +9,10 @@ public interface Ship<T> {
 
   /**
    * Get the name of this Ship, such as "submarine".
+   * 
    * @return the name of this ship
    */
- public String getName();
+  public String getName();
 
   /**
    * Check if this ship occupies the given coordinate.
@@ -20,7 +21,7 @@ public interface Ship<T> {
    * @return true if where is inside this ship, false if not.
    */
   public boolean occupiesCoordinates(Coordinate where);
-  
+
   /**
    * Check if this ship has been hit in all of its locations meaning it has been
    * sunk.
@@ -59,5 +60,11 @@ public interface Ship<T> {
    * @return The view-specific information at that coordinate.
    */
   public T getDisplayInfoAt(Coordinate where);
-}
 
+  /**
+   * Get all the coordinate this Ship occupies
+   * 
+   * @return An Iterable with the coordinates this Ship occupies
+   */
+  public Iterable<Coordinate> getCoordinates();
+}
