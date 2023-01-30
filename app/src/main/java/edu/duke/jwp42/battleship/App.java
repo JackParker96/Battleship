@@ -6,38 +6,33 @@ import java.io.PrintStream;
 import java.io.Reader;
 import java.io.InputStreamReader;
 
+/**
+ * An App has two fields, one for each TextPlayer
+ */
 public class App {
-  private final AbstractShipFactory<Character> shipFactory;
-  private final Board<Character> theBoard;
-  private final BoardTextView view;
-  private final BufferedReader inputReader;
-  private final PrintStream out;
+  private final TextPlayer player1;
+  private final TextPlayer player2;
 
-  public App(Board<Character> theBoard, Reader inputSource, PrintStream out) {
-    this.shipFactory = new V1ShipFactory();
-    this.theBoard = theBoard;
-    this.view = new BoardTextView(theBoard);
-    this.inputReader = new BufferedReader(inputSource);
-    this.out = out;
+  //Construct an App by passing in two TextPlayers
+  public App(TextPlayer player1, TextPlayer player2) {
+    this.player1 = player1;
+    this.player2 = player2;
   }
 
-  public Placement readPlacement(String prompt) throws IOException {
-    out.println(prompt);
-    String s = inputReader.readLine();
-    return new Placement(s);
+  // Call doPlacementPhase for Player 1 and Player 2
+  public void doPlacementPhase() throws IOException{
+    player1.doPlacementPhase();
+    player2.doPlacementPhase();
   }
 
-  public void doOnePlacement() throws IOException {
-    Placement p = readPlacement("Where would you like to put your ship?");
-    Ship<Character> s  = shipFactory.makeDestroyer(p);
-    theBoard.tryAddShip(s);
-    out.println(view.displayMyOwnBoard());
-  }
-  
   public static void main(String[] args) throws IOException {
-    Board<Character> b = new BattleShipBoard<Character>(10, 20);
-    InputStreamReader isr = new InputStreamReader(System.in);
-    App app = new App(b, isr, System.out);
-    app.doOnePlacement();
+    Board<Character> b1 = new BattleShipBoard<Character>(10, 20);
+    Board<Character> b2 = new BattleShipBoard<Character>(10, 20);
+    AbstractShipFactory<Character> factory = new V1ShipFactory();
+    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    TextPlayer player1 = new TextPlayer("A", b1, input, System.out, factory);
+    TextPlayer player2 = new TextPlayer("B", b2, input, System.out, factory);
+    App app = new App(player1, player2);
+    app.doPlacementPhase();
   }
-}  
+}

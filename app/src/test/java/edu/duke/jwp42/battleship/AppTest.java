@@ -13,45 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.ResourceAccessMode;
 import org.junit.jupiter.api.parallel.ResourceLock;
 import org.junit.jupiter.api.parallel.Resources;
+import org.junit.jupiter.api.Disabled;
 
 class AppTest {
-
-  public App test_helper(StringReader sr, ByteArrayOutputStream bytes, int width, int height) {
-    PrintStream ps = new PrintStream(bytes, true);
-    Board<Character> b = new BattleShipBoard<Character>(width, height);
-    App app = new App(b, sr, ps);
-    return app;
-  }
-  
-  @Test
-  public void test_read_placement() throws IOException {
-    StringReader sr = new StringReader("B2V\nC8H\na4v\n");
-    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    App app = test_helper(sr, bytes, 10, 20);
-    String prompt = "Please enter a location for a ship:";
-    Placement[] expected = new Placement[3];
-    expected[0] = new Placement(new Coordinate(1, 2), 'V');
-    expected[1] = new Placement(new Coordinate(2, 8), 'H');
-    expected[2] = new Placement(new Coordinate(0, 4), 'V');
-    for (int i = 0; i < expected.length; i++) {
-      Placement p = app.readPlacement(prompt);
-      assertEquals(p, expected[i]);
-      assertEquals(prompt + "\n", bytes.toString());
-      bytes.reset();
-    }
-  }
-
-  @Test
-  public void test_place_one_ship() throws IOException {
-    StringReader sr = new StringReader("A0h\n");
-    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    App app = test_helper(sr, bytes, 4, 3);
-    String expectedHeader = " 0|1|2|3\n";
-    String expectedBody = "As| | | A\n" + "B | | | B\n" + "C | | | C\n";
-    String expected = expectedHeader + expectedBody + expectedHeader;
-    app.doOnePlacement();
-  }
-
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
   public void test_main() throws IOException {
