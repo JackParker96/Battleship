@@ -17,8 +17,13 @@ public class TextPlayer {
   private final BoardTextView view;
   private final BufferedReader input;
   private final PrintStream out;
+  // The name of a player (e.g. "A" or "B")
   private final String name;
+  // List of all ships that a player needs to place (in V1, 2 subs, 3 destroyers,
+  // 3 bships, 2 carriers)
   private final ArrayList<String> shipsToPlace;
+  // Map from ship names (Submarine, Battleship, etc.) to functions in
+  // V1ShipFactory used to construct these ships
   private final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
 
   // Constructs a TextPlayer
@@ -30,12 +35,18 @@ public class TextPlayer {
     this.input = input;
     this.out = out;
     this.name = name;
+    // Initialize shipsToPlace to an empty ArrayList, then call
+    // setupShipCreationList() to fill it up with ships
     this.shipsToPlace = new ArrayList<String>();
     setupShipCreationList();
+    // Initialize shipCreationFns to an empty HashMap, then call
+    // setupShipCreationMap to fill it up with mappings from ship names to the
+    // functions used to create that ship
     this.shipCreationFns = new HashMap<String, Function<Placement, Ship<Character>>>();
     setupShipCreationMap();
   }
 
+  // Adds four key/value pairs to shipCreationFns, one for each ship type in V1
   protected void setupShipCreationMap() {
     shipCreationFns.put("Submarine", (p) -> shipFactory.makeSubmarine(p));
     shipCreationFns.put("Destroyer", (p) -> shipFactory.makeDestroyer(p));
@@ -43,6 +54,7 @@ public class TextPlayer {
     shipCreationFns.put("Carrier", (p) -> shipFactory.makeCarrier(p));
   }
 
+  // Adds 10 ships to shipsToPlace (the 10 ships used in V1)
   protected void setupShipCreationList() {
     shipsToPlace.addAll(Collections.nCopies(2, "Submarine"));
     shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
@@ -57,9 +69,14 @@ public class TextPlayer {
     return new Placement(s);
   }
 
-  // Calls the readPlacement() method above, creates a destroyer based on that
-  // placement, tries to add that destroyer to the TextPlayer's board, then
-  // displays the TextPlayer's board with the newly placed destroyer
+  /**
+   * Places a single ship on the board
+   *
+   * @param shipName is the name of the type of ship to place (e.g. "Submarine")
+   * @param createFn is the function used to create that particular ship
+   * @return void, but print out the current state of the board after adding the
+   *         ship
+   */
   public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) throws IOException {
     Placement p = readPlacement("Player " + name + " where do you want to place a " + shipName + "?");
     Ship<Character> s = createFn.apply(p);
@@ -74,9 +91,10 @@ public class TextPlayer {
    * (3) Call the doOnePlacement() method from above
    */
   public void doPlacementPhase() throws IOException {
-    view.displayMyOwnBoard();
+    String emptyBoard = view.displayMyOwnBoard();
+    out.println(emptyBoard);
     String prompt = "--------------------------------------------------------------------------------\n" +
-        "Player A: you are going to place the following ships (which are all " +
+        "Player " + name + ": you are going to place the following ships (which are all " +
         "rectangular). For each ship, type the coordinate of the upper left " +
         "side of the ship, followed by either H (for horizontal) or V (for " +
         "vertical).  For example M4H would place a ship horizontally starting " +

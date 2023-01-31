@@ -26,7 +26,7 @@ public class BoardTextView {
    * Returns string representation of board heade/footer (e.g. " 0|1|2|3|4 ")
    */
   public String makeHeader() {
-    StringBuilder ans = new StringBuilder("  ");
+    StringBuilder ans = new StringBuilder(" ");
     String sep = "";
     for (int i = 0; i < toDisplay.getWidth(); i++) {
       ans.append(sep);

@@ -19,21 +19,21 @@ public class BoardTextViewTest {
 
   @Test
   public void test_display_empty_2by2() {
-    String expectedHeader = "  0|1\n";
+    String expectedHeader = " 0|1\n";
     String expectedBody = "A | A\n" + "B | B\n";
     emptyBoardHelper(2, 2, expectedHeader, expectedBody);
   }
 
   @Test
   public void test_display_empty_3by2() {
-    String expectedHeader = "  0|1|2\n";
+    String expectedHeader = " 0|1|2\n";
     String expectedBody = "A | | A\n" + "B | | B\n";
     emptyBoardHelper(3, 2, expectedHeader, expectedBody);
   }
 
   @Test
   public void test_display_empty_3by5() {
-    String expectedHeader = "  0|1|2\n";
+    String expectedHeader = " 0|1|2\n";
     String expectedBody = "A | | A\n" + "B | | B\n" + "C | | C\n" + "D | | D\n" + "E | | E\n";
     emptyBoardHelper(3, 5, expectedHeader, expectedBody);
   }
@@ -50,7 +50,7 @@ public class BoardTextViewTest {
   public void test_display_nonempty_4by3() {
     Board<Character> b = new BattleShipBoard<Character>(4, 3);
     BoardTextView view = new BoardTextView(b);
-    String expectedHeader = "  0|1|2|3\n";
+    String expectedHeader = " 0|1|2|3\n";
     assertEquals(expectedHeader, view.makeHeader());
     Coordinate c1 = new Coordinate(0, 0);
     Coordinate c2 = new Coordinate(2, 3);
