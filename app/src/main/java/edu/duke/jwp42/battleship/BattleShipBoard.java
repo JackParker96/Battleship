@@ -56,12 +56,12 @@ public class BattleShipBoard<T> implements Board<T> {
    * @return true if adding toAdd wouldn't violate any rules in placementChecker,
    *         return false otherwise
    */
-  public boolean tryAddShip(Ship<T> toAdd) {
-    if (placementChecker.checkPlacement(toAdd, this)) {
+  public String tryAddShip(Ship<T> toAdd) {
+    String placementCheck = placementChecker.checkPlacement(toAdd, this);
+    if (placementCheck == null) {
       myShips.add(toAdd);
-      return true;
     }
-    return false;
+    return placementCheck;
   }
 
   // Allows us to peek at any Coordinate on the board and see whether a ship

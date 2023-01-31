@@ -23,10 +23,10 @@ public class BattleShipBoardTest {
     Ship<Character> sub_B1V = f.makeSubmarine(new Placement(new Coordinate("B1"), 'v'));
     Ship<Character> bship_A0H = f.makeBattleship(new Placement(new Coordinate("A0"), 'H'));
     Ship<Character> sub_B0H = f.makeSubmarine(new Placement(new Coordinate("B0"), 'h'));
-    assert(b.tryAddShip(sub_B1V));
-    assertFalse(b.tryAddShip(sub_B1V));
-    assertFalse(b.tryAddShip(bship_A0H));
-    assertFalse(b.tryAddShip(sub_B0H));
+    assertNull(b.tryAddShip(sub_B1V));
+    assertEquals("That placement is invalid: the ship overlaps another ship.", b.tryAddShip(sub_B1V));
+    assertEquals("That placement is invalid: the ship goes off the right of the board.", b.tryAddShip(bship_A0H));
+    assertEquals("That placement is invalid: the ship overlaps another ship.", b.tryAddShip(sub_B0H));
   }
   
   @Test

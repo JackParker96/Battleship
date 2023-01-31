@@ -15,14 +15,14 @@ public class NoCollisionRuleCheckerTest {
     Ship<Character> sub_A1V = f.makeSubmarine(new Placement(new Coordinate("A1"), 'V'));
     Ship<Character> bship_A2V = f.makeBattleship(new Placement(new Coordinate("A2"), 'V'));
     Ship<Character> dstr_D0H = f.makeDestroyer(new Placement(new Coordinate("D0"), 'h'));
-    assert(checker.checkPlacement(sub_A0H, b));
+    assertNull(checker.checkPlacement(sub_A0H, b));
     b.tryAddShip(sub_A0H);
     b.tryAddShip(sub_C0H);
-    assertFalse(checker.checkPlacement(sub_A1V, b));
-    assertFalse(checker.checkPlacement(sub_A0H, b));
-    assert(checker.checkPlacement(bship_A2V, b));
+    assertEquals("That placement is invalid: the ship overlaps another ship.", checker.checkPlacement(sub_A1V, b));
+    assertEquals("That placement is invalid: the ship overlaps another ship.", checker.checkPlacement(sub_A0H, b));
+    assertNull(checker.checkPlacement(bship_A2V, b));
     b.tryAddShip(bship_A2V);
-    assertFalse(checker.checkPlacement(dstr_D0H, b));
+    assertEquals("That placement is invalid: the ship overlaps another ship.", checker.checkPlacement(dstr_D0H, b));
   }
 
   @Test
@@ -35,11 +35,11 @@ public class NoCollisionRuleCheckerTest {
     Ship<Character> carrier = f.makeCarrier(new Placement(new Coordinate("D0"), 'H'));
     Ship<Character> sub_E0H = f.makeSubmarine(new Placement(new Coordinate("E0"), 'H'));
     Ship<Character> bship_A2V = f.makeBattleship(new Placement(new Coordinate("A2"), 'V'));
-    assert(checker.checkPlacement(dstr_A0H, b));
+    assertNull(checker.checkPlacement(dstr_A0H, b));
     b.tryAddShip(dstr_A0H);
-    assertFalse(checker.checkPlacement(sub_E0H, b));
-    assertFalse(checker.checkPlacement(carrier, b));
-    assertFalse(checker.checkPlacement(bship_A2V, b));
+    assertEquals("That placement is invalid: the ship goes off the bottom of the board.", checker.checkPlacement(sub_E0H, b));
+    assertEquals("That placement is invalid: the ship goes off the right of the board.", checker.checkPlacement(carrier, b));
+    assertEquals("That placement is invalid: the ship overlaps another ship.", checker.checkPlacement(bship_A2V, b));
   }
 
 }

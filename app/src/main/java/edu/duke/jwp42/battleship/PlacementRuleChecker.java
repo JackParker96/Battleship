@@ -20,7 +20,7 @@ public abstract class PlacementRuleChecker<T> {
   }
 
   // Class that extend PlacementRuleChecker will override this method to check their particular rule
-  protected abstract boolean checkMyRule(Ship<T> theShip, Board<T> theBoard);
+  protected abstract String checkMyRule(Ship<T> theShip, Board<T> theBoard);
 
   /**
    * Recursive function for checking a chain of rules
@@ -29,13 +29,14 @@ public abstract class PlacementRuleChecker<T> {
    * @param theBoard is the Board on which we want to place theShip
    * @return true if all the rules for ship placement are satisfied or false if any single rule is not satisfied
    */
-  public boolean checkPlacement(Ship<T> theShip, Board<T> theBoard) {
-    if (!checkMyRule(theShip, theBoard)) {
-      return false;
+  public String checkPlacement(Ship<T> theShip, Board<T> theBoard) {
+    String errorMessage = checkMyRule(theShip, theBoard);
+    if (errorMessage != null) {
+      return errorMessage;
     }
     if (next != null) {
       return next.checkPlacement(theShip, theBoard);
     }
-    return true;
+    return null;
   }
 }
