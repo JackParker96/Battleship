@@ -45,7 +45,8 @@ public class TextPlayerTest {
     String expectedHeader = "  0|1|2|3\n";
     String expectedBody = "Ad|d|d| A\n" + "B | | | B\n" + "C | | | C\n";
     String expected = expectedHeader + expectedBody + expectedHeader;
-    player.doOnePlacement();
+    V1ShipFactory f = new V1ShipFactory();
+    player.doOnePlacement("Destroyer", (p) -> f.makeDestroyer(p));
     assertEquals("Player A where do you want to place a destroyer?\n" + expected + "\n", bytes.toString());
   }
 
