@@ -2,6 +2,7 @@ package edu.duke.jwp42.battleship;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.EOFException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +22,7 @@ public class TextPlayer {
   private final String name;
   // List of all ships that a player needs to place (in V1, 2 subs, 3 destroyers,
   // 3 bships, 2 carriers)
-  private final ArrayList<String> shipsToPlace;
+  public final ArrayList<String> shipsToPlace;
   // Map from ship names (Submarine, Battleship, etc.) to functions in
   // V1ShipFactory used to construct these ships
   private final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
@@ -62,11 +63,36 @@ public class TextPlayer {
     shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
   }
 
-  // Prompts the TextPlayer for a Placement and returns the given placement
+  /**
+   * Prompt the player for a placement string (e.g. "A1h") and return a Placement
+   * object corresponding to the player's input.
+   *
+   * If the player's input is invalid (incorrect format, collision, not in
+   * bounds), an appropriate message is displayed to the player, and they are
+   * prompted for input again. This continues until valid input is received.
+   *
+   * @param prompt - To be displayed to the player to get them to enter a
+   *               placement
+   * @throws EOFException if input.readLine() returns null (used mainly for
+   *                      testing purposes)
+   * @return a Placement constructed from the player's input
+   */
   public Placement readPlacement(String prompt) throws IOException {
-    out.println(prompt);
-    String s = input.readLine();
-    return new Placement(s);
+    Placement p;
+    while (true) {
+      try {
+        out.println(prompt);
+        String s = input.readLine();
+        if (s == null) {
+          throw new EOFException();
+        }
+        p = new Placement(s);
+        break;
+      } catch (IllegalArgumentException e) {
+        out.println("Please try again -> " + e.getMessage());
+      }
+    }
+    return p;
   }
 
   /**
@@ -78,10 +104,17 @@ public class TextPlayer {
    *         ship
    */
   public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) throws IOException {
-    Placement p = readPlacement("Player " + name + " where do you want to place a " + shipName + "?");
-    Ship<Character> s = createFn.apply(p);
-    theBoard.tryAddShip(s);
-    out.print(view.displayMyOwnBoard());
+    while (true) {
+      Placement p = readPlacement("Player " + name + " where do you want to place a " + shipName + "?");
+      Ship<Character> s = createFn.apply(p);
+      String addShipErrorMessage = theBoard.tryAddShip(s);
+      if (addShipErrorMessage == null) {
+        out.print(view.displayMyOwnBoard());
+        break;
+      } else {
+        out.println("Please try again -> " + addShipErrorMessage);
+      }
+    }
   }
 
   /**
