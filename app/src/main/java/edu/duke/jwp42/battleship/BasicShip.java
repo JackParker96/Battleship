@@ -12,6 +12,8 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   protected ShipDisplayInfo<T> myDisplayInfo;
 
+  protected ShipDisplayInfo<T> enemyDisplayInfo;
+
   /**
    * myPieces is a HashMap that keeps track of information about the squares that
    * a BasicShip occupies
@@ -27,18 +29,24 @@ public abstract class BasicShip<T> implements Ship<T> {
   /**
    * Constructs a BasicShip
    *
-   * @param where         is any Iterable of Coordinates (likely a HashSet) that
-   *                      we want the constructed BasicShip to occupy
-   * @param myDisplayInfo is an object that contains information about how we want
-   *                      the BasicShip to be displayed (see documentation for
-   *                      ShipDisplayInfo)
+   * @param where            is any Iterable of Coordinates (likely a HashSet)
+   *                         that
+   *                         we want the constructed BasicShip to occupy
+   * @param myDisplayInfo    is an object that contains information about how we
+   *                         want
+   *                         the BasicShip to be displayed (see documentation for
+   *                         ShipDisplayInfo)
+   * @param enemyDispalyInfo is similar to above but contains information about
+   *                         how we want an enemy's BasicShip to be displayed.
    *
-   *                      Initializes this.myPieces by putting every coordinate in
-   *                      the Iterable into the HashTable and labeling it false
-   *                      (not hit)
+   *                         Initializes this.myPieces by putting every coordinate
+   *                         in
+   *                         the Iterable into the HashTable and labeling it false
+   *                         (not hit)
    */
-  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo) {
+  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo, ShipDisplayInfo<T> enemyDisplayInfo) {
     this.myDisplayInfo = myDisplayInfo;
+    this.enemyDisplayInfo = enemyDisplayInfo;
     this.myPieces = new HashMap<Coordinate, Boolean>();
     for (Coordinate c : where) {
       this.myPieces.put(c, false);
@@ -89,9 +97,12 @@ public abstract class BasicShip<T> implements Ship<T> {
   }
 
   @Override
-  public T getDisplayInfoAt(Coordinate where) {
+  public T getDisplayInfoAt(Coordinate where, boolean myShip) {
     boolean hit = wasHitAt(where);
-    return myDisplayInfo.getInfo(where, hit);
+    if (myShip) {
+      return myDisplayInfo.getInfo(where, hit);
+    }
+    return enemyDisplayInfo.getInfo(where, hit);
   }
 
   @Override

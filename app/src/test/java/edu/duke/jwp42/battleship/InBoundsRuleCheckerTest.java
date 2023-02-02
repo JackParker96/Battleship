@@ -18,7 +18,7 @@ public class InBoundsRuleCheckerTest {
     //Ship<Character> sub_off_the_top = f.makeSubmarine(new Placement(new Coordinate(-1, 2), 'h'));
     //Ship<Character> sub_off_the_left = f.makeSubmarine(new Placement(new Coordinate(0, -1), 'h'));
     InBoundsRuleChecker<Character> checker = new InBoundsRuleChecker<Character>(null);
-    Board<Character> b = new BattleShipBoard<Character>(3, 4, checker);
+    Board<Character> b = new BattleShipBoard<Character>(3, 4, checker, 'X');
     assertNull(checker.checkMyRule(bship_A0V, b));
     assertNull(checker.checkMyRule(dstrB0H, b));
     assertEquals("That placement is invalid: the ship goes off the right of the board.", checker.checkMyRule(bship_A0H, b));

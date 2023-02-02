@@ -26,8 +26,8 @@ public class App {
   }
 
   public static void main(String[] args) throws IOException {
-    Board<Character> b1 = new BattleShipBoard<Character>(10, 20);
-    Board<Character> b2 = new BattleShipBoard<Character>(10, 20);
+    Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
+    Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
     AbstractShipFactory<Character> factory = new V1ShipFactory();
     BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     TextPlayer player1 = new TextPlayer("A", b1, input, System.out, factory);

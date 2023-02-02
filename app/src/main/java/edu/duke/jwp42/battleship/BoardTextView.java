@@ -1,5 +1,7 @@
 package edu.duke.jwp42.battleship;
 
+import java.util.function.Function;
+
 /**
  * This class handles textual display of a Board
  * It returns a String representation of the Board to display to the user
@@ -23,70 +25,71 @@ public class BoardTextView {
   }
 
   /**
-   * Returns string representation of board heade/footer (e.g. " 0|1|2|3|4 ")
+   * Method to display the graphical view of toDisplay.
+   * Can either display toDisplay from the perspective of the player who owns the
+   * board or from the perspective of the enemy.
+   *
+   * @param getSquareFn is a Coordinate -> Character mapping. We can pass in a
+   *                    function that displays character's from the player's own
+   *                    perspective (if they are the owner of toDisplay) or from
+   *                    the enemy's perspective.
+   * @return the textual view of the board.
    */
-  public String makeHeader() {
-    StringBuilder ans = new StringBuilder(" ");
+  protected String displayAnyBoard(Function<Coordinate, Character> getSquareFn) {
+    // Create the header/footer for the board
+    StringBuilder headBuilder = new StringBuilder(" ");
     String sep = "";
     for (int i = 0; i < toDisplay.getWidth(); i++) {
-      ans.append(sep);
-      ans.append(i);
+      headBuilder.append(sep);
+      headBuilder.append(i);
       sep = "|";
     }
-    ans.append("\n");
-    return ans.toString();
-  }
-
-  /**
-   * Returns string representation of empty board row
-   *
-   * @param row is the number of the row to return
-   * @throws IllegalArgumentException if y is not in [0, 25]
-   */
-  public String makeRow(int row) {
-    if (row > 25 || row < 0) {
-      throw new IllegalArgumentException("Argument row must be in [0, 25] but is " + row);
-    }
+    headBuilder.append("\n");
+    String header = headBuilder.toString();
+    // Create the body for the board
+    StringBuilder bodyBuilder = new StringBuilder();
     String alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
-    char letter = alphabet.charAt(row);
     int w = toDisplay.getWidth();
-    StringBuilder ans = new StringBuilder();
-    ans.append(letter);
-    for (int column = 0; column < w; column++) {
-      String filler = " ";
-      Coordinate c = new Coordinate(row, column);
-      if (toDisplay.whatIsAt(c) != null) {
-        Character ch = toDisplay.whatIsAt(c);
-        filler = Character.toString(ch);
-        //filler = "s";
+    for (int row = 0; row < toDisplay.getHeight(); row++) {
+      StringBuilder rowBuilder = new StringBuilder();
+      char letter = alphabet.charAt(row);
+      rowBuilder.append(letter);
+      for (int column = 0; column < w; column++) {
+        String filler = " ";
+        Coordinate c = new Coordinate(row, column);
+        if (getSquareFn.apply(c) != null) {
+          Character ch = getSquareFn.apply(c);
+          filler = Character.toString(ch);
+        }
+        rowBuilder.append(filler);
+        if (column < w - 1) {
+          rowBuilder.append("|");
+        }
       }
-      ans.append(filler);
-      if (column < w - 1) {
-        ans.append("|");
-      }
+      rowBuilder.append(letter);
+      String rowString = rowBuilder.toString();
+      bodyBuilder.append(rowString + "\n");
     }
-    ans.append(letter);
-    return ans.toString();
+    String body = bodyBuilder.toString();
+    // Put everything together
+    return header + body + header;
   }
 
   /**
-   * Leverages the makeRow method to return the blank body of the board
-   */
-  public String makeBody() {
-    StringBuilder ans = new StringBuilder();
-    for (int i = 0; i < toDisplay.getHeight(); i++) {
-      String row = makeRow(i);
-      ans.append(row + "\n");
-    }
-    return ans.toString();
-  }
-
-  /**
-   * Returns a string representation of the entire blank board
+   * Method for displaying the textual view of a player's own board.
+   * Passes a lambda to the displayAnyBoard.
+   * This lambda is a function mapping Coordinates to the self display info for
+   * that Coordinate
    */
   public String displayMyOwnBoard() {
-    String header = makeHeader();
-    String body = makeBody();
-    return header + body + header;
+    return displayAnyBoard((c) -> toDisplay.whatIsAtForSelf(c));
+  }
+
+  /**
+   * Exact same ideas as displayMyOwnBoard, but this displays the textual view of
+   * the enemy's board.
+   */
+  public String displayEnemyBoard() {
+    return displayAnyBoard((c) -> toDisplay.whatIsAtForEnemy(c));
   }
 }

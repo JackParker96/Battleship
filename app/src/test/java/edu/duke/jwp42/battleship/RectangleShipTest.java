@@ -3,9 +3,8 @@ package edu.duke.jwp42.battleship;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,10 +24,12 @@ public class RectangleShipTest {
   public void test_getDisplayInfoAt() {
     BasicShip<Character> s = new RectangleShip<Character>("submarine", new Coordinate("B1"), 2, 3, 's', '*');
     assertEquals("submarine", s.getName());
-    assertThrows(IllegalArgumentException.class, () -> s.getDisplayInfoAt(new Coordinate("A1")));
+    assertThrows(IllegalArgumentException.class, () -> s.getDisplayInfoAt(new Coordinate("A1"), true));
     s.recordHitAt(new Coordinate(1, 1));
-    assertEquals('*', s.getDisplayInfoAt(new Coordinate(1, 1)));
-    assertEquals('s', s.getDisplayInfoAt(new Coordinate("B2")));
+    assertEquals('*', s.getDisplayInfoAt(new Coordinate(1, 1), true));
+    assertEquals('s', s.getDisplayInfoAt(new Coordinate("B2"), true));
+    assertNull(s.getDisplayInfoAt(new Coordinate("B2"), false));
+    assertEquals('s', s.getDisplayInfoAt(new Coordinate(1, 1), false));
   }
 
   @Test

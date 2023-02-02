@@ -13,7 +13,7 @@ public class NoCollisionRuleChecker<T> extends PlacementRuleChecker<T> {
     // by theShip are null
     Iterable<Coordinate> coords = theShip.getCoordinates();
     for (Coordinate c : coords) {
-      if (theBoard.whatIsAt(c) != null) {
+      if (theBoard.whatIsAtForSelf(c) != null) {
         String collisionErrorMessage = "That placement is invalid: the ship overlaps another ship.";
         return collisionErrorMessage;
       }
