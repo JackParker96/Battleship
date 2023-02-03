@@ -30,13 +30,9 @@ Player A: you are going to place the following ships (which are all rectangular)
 2 "Carriers" that are 1x6
 --------------------------------------------------------------------------------
 Player A where do you want to place a Submarine?
-Please try again -> That placement is invalid: the ship goes off the bottom of the board.
-Player A where do you want to place a Submarine?
-Please try again -> That placement is invalid: the ship goes off the right of the board.
-Player A where do you want to place a Submarine?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
 C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
@@ -57,17 +53,11 @@ S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Submarine?
-Please try again -> That placement is invalid: the ship overlaps another ship.
-Player A where do you want to place a Submarine?
-Please try again -> That placement is invalid: the ship overlaps another ship.
-Player A where do you want to place a Submarine?
-Please try again -> That placement is invalid: the ship overlaps another ship.
-Player A where do you want to place a Submarine?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C  | | | | |s|s| | |  C
-D  | | | | | | | | |  D
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
@@ -87,18 +77,18 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C  | | | | |s|s| | |  C
-D  | | | | | | | | |  D
-E  | | | | | | | | |  E
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
+E  | | | | |d|d|d| |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
-J d| | | | | | | | |  J
-K d| | | | | | | | |  K
-L d| | | | | | | | |  L
+J  | | | | | | | | |  J
+K  | | | | | | | | |  K
+L  | | | | | | | | |  L
 M  | | | | | | | | |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
@@ -110,18 +100,18 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | |d| | | | | |  B
-C  | | |d| |s|s| | |  C
-D  | | |d| | | | | |  D
-E  | | | | | | | | |  E
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
+E  | | | | |d|d|d| |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
-J d| | | | | | | | |  J
-K d| | | | | | | | |  K
-L d| | | | | | | | |  L
+J  | | | | |d| | | |  J
+K  | | | | |d| | | |  K
+L  | | | | |d| | | |  L
 M  | | | | | | | | |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
@@ -133,20 +123,20 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | |d| | | | | |  B
-C  | | |d| |s|s| | |d C
-D  | | |d| | | | | |d D
-E  | | | | | | | | |d E
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
+E  | | | | |d|d|d| |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
-J d| | | | | | | | |  J
-K d| | | | | | | | |  K
-L d| | | | | | | | |  L
+J  | | | | |d| | | |  J
+K  | | | | |d| | | |  K
+L  | | | | |d| | | |  L
 M  | | | | | | | | |  M
-N  | | | | | | | | |  N
+N d|d|d| | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
@@ -156,120 +146,132 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Battleship?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | |d| | | | | |  B
-C  | | |d| |s|s| | |d C
-D  | | |d| | | | | |d D
-E  | | | | | | | | |d E
-F  | | | |b|b|b|b| |  F
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
+E  | | | | |d|d|d| |  E
+F  | | | | | | | | |  F
 G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
-J d| | | | | | | | |  J
-K d| | | | | | | | |  K
-L d| | | | | | | | |  L
+J  | | | | |d| | | |  J
+K  | | | | |d| | | |  K
+L  | | | | |d| | | |  L
 M  | | | | | | | | |  M
-N  | | | | | | | | |  N
+N d|d|d| | | | | | |  N
 O  | | | | | | | | |  O
-P  | | | | | | | | |  P
+P b|b|b|b| | | | | |  P
 Q  | | | | | | | | |  Q
 R  | | | | | | | | |  R
 S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Battleship?
-Please try again -> That placement is invalid: the ship goes off the bottom of the board.
+Please try again -> Argument descr must have length 3 but instead has length 8
+Player A where do you want to place a Battleship?
+Please try again -> Argument descr must have length 3 but instead has length 4
+Player A where do you want to place a Battleship?
+Please try again -> Second character must be a number between 0 and 9 but is J
+Player A where do you want to place a Battleship?
+Please try again -> Argument descr must have length 3 but instead has length 2
+Player A where do you want to place a Battleship?
+Please try again -> First character must be a letter of the alphabet, but is *
+Player A where do you want to place a Battleship?
+Please try again -> Second character must be a number between 0 and 9 but is *
+Player A where do you want to place a Battleship?
+Please try again -> Third letter of argument descr must be 'H', 'V', 'h', or 'v' but instead is P
 Player A where do you want to place a Battleship?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | |d| | | | | |  B
-C  | | |d| |s|s| | |d C
-D  | | |d| | | | | |d D
-E  | | | | | | | | |d E
-F  | | | |b|b|b|b| |  F
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
+E  | | | | |d|d|d| |  E
+F  | | | | | | | | |  F
 G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
-J d| | | | | | | | |  J
-K d| | | | | | | | |  K
-L d| | | | | | | | |  L
+J  | | | | |d| | | |  J
+K  | | | | |d| | | |  K
+L  | | | | |d| | | |  L
 M  | | | | | | | | |  M
-N  | | | | | | | | |  N
+N d|d|d| | | | | | |  N
 O  | | | | | | | | |  O
-P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q
+P b|b|b|b| | | | | |  P
+Q b|b|b|b| | | | | |  Q
 R  | | | | | | | | |  R
-S  | | | |b|b|b|b| |  S
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Battleship?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | |d| | | | | |  B
-C  | | |d| |s|s| | |d C
-D  | | |d| | | | | |d D
-E  | | | | | | | | |d E
-F  | | | |b|b|b|b| |  F
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
+E  | | | | |d|d|d| |  E
+F  | | | | | | | | |  F
 G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
-J d| | | | | | | | |  J
-K d| | | | | | | | |  K
-L d| | | | | | | | |  L
+J  | | | | |d| | | |  J
+K  | | | | |d| | | |  K
+L  | | | | |d| | | |  L
 M  | | | | | | | | |  M
-N  | | |b| | | | | |  N
-O  | | |b| | | | | |  O
-P  | | |b| | | | | |  P
-Q  | | |b| | | | | |  Q
+N d|d|d| | | | | | |  N
+O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P
+Q b|b|b|b| | | | | |  Q
 R  | | | | | | | | |  R
-S  | | | |b|b|b|b| |  S
-T  | | | | | | | | |  T
+S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Carrier?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | |d| | | | | |  B
-C  | | |d| |s|s| | |d C
-D  | | |d| | | | | |d D
-E  | | | | | | | | |d E
-F  | | | |b|b|b|b| |  F
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
+E  | | | | |d|d|d| |  E
+F  | | | | | | | | |  F
 G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
-J d| | | | | | |c| |  J
-K d| | | | | | |c| |  K
-L d| | | | | | |c| |  L
-M  | | | | | | |c| |  M
-N  | | |b| | | |c| |  N
-O  | | |b| | | |c| |  O
-P  | | |b| | | | | |  P
-Q  | | |b| | | | | |  Q
+J  | | | | |d| | | |  J
+K  | | | | |d| | | |  K
+L  | | | | |d| | | |  L
+M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N
+O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P
+Q b|b|b|b| | | | | |  Q
 R  | | | | | | | | |  R
-S  | | | |b|b|b|b| |  S
-T  | | | | | | | | |  T
+S c|c|c|c|c|c| | | |  S
+T b|b|b|b| | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player A where do you want to place a Carrier?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | |d| | | | | |  B
-C  | | |d| |s|s| | |d C
-D  | | |d| | | | | |d D
-E  | | | | | | | | |d E
-F  | | | |b|b|b|b| |  F
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | |s|s D
+E  | | | | |d|d|d| |  E
+F  | | | | | | | | |  F
 G  | | | | | | | | |  G
 H  | | | | | | | | |  H
-I  | | | | |c| | | |  I
-J d| | | | |c| |c| |  J
-K d| | | | |c| |c| |  K
-L d| | | | |c| |c| |  L
-M  | | | | |c| |c| |  M
-N  | | |b| |c| |c| |  N
-O  | | |b| | | |c| |  O
-P  | | |b| | | | | |  P
-Q  | | |b| | | | | |  Q
-R  | | | | | | | | |  R
-S  | | | |b|b|b|b| |  S
-T  | | | | | | | | |  T
+I  | | | | | | | | |  I
+J  | | | | |d| | | |  J
+K  | | | | |d| | | |  K
+L  | | | | |d| | | |  L
+M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N
+O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P
+Q b|b|b|b| | | | | |  Q
+R c|c|c|c|c|c| | | |  R
+S c|c|c|c|c|c| | | |  S
+T b|b|b|b| | | | | |  T
   0|1|2|3|4|5|6|7|8|9
   0|1|2|3|4|5|6|7|8|9
 A  | | | | | | | | |  A
@@ -304,8 +306,8 @@ Player B: you are going to place the following ships (which are all rectangular)
 --------------------------------------------------------------------------------
 Player B where do you want to place a Submarine?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
+A s|s| | | | | | | |  A
+B  | | | | | | | | |  B
 C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
@@ -326,27 +328,9 @@ S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Submarine?
-Please try again -> That placement is invalid: the ship overlaps another ship.
-Player B where do you want to place a Submarine?
-Please try again -> That placement is invalid: the ship overlaps another ship.
-Player B where do you want to place a Submarine?
-Please try again -> Argument descr must have length 3 but instead has length 13
-Player B where do you want to place a Submarine?
-Please try again -> Argument descr must have length 3 but instead has length 2
-Player B where do you want to place a Submarine?
-Please try again -> Argument descr must have length 3 but instead has length 0
-Player B where do you want to place a Submarine?
-Please try again -> Argument descr must have length 3 but instead has length 1
-Player B where do you want to place a Submarine?
-Please try again -> First character must be a letter of the alphabet, but is *
-Player B where do you want to place a Submarine?
-Please try again -> Second character must be a number between 0 and 9 but is *
-Player B where do you want to place a Submarine?
-Please try again -> Third letter of argument descr must be 'H', 'V', 'h', or 'v' but instead is N
-Player B where do you want to place a Submarine?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
 C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
@@ -362,15 +346,15 @@ N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C  | | | | | | | | |  C
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
+C d|d|d| | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
@@ -378,177 +362,2220 @@ G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K d|d|d| | | | | | |  K
+K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C  | | | | | | | | |  C
-D  | | | | | | | | |  D
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
+C d|d|d| | | | | | |  C
+D d|d|d| | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
-G  | | | | |d| | | |  G
-H  | | | | |d| | | |  H
-I  | | | | |d| | | |  I
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K d|d|d| | | | | | |  K
+K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Destroyer?
-Please try again -> First character must be a letter of the alphabet, but is 3
-Player B where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C  | | | | | | | | |  C
-D  | | | | | | | | |  D
-E  | | | |d| | | | |  E
-F  | | | |d| | | | |  F
-G  | | | |d|d| | | |  G
-H  | | | | |d| | | |  H
-I  | | | | |d| | | |  I
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
+C d|d|d| | | | | | |  C
+D d|d|d| | | | | | |  D
+E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K d|d|d| | | | | | |  K
+K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Battleship?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C  | | | | | | | | |  C
-D  | | | | | | | | |  D
-E  | | | |d| | | | |  E
-F  | | | |d| | | | |  F
-G  | | | |d|d| | | |  G
-H  | | | | |d| | | |  H
-I  | | | | |d| | | |  I
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
+C d|d|d| | | | | | |  C
+D d|d|d| | | | | | |  D
+E d|d|d| | | | | | |  E
+F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K d|d|d| | | | | | |  K
+K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
-N  | | |b|b|b|b| | |  N
+N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Battleship?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C  | | | | | | | | |  C
-D  | | | | | | | | |  D
-E  | | | |d| | | | |  E
-F  | | | |d| | | | |  F
-G  | | | |d|d| | | |  G
-H  | | | | |d| | | |  H
-I  | | | | |d| | | |  I
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
+C d|d|d| | | | | | |  C
+D d|d|d| | | | | | |  D
+E d|d|d| | | | | | |  E
+F b|b|b|b| | | | | |  F
+G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K d|d|d| | | | | | |  K
+K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
-N  | | |b|b|b|b| | |  N
+N  | | | | | | | | |  N
 O  | | | | | | | | |  O
-P  | | |b|b|b|b| | |  P
+P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Battleship?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | |b| |  A
-B s| | | | | | |b| |  B
-C  | | | | | | |b| |  C
-D  | | | | | | |b| |  D
-E  | | | |d| | | | |  E
-F  | | | |d| | | | |  F
-G  | | | |d|d| | | |  G
-H  | | | | |d| | | |  H
-I  | | | | |d| | | |  I
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
+C d|d|d| | | | | | |  C
+D d|d|d| | | | | | |  D
+E d|d|d| | | | | | |  E
+F b|b|b|b| | | | | |  F
+G b|b|b|b| | | | | |  G
+H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K d|d|d| | | | | | |  K
+K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
-N  | | |b|b|b|b| | |  N
+N  | | | | | | | | |  N
 O  | | | | | | | | |  O
-P  | | |b|b|b|b| | |  P
+P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Carrier?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | |b| |  A
-B s| | | | | | |b| |  B
-C  | | | | | | |b| |  C
-D  | | | | | | |b| |  D
-E  | | | |d| | | | |  E
-F  | | | |d| | | | |  F
-G  | | | |d|d| | | |  G
-H  | | | | |d| | | |  H
-I  | | | | |d| | | |  I
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
+C d|d|d| | | | | | |  C
+D d|d|d| | | | | | |  D
+E d|d|d| | | | | | |  E
+F b|b|b|b| | | | | |  F
+G b|b|b|b| | | | | |  G
+H b|b|b|b| | | | | |  H
+I c|c|c|c|c|c| | | |  I
 J  | | | | | | | | |  J
-K d|d|d| | | | | | |  K
+K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
-N  | | |b|b|b|b| | |  N
+N  | | | | | | | | |  N
 O  | | | | | | | | |  O
-P  | | |b|b|b|b| | |  P
-Q  |c|c|c|c|c|c| | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 Player B where do you want to place a Carrier?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | |b| |  A
-B s| | | | | | |b| |  B
-C c|c|c|c|c|c| |b| |  C
-D  | | | | | | |b| |  D
-E  | | | |d| | | | |  E
-F  | | | |d| | | | |  F
-G  | | | |d|d| | | |  G
-H  | | | | |d| | | |  H
-I  | | | | |d| | | |  I
-J  | | | | | | | | |  J
-K d|d|d| | | | | | |  K
+A s|s| | | | | | | |  A
+B s|s| | | | | | | |  B
+C d|d|d| | | | | | |  C
+D d|d|d| | | | | | |  D
+E d|d|d| | | | | | |  E
+F b|b|b|b| | | | | |  F
+G b|b|b|b| | | | | |  G
+H b|b|b|b| | | | | |  H
+I c|c|c|c|c|c| | | |  I
+J c|c|c|c|c|c| | | |  J
+K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
-N  | | |b|b|b|b| | |  N
+N  | | | | | | | | |  N
 O  | | | | | | | | |  O
-P  | | |b|b|b|b| | |  P
-Q  |c|c|c|c|c|c| | |  Q
-R  |s| | | | | | | |  R
-S  |s| | | | | | | |  S
+P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A  | | | | | | | | |  A
+B  |s| | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | |s|s D                D  | | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a submarine!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|s| | | | | | | |  A                A  | | | | | | | | |  A
+B s|s| | | | | | | |  B                B  | | | | | | | | |  B
+C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
+D d|d|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s| | | | | | | | |  A
+B  |s| | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | |s|s D                D  | | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a submarine!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B s|s| | | | | | | |  B                B  | | | | | | | | |  B
+C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
+D d|d|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | |s|s D                D  | | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a submarine!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|s| | | | | | | |  B                B  | | | | | | | | |  B
+C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
+D d|d|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s| | | | | | | | |  B
+C  | | | | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | |s|s D                D  | | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a submarine!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
+D d|d|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | |s|s D                D  | | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|d|d| | | | | | |  C                C  | | | | | | | | |  C
+D d|d|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d| | | | | | | | |  C
+D  | | | | | | | |s|s D                D  | | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|d| | | | | | |  C                C  | | | | | | | | |  C
+D d|d|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d| | | | | | | |  C
+D  | | | | | | | |s|s D                D  | | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D d|d|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D  | | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|d|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d| | | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|d| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d| | | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E d|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|d|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d| | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|d| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d| | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a destroyer!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F b|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|b|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b| | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|b|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b| | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|b| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b| | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G b|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|b|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b| | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|b|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b| | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|b| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b| | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H b|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|b|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b| | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|b|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b| | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|b| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b| | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a battleship!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I c|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|c|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c| | | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|c|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c| | | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|c|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c| | | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|*|c|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c|c| | | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|*|*|c| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c|c|c| | | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|*|*|*| | | |  I                I  | | | | | | | | |  I
+J c|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c|c|c|c| | | |  I
+J  | | | | |d| | | |  J                J  | | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|*|*|*| | | |  I                I  | | | | | | | | |  I
+J *|c|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c|c|c|c| | | |  I
+J  | | | | |d| | | |  J                J c| | | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|*|*|*| | | |  I                I  | | | | | | | | |  I
+J *|*|c|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c|c|c|c| | | |  I
+J  | | | | |d| | | |  J                J c|c| | | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|*|*|*| | | |  I                I  | | | | | | | | |  I
+J *|*|*|c|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c|c|c|c| | | |  I
+J  | | | | |d| | | |  J                J c|c|c| | | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|*|*|*| | | |  I                I  | | | | | | | | |  I
+J *|*|*|*|c|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c|c|c|c| | | |  I
+J  | | | | |d| | | |  J                J c|c|c|c| | | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+Current state of the game:
+
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A *|*| | | | | | | |  A                A X| | | | | | | | |  A
+B *|*| | | | | | | |  B                B  | | | | | | | | |  B
+C *|*|*| | | | | | |  C                C  | | | | | | | | |  C
+D *|*|*| | | | | | |  D                D  | | | | | | | | |  D
+E *|*|*| | | | | | |  E                E  | | | | | | | | |  E
+F *|*|*|*| | | | | |  F                F  | | | | | | | | |  F
+G *|*|*|*| | | | | |  G                G  | | | | | | | | |  G
+H *|*|*|*| | | | | |  H                H  | | | | | | | | |  H
+I *|*|*|*|*|*| | | |  I                I  | | | | | | | | |  I
+J *|*|*|*|*|c| | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You missed!
+Current state of the game:
+
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s| | | | | | | |  A                A s|s| | | | | | | |  A
+B  |s| | | | | | | |  B                B s|s| | | | | | | |  B
+C  | | | | | | | | |  C                C d|d|d| | | | | | |  C
+D  | | | | | | | |s|s D                D d|d|d| | | | | | |  D
+E  | | | | |d|d|d| |  E                E d|d|d| | | | | | |  E
+F  | | | | | | | | |  F                F b|b|b|b| | | | | |  F
+G  | | | | | | | | |  G                G b|b|b|b| | | | | |  G
+H  | | | | | | | | |  H                H b|b|b|b| | | | | |  H
+I  | | | | | | | | |  I                I c|c|c|c|c|c| | | |  I
+J  | | | | |d| | | |  J                J c|c|c|c|c| | | | |  J
+K  | | | | |d| | | |  K                K  | | | | | | | | |  K
+L  | | | | |d| | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N d|d|d| | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P b|b|b|b| | | | | |  P                P  | | | | | | | | |  P
+Q b|b|b|b| | | | | |  Q                Q  | | | | | | | | |  Q
+R c|c|c|c|c|c| | | |  R                R  | | | | | | | | |  R
+S c|c|c|c|c|c| | | |  S                S  | | | | | | | | |  S
+T b|b|b|b| | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+
+Please enter a coordinate on your enemy's board you'd like to fire at.
+You hit a carrier!
+A has won the game!

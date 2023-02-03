@@ -14,12 +14,12 @@ import java.util.function.Function;
  */
 public class TextPlayer {
   private final AbstractShipFactory<Character> shipFactory;
-  private final Board<Character> theBoard;
-  private final BoardTextView view;
+  protected final Board<Character> theBoard;
+  protected final BoardTextView view;
   private final BufferedReader input;
-  private final PrintStream out;
+  protected final PrintStream out;
   // The name of a player (e.g. "A" or "B")
-  private final String name;
+  protected final String name;
   // List of all ships that a player needs to place (in V1, 2 subs, 3 destroyers,
   // 3 bships, 2 carriers)
   protected final ArrayList<String> shipsToPlace;
@@ -63,9 +63,59 @@ public class TextPlayer {
     shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
   }
 
+  /**
+   * Goes through one turn for a single player
+   *
+   * @param enemyBoard is the enemy's board
+   * @param enemyView is the BoardTextView version of enemyBoard
+   * @param enemyName is the name of the other player
+   */
+  public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) throws IOException {
+    out.println("Current state of the game:\n");
+    String enemyHeader = enemyName + "'s ocean";
+    out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your ocean", enemyHeader));
+    Coordinate c = null;
+    while (true) {
+      out.println("Please enter a coordinate on your enemy's board you'd like to fire at.");
+      String s = input.readLine();
+      try {
+        c = new Coordinate(s);
+        if (c.getRow() >= enemyBoard.getHeight() || c.getColumn() >= enemyBoard.getWidth()) {
+          out.println("Please try again -> That coordinate is not on your enemy's board.");
+          continue;
+        }
+        break;
+      }
+      catch (IllegalArgumentException e) {
+        out.println("Please try again -> " + e.getMessage());
+        continue;
+      }
+    }
+    enemyBoard.fireAt(c);
+    Character ch = enemyBoard.whatIsAtForEnemy(c);
+    if (ch == 's') {
+      out.println("You hit a submarine!");
+    }
+    else if (ch == 'd') {
+      out.println("You hit a destroyer!");
+    }
+    else if (ch == 'b') {
+      out.println("You hit a battleship!");
+    }
+    else if (ch == 'c') {
+      out.println("You hit a carrier!");
+    }
+    else {
+      out.println("You missed!");
+    }
+  }
+  
   // Checks if the player has lost the game (all ships sunk)
-  public boolean hasLost() {
-    return theBoard.allShipsSunk();
+  public String hasLost() {
+    if (theBoard.allShipsSunk()) {
+      return name;
+    }
+    return null;
   }
 
   /**

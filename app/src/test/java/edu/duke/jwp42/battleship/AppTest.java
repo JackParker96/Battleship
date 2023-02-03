@@ -56,7 +56,7 @@ class AppTest {
     b1.fireAt(new Coordinate("C1"));
     assertNull(app.getWinningPlayer());
     b1.fireAt(new Coordinate("C2"));
-    assertEquals(player2, app.getWinningPlayer());
+    assertEquals("B", app.getWinningPlayer());
   }
 
   @Test
@@ -96,7 +96,7 @@ class AppTest {
     b2.fireAt(new Coordinate("C1"));
     assertNull(app.getWinningPlayer());
     b2.fireAt(new Coordinate("C2"));
-    assertEquals(player1, app.getWinningPlayer());
+    assertEquals("A", app.getWinningPlayer());
   }
   
   @Test

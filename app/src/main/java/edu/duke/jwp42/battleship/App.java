@@ -2,8 +2,6 @@ package edu.duke.jwp42.battleship;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.Reader;
 import java.io.InputStreamReader;
 
 /**
@@ -19,24 +17,47 @@ public class App {
     this.player2 = player2;
   }
 
-  // Call doPlacementPhase for Player 1 and Player 2
+  /**
+   * Executes the entire placement phase of the game
+   * Asks Player A to place all ten of their ships, then asks Player B to place
+   * all 10 of their ships
+   */
   public void doPlacementPhase() throws IOException {
     player1.doPlacementPhase();
     player2.doPlacementPhase();
   }
 
   /**
+   * Executes the entire attacking phase of the game, alternating back and forth
+   * between the two players until one of them has won
+   */
+  public void doAttackingPhase() throws IOException {
+    while (true) {
+      player1.playOneTurn(player2.theBoard, player2.view, player2.name);
+      if (getWinningPlayer() != null) {
+        player1.out.println(getWinningPlayer() + " has won the game!");
+        return;
+      }
+      player2.playOneTurn(player1.theBoard, player1.view, player1.name);
+      if (getWinningPlayer() != null) {
+        player2.out.println(getWinningPlayer() + " has won the game!");
+        return;
+      }
+    }
+  }
+
+  /**
    * Checks if the game has been won
    *
-   * @return player1 if player2 has lost, and vice versa, or return null if
-   *         neither player has won yet
+   * @return the name of the winning player or null if neither player has won the
+   *         game yet
    */
-  public TextPlayer getWinningPlayer() {
-    if (player1.hasLost()) {
-      return player2;
+  public String getWinningPlayer() {
+    if (player1.theBoard.allShipsSunk()) {
+      return player2.name;
     }
-    if (player2.hasLost()) {
-      return player1;
+    if (player2.theBoard.allShipsSunk()) {
+      return player1.name;
     }
     return null;
   }
@@ -50,5 +71,6 @@ public class App {
     TextPlayer player2 = new TextPlayer("B", b2, input, System.out, factory);
     App app = new App(player1, player2);
     app.doPlacementPhase();
+    app.doAttackingPhase();
   }
 }
