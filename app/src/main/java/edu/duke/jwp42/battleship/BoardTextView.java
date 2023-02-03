@@ -37,7 +37,7 @@ public class BoardTextView {
    */
   protected String displayAnyBoard(Function<Coordinate, Character> getSquareFn) {
     // Create the header/footer for the board
-    StringBuilder headBuilder = new StringBuilder(" ");
+    StringBuilder headBuilder = new StringBuilder("  ");
     String sep = "";
     for (int i = 0; i < toDisplay.getWidth(); i++) {
       headBuilder.append(sep);
@@ -53,7 +53,7 @@ public class BoardTextView {
     for (int row = 0; row < toDisplay.getHeight(); row++) {
       StringBuilder rowBuilder = new StringBuilder();
       char letter = alphabet.charAt(row);
-      rowBuilder.append(letter);
+      rowBuilder.append(letter + " ");
       for (int column = 0; column < w; column++) {
         String filler = " ";
         Coordinate c = new Coordinate(row, column);
@@ -66,7 +66,7 @@ public class BoardTextView {
           rowBuilder.append("|");
         }
       }
-      rowBuilder.append(letter);
+      rowBuilder.append(" " + letter);
       String rowString = rowBuilder.toString();
       bodyBuilder.append(rowString + "\n");
     }
@@ -91,5 +91,46 @@ public class BoardTextView {
    */
   public String displayEnemyBoard() {
     return displayAnyBoard((c) -> toDisplay.whatIsAtForEnemy(c));
+  }
+
+  /**
+   * Displays the current state of both oceans, side by side, with the player's
+   * own board on the left and the enemy board on the right
+   *
+   * @param enemyView   is a BoardTextView of the enemy's board
+   * @param myHeader    is what goes at the top of the player's own board (e.g.
+   *                    "Your ocean")
+   * @param enemyHeader goes at the top of the enemy's ocean (e.g. "Player B's
+   *                    ocean")
+   * @return a String representing the side-by-side display of both boards
+   */
+  public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String myHeader, String enemyHeader) {
+    StringBuilder ans = new StringBuilder();
+    int w = toDisplay.getWidth();
+    // Get the String representation of each board
+    String myDisplay = displayMyOwnBoard();
+    String enemyDisplay = enemyView.displayEnemyBoard();
+    // Create an array of lines for each board
+    String[] myLines = myDisplay.split("\n");
+    String[] enemyLines = enemyDisplay.split("\n");
+    // Create string of spaces to go between end of myHeader and beginning of
+    // enemyHeader
+    StringBuilder headerSpacesBuilder = new StringBuilder();
+    int numSpacesBetweenHeaders = (2 * w + 22) - (5 + myHeader.length());
+    for (int i = 0; i < numSpacesBetweenHeaders; i++) {
+      headerSpacesBuilder.append(" ");
+    }
+    String headerSpaces = headerSpacesBuilder.toString();
+    // Create String for the header
+    String headers = "     " + myHeader + headerSpaces + enemyHeader + "\n";
+    ans.append(headers);
+    String columnLabels = myLines[0] + "                  " + enemyLines[0];
+    ans.append(columnLabels + "\n");
+    for (int i = 1; i < toDisplay.getHeight() + 1; i++) {
+      String row = myLines[i] + "                " + enemyLines[i];
+      ans.append(row + "\n");
+    }
+    ans.append(columnLabels + "\n");
+    return ans.toString();
   }
 }

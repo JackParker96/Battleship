@@ -44,8 +44,8 @@ public class TextPlayerTest {
   // Could have written a helper method to make these test cases easier to write
   @Test
   public void test_doOnePlacement() throws IOException {
-    String expectedHeader = " 0|1|2|3\n";
-    String expectedBody = "Ad|d|d| A\n" + "B | | | B\n" + "C | | | C\n";
+    String expectedHeader = "  0|1|2|3\n";
+    String expectedBody = "A d|d|d|  A\n" + "B  | | |  B\n" + "C  | | |  C\n";
     String expectedBoard = expectedHeader + expectedBody + expectedHeader;
     V1ShipFactory f = new V1ShipFactory();
     String dstrPrompt = "Player A where do you want to place a Destroyer?\n";
@@ -119,12 +119,12 @@ public class TextPlayerTest {
       }
     };
     player.doPlacementPhase();
-    String expectedHeader = " 0|1|2|3\n";
-    String expectedBody1 = "A | | | A\n" + "B | | | B\n" + "C | | | C\n";
+    String expectedHeader = "  0|1|2|3\n";
+    String expectedBody1 = "A  | | |  A\n" + "B  | | |  B\n" + "C  | | |  C\n";
     String expectedBoard1 = expectedHeader + expectedBody1 + expectedHeader;
-    String expectedBody2 = "As|s| | A\n" + "B | | | B\n" + "C | | | C\n";
+    String expectedBody2 = "A s|s| |  A\n" + "B  | | |  B\n" + "C  | | |  C\n";
     String expectedBoard2 = expectedHeader + expectedBody2 + expectedHeader;
-    String expectedBody3 = "As|s| | A\n" + "B | | | B\n" + "Cd|d|d| C\n";
+    String expectedBody3 = "A s|s| |  A\n" + "B  | | |  B\n" + "C d|d|d|  C\n";
     String expectedBoard3 = expectedHeader + expectedBody3 + expectedHeader;
     String expected = expectedBoard1 + "\n" + "--------------------------------------------------------------------------------\n" +
         "Player A: you are going to place the following ships (which are all " +
