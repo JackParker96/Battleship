@@ -1,6 +1,7 @@
 package edu.duke.jwp42.battleship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
@@ -106,13 +107,14 @@ public class TextPlayerTest {
   }
 
   @Test
-  public void test_doPlacementPhase() throws IOException {
+  public void test_doPlacementPhase_and_hasLost() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     String inputString = "A0h\nA0h\nC0h\n";
     BufferedReader input = new BufferedReader(new StringReader(inputString));
     PrintStream output = new PrintStream(bytes, true);
     AbstractShipFactory<Character> f = new V1ShipFactory();
-    TextPlayer player = new TextPlayer("A", new BattleShipBoard<Character>(4, 3, 'X'), input, output, f) {
+    Board<Character> b = new BattleShipBoard<Character>(4, 3, 'X');
+    TextPlayer player = new TextPlayer("A", b, input, output, f) {
       protected void setupShipCreationList() {
         shipsToPlace.addAll(Collections.nCopies(1, "Submarine"));
         shipsToPlace.addAll(Collections.nCopies(1, "Destroyer"));
@@ -145,6 +147,18 @@ public class TextPlayerTest {
         "Player A where do you want to place a Destroyer?\n" +
         expectedBoard3;
     assertEquals(expected, bytes.toString());
+    // Now let's test hasLost
+    assertFalse(player.hasLost());
+    b.fireAt(new Coordinate("A0"));
+    assertFalse(player.hasLost());
+    b.fireAt(new Coordinate("A1"));
+    assertFalse(player.hasLost());
+    b.fireAt(new Coordinate("C0"));
+    assertFalse(player.hasLost());
+    b.fireAt(new Coordinate("C1"));
+    assertFalse(player.hasLost());
+    b.fireAt(new Coordinate("C2"));
+    assert(player.hasLost());
   }
 
 }

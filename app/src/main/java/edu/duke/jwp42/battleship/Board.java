@@ -5,6 +5,8 @@ public interface Board<T> {
 
   public int getHeight();
 
+  public boolean allShipsSunk();
+
   public Ship<T> fireAt(Coordinate c);
 
   public String tryAddShip(Ship<T> toAdd);

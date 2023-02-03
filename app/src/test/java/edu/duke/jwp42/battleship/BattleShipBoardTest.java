@@ -17,6 +17,29 @@ public class BattleShipBoardTest {
   }
 
   @Test
+  public void test_allShipsSunk() {
+    Board<Character> b = new BattleShipBoard<Character>(4, 3, 'X');
+    V1ShipFactory f = new V1ShipFactory();
+    Ship<Character> sub_A0V = f.makeSubmarine(new Placement(new Coordinate("A0"), 'V'));
+    Ship<Character> bship_C0H = f.makeBattleship(new Placement(new Coordinate("C0"), 'H'));
+    b.tryAddShip(sub_A0V);
+    b.tryAddShip(bship_C0H);
+    assertFalse(b.allShipsSunk());
+    b.fireAt(new Coordinate("A0"));
+    assertFalse(b.allShipsSunk());
+    b.fireAt(new Coordinate("B0"));
+    assertFalse(b.allShipsSunk());
+    b.fireAt(new Coordinate("C0"));
+    assertFalse(b.allShipsSunk());
+    b.fireAt(new Coordinate("C1"));
+    assertFalse(b.allShipsSunk());
+    b.fireAt(new Coordinate("C2"));
+    assertFalse(b.allShipsSunk());
+    b.fireAt(new Coordinate("C3"));
+    assert(b.allShipsSunk());
+  }
+  
+  @Test
   public void test_whatIsAtForEnemy() {
     Board<Character> b = new BattleShipBoard<Character>(4, 3, 'X');
     V1ShipFactory f = new V1ShipFactory();

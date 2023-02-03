@@ -13,16 +13,32 @@ public class App {
   private final TextPlayer player1;
   private final TextPlayer player2;
 
-  //Construct an App by passing in two TextPlayers
+  // Construct an App by passing in two TextPlayers
   public App(TextPlayer player1, TextPlayer player2) {
     this.player1 = player1;
     this.player2 = player2;
   }
 
   // Call doPlacementPhase for Player 1 and Player 2
-  public void doPlacementPhase() throws IOException{
+  public void doPlacementPhase() throws IOException {
     player1.doPlacementPhase();
     player2.doPlacementPhase();
+  }
+
+  /**
+   * Checks if the game has been won
+   *
+   * @return player1 if player2 has lost, and vice versa, or return null if
+   *         neither player has won yet
+   */
+  public TextPlayer getWinningPlayer() {
+    if (player1.hasLost()) {
+      return player2;
+    }
+    if (player2.hasLost()) {
+      return player1;
+    }
+    return null;
   }
 
   public static void main(String[] args) throws IOException {

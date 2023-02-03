@@ -55,6 +55,16 @@ public class BattleShipBoard<T> implements Board<T> {
     this(w, h, new InBoundsRuleChecker<T>(new NoCollisionRuleChecker<T>(null)), missInfo);
   }
 
+  // Checks if all ships on the board are sunk
+  public boolean allShipsSunk() {
+    for (Ship<T> s : myShips) {
+      if (!s.isSunk()) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
   public Ship<T> fireAt(Coordinate c) {
     for (Ship<T> s : myShips) {
       if (s.occupiesCoordinates(c)) {

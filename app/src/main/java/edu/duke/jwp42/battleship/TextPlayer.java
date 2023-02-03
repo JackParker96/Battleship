@@ -22,7 +22,7 @@ public class TextPlayer {
   private final String name;
   // List of all ships that a player needs to place (in V1, 2 subs, 3 destroyers,
   // 3 bships, 2 carriers)
-  public final ArrayList<String> shipsToPlace;
+  protected final ArrayList<String> shipsToPlace;
   // Map from ship names (Submarine, Battleship, etc.) to functions in
   // V1ShipFactory used to construct these ships
   private final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
@@ -61,6 +61,11 @@ public class TextPlayer {
     shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
     shipsToPlace.addAll(Collections.nCopies(3, "Battleship"));
     shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
+  }
+
+  // Checks if the player has lost the game (all ships sunk)
+  public boolean hasLost() {
+    return theBoard.allShipsSunk();
   }
 
   /**
