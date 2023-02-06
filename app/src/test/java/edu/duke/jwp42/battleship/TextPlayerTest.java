@@ -217,7 +217,7 @@ public class TextPlayerTest {
     TextPlayer player3 = createTextPlayer(4, 3, "A0\nA0h\n", bytes3);
     player3.doOnePlacement("Destroyer", (p) -> f.makeDestroyer(p));
     assertEquals(dstrPrompt
-        + "Please try again -> Argument descr must have length 3 but instead has length 2\n"
+        + "Please try again -> Input must have length 3 but instead has length 2\n"
         + dstrPrompt
         + expectedBoard, bytes3.toString());
     // Test error handling for input with invalid first character
@@ -237,7 +237,7 @@ public class TextPlayerTest {
     TextPlayer player6 = createTextPlayer(4, 3, "A0p\nA0h\n", bytes6);
     player6.doOnePlacement("Destroyer", (p) -> f.makeDestroyer(p));
     assertEquals(dstrPrompt
-        + "Please try again -> Third letter of argument descr must be 'H', 'V', 'h', or 'v' but instead is P\n"
+        + "Please try again -> Third letter of input must be in [H, V, U, D, L, R] but instead is P\n"
         + dstrPrompt + expectedBoard, bytes6.toString());
     // Test error handling for input that goes off right side of board
     ByteArrayOutputStream bytes7 = new ByteArrayOutputStream();

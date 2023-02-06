@@ -35,8 +35,8 @@ public class RectangleShip<T> extends BasicShip<T> {
    * Constructs a RectangleShip by calling the super constructor (the constructor
    * for a BasicShip)
    */
-  public RectangleShip(String name, Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> myDisplayInfo, ShipDisplayInfo<
-                       T> enemyDisplayInfo) {
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> myDisplayInfo,
+      ShipDisplayInfo<T> enemyDisplayInfo) {
     super(makeCoords(upperLeft, width, height), myDisplayInfo, enemyDisplayInfo);
     this.name = name;
   }
@@ -49,7 +49,8 @@ public class RectangleShip<T> extends BasicShip<T> {
    * a SimpleShipDisplayInfo. All we have to do is pass in data and onHit
    */
   public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<>(null, data));
+    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit),
+        new SimpleShipDisplayInfo<>(null, data));
   }
 
   // Same as above, but creates a ship that only occupies one square

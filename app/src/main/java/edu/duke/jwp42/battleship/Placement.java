@@ -11,12 +11,12 @@ public class Placement {
    *                                  orientation isn't 'H' or 'V
    */
   public Placement(Coordinate where, char orientation) {
-    char upperOrientation = Character.toUpperCase(orientation);
-    if (upperOrientation != 'H' && upperOrientation != 'V') {
-      throw new IllegalArgumentException("Orientation should be 'h', 'H', 'v', or 'V' but instead is " + orientation);
+    char upper = Character.toUpperCase(orientation);
+    if (upper != 'H' && upper != 'V' && upper != 'U' && upper != 'D' && upper != 'L' && upper != 'R') {
+      throw new IllegalArgumentException("Orientation should be one of [H, V, U, D, L, R] but instead is " + orientation);
     }
     this.where = where;
-    this.orientation = upperOrientation;
+    this.orientation = upper;
   }
 
   /**
@@ -31,14 +31,14 @@ public class Placement {
   public Placement(String descr) {
     descr = descr.toUpperCase();
     if (descr.length() != 3) {
-      throw new IllegalArgumentException("Argument descr must have length 3 but instead has length " + descr.length());
+      throw new IllegalArgumentException("Input must have length 3 but instead has length " + descr.length());
     }
     String coordStr = descr.substring(0, 2);
     Coordinate where = new Coordinate(coordStr);
     char orientation = descr.charAt(2);
     if (orientation != 'H' && orientation != 'V') {
       throw new IllegalArgumentException(
-          "Third letter of argument descr must be 'H', 'V', 'h', or 'v' but instead is " + orientation);
+          "Third letter of input must be in [H, V, U, D, L, R] but instead is " + orientation);
     }
     this.where = where;
     this.orientation = orientation;

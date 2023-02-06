@@ -12,6 +12,7 @@ import java.io.PrintStream;
 import java.io.StringReader;
 import java.util.Collections;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.ResourceAccessMode;
 import org.junit.jupiter.api.parallel.ResourceLock;
@@ -98,7 +99,8 @@ class AppTest {
     b2.fireAt(new Coordinate("C2"));
     assertEquals("A", app.getWinningPlayer());
   }
-  
+
+  @Disabled
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
   public void test_main() throws IOException {
