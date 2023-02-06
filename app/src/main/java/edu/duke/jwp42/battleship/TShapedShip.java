@@ -2,9 +2,22 @@ package edu.duke.jwp42.battleship;
 
 import java.util.HashSet;
 
+/**
+ * This class allows us to construct a battleship in Version 2
+ */
+
 public class TShapedShip<T> extends BasicShip<T> {
+  // The name associated with the ship
   public final String name;
 
+  /**
+   * Static method who purpose is to be called by the constructor and who output
+   * will be fed to the super constructor
+   * Makes a set of all the coordinates occupie by the t-shaped ship
+   *
+   * @param upperLeft is a placement for the upper left corner of the ship
+   * @return a HashSet containing all Coordinate occupied by the t-shaped ship
+   */
   public static final HashSet<Coordinate> makeCoords(Placement upperLeft) {
     HashSet<Coordinate> ans = new HashSet<Coordinate>();
     Coordinate where = upperLeft.getWhere();
@@ -46,12 +59,34 @@ public class TShapedShip<T> extends BasicShip<T> {
     return ans;
   }
 
+  /**
+   * Construct a t-shaped ship by calling the super constructor
+   *
+   * @param name             is the name of the ship
+   * @param upperLeft        is the placement corresponding to the upper left
+   *                         corner of the ship
+   * @param myDisplayInfo    contains information about what to display to the
+   *                         user depending on whether or not the t-shaped ship
+   *                         has been hit
+   * @param enemyDisplayInfo is the same as the parameter above but contains info
+   *                         to display to the enemy
+   */
   public TShapedShip(String name, Placement upperLeft, ShipDisplayInfo<T> myDisplayInfo,
       ShipDisplayInfo<T> enemyDisplayInfo) {
     super(makeCoords(upperLeft), myDisplayInfo, enemyDisplayInfo);
     this.name = name;
   }
 
+  /**
+   * Constructs a t-shaped ship using constructor chaining (calls the constructor
+   * above)
+   *
+   * @param data  is the character to be displayed if the ship has not been hit
+   *              (from the player's own perspective) or has been hit (from the
+   *              enemy's perspective)
+   * @param onHit is the character to be displayed if the ship has been hit (from
+   *              the player's own perspective)
+   */
   public TShapedShip(String name, Placement upperLeft, T data, T onHit) {
     this(name, upperLeft, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<>(null, data));
   }
