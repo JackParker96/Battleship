@@ -2,11 +2,20 @@ package edu.duke.jwp42.battleship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 public class ZShapedShipTest {
 
+  @Test
+  public void test_invalid_orientation() {
+    Placement p1 = new Placement(new Coordinate("A0"), 'V');
+    Placement p2 = new Placement(new Coordinate("A0"), 'H');
+    assertThrows(IllegalArgumentException.class, () -> new ZShapedShip<Character>("s1", p1, 'c', '*'));
+    assertThrows(IllegalArgumentException.class, () -> new ZShapedShip<Character>("s2", p2, 'c', '*'));
+  }
+  
   @Test
   public void test_ZShapedShip_constructor() {
     Ship<Character> up = new ZShapedShip<Character>("up", new Placement(new Coordinate("D3"), 'U'), 'c', '*');

@@ -24,6 +24,9 @@ public class TShapedShip<T> extends BasicShip<T> {
     int row = where.getRow();
     int column = where.getColumn();
     char orientation = upperLeft.getOrientation();
+    if (orientation != 'U' && orientation != 'D' && orientation != 'L' && orientation != 'R') {
+      throw new IllegalArgumentException("Placement orientation for a battleship must be in [U, D, L, R] but instead was " + orientation);
+    }
     if (orientation == 'U') {
       Coordinate tip = new Coordinate(row, column + 1);
       ans.add(tip);

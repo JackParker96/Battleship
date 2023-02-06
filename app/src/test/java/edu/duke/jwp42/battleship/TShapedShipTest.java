@@ -8,6 +8,14 @@ import org.junit.jupiter.api.Test;
 public class TShapedShipTest {
 
   @Test
+  public void test_invalid_orientation() {
+    Placement p1 = new Placement(new Coordinate("A0"), 'V');
+    Placement p2 = new Placement(new Coordinate("A0"), 'H');
+    assertThrows(IllegalArgumentException.class, () -> new TShapedShip<Character>("s1", p1, 'c', '*'));
+    assertThrows(IllegalArgumentException.class, () -> new TShapedShip<Character>("s2", p2, 'c', '*'));
+  }
+  
+  @Test
   public void test_getCoordinates() {
     Ship<Character> s = new TShapedShip<Character>("Mr. T Ship", new Placement(new Coordinate("A0"), 'U'), 'b', '*');
     Iterable<Coordinate> coords = s.getCoordinates();
