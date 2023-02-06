@@ -36,7 +36,7 @@ public class Placement {
     String coordStr = descr.substring(0, 2);
     Coordinate where = new Coordinate(coordStr);
     char orientation = descr.charAt(2);
-    if (orientation != 'H' && orientation != 'V') {
+    if (orientation != 'H' && orientation != 'V' && orientation != 'U' && orientation != 'D' && orientation != 'L' && orientation != 'R') {
       throw new IllegalArgumentException(
           "Third letter of input must be in [H, V, U, D, L, R] but instead is " + orientation);
     }

@@ -67,8 +67,8 @@ public class TextPlayer {
    * Goes through one turn for a single player
    *
    * @param enemyBoard is the enemy's board
-   * @param enemyView is the BoardTextView version of enemyBoard
-   * @param enemyName is the name of the other player
+   * @param enemyView  is the BoardTextView version of enemyBoard
+   * @param enemyName  is the name of the other player
    */
   public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) throws IOException {
     out.println("Current state of the game:\n");
@@ -85,8 +85,7 @@ public class TextPlayer {
           continue;
         }
         break;
-      }
-      catch (IllegalArgumentException e) {
+      } catch (IllegalArgumentException e) {
         out.println("Please try again -> " + e.getMessage());
         continue;
       }
@@ -95,21 +94,17 @@ public class TextPlayer {
     Character ch = enemyBoard.whatIsAtForEnemy(c);
     if (ch == 's') {
       out.println("You hit a submarine!");
-    }
-    else if (ch == 'd') {
+    } else if (ch == 'd') {
       out.println("You hit a destroyer!");
-    }
-    else if (ch == 'b') {
+    } else if (ch == 'b') {
       out.println("You hit a battleship!");
-    }
-    else if (ch == 'c') {
+    } else if (ch == 'c') {
       out.println("You hit a carrier!");
-    }
-    else {
+    } else {
       out.println("You missed!");
     }
   }
-  
+
   // Checks if the player has lost the game (all ships sunk)
   public String hasLost() {
     if (theBoard.allShipsSunk()) {
@@ -161,6 +156,12 @@ public class TextPlayer {
   public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) throws IOException {
     while (true) {
       Placement p = readPlacement("Player " + name + " where do you want to place a " + shipName + "?");
+      if (shipName == "Submarine" || shipName == "Destroyer") {
+        if (p.getOrientation() != 'V' && p.getOrientation() != 'H') {
+          out.println("Please try again -> That placement is invalid: Invalid orientation for " + shipName);
+          continue;
+        }
+      }
       Ship<Character> s = createFn.apply(p);
       String addShipErrorMessage = theBoard.tryAddShip(s);
       if (addShipErrorMessage == null) {
@@ -181,6 +182,7 @@ public class TextPlayer {
   public void doPlacementPhase() throws IOException {
     String emptyBoard = view.displayMyOwnBoard();
     out.println(emptyBoard);
+    /** 
     String prompt = "--------------------------------------------------------------------------------\n" +
         "Player " + name + ": you are going to place the following ships (which are all " +
         "rectangular). For each ship, type the coordinate of the upper left " +
@@ -193,6 +195,30 @@ public class TextPlayer {
         "3 \"Battleships\" that are 1x4\n" +
         "2 \"Carriers\" that are 1x6\n" +
         "--------------------------------------------------------------------------------";
+    */
+    String prompt = "Player " + name
+        + ": You have ten ships that you are going to place on your board one by one.\n\n" +
+        "First, you will place two submarines, which are 1x2 rectangles.\n" +
+        "Next, you will place three destroyers, which are 1x3 rectangles.\n\n" +
+        "To place a submarine or a destroyer, you will type the upper left coordinate for the ship," +
+        "followed by H (for a horizontal orientation) or V (vertical).\n" +
+        "For example, M4H would place a ship horizontally starting at M4 and going to the right.\n\n" +
+        "Next, you will place three battleships, which are shaped like a T.\n" +
+        "Battleships can have four different orientations: Up, Down, Left, or Right:\n\n" +
+        "  b      bbb       b        b\n" +
+        " bbb      b       bb        bb\n " +
+        "                  b        b\n\n" +
+        " UP      DOWN     LEFT      RIGHT\n\n" +
+        "To specify where you want to place your battleships, first type the coordinate of the upper left corner of the smallest rectangle containing your ship\n" +
+        "Then type either U, D, L, or R to specify the orientation\n\n" +
+        "Finally, you will place two carriers that are shaped like a Z and can have the same four orienations as a battleship\n\n" +
+        "  c       c        ccc     cccc\n" +
+        "  c       cc     cccc     ccc\n" +
+        "  cc      cc\n" +
+        "  cc       c\n" +
+        "   c       c\n\n" +
+        "  UP     DOWN     LEFT     RIGHT\n\n" +
+        "You should specify how you want to place a carrier in the same way as for battleships\n\n";
     out.println(prompt);
     for (String shipName : shipsToPlace) {
       Function<Placement, Ship<Character>> createFn = shipCreationFns.get(shipName);

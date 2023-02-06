@@ -13,6 +13,7 @@ import java.io.PrintStream;
 import java.io.StringReader;
 import java.util.Collections;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TextPlayerTest {
@@ -21,7 +22,7 @@ public class TextPlayerTest {
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
     Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
-    V1ShipFactory shipFactory = new V1ShipFactory();
+    V2ShipFactory shipFactory = new V2ShipFactory();
     return new TextPlayer("A", board, input, output, shipFactory);
   }
 
@@ -32,7 +33,7 @@ public class TextPlayerTest {
     Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
-    V1ShipFactory f = new V1ShipFactory();
+    V2ShipFactory f = new V2ShipFactory();
     Ship<Character> sub_A0V = f.makeSubmarine(new Placement(new Coordinate("A0"), 'V'));
     enemyBoard.tryAddShip(sub_A0V);
     String expected = "Current state of the game:\n\n" +
@@ -68,7 +69,7 @@ public class TextPlayerTest {
     Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
-    V1ShipFactory f = new V1ShipFactory();
+    V2ShipFactory f = new V2ShipFactory();
     Ship<Character> sub_B0H = f.makeSubmarine(new Placement(new Coordinate("B0"), 'H'));
     enemyBoard.tryAddShip(sub_B0H);
     player.theBoard.tryAddShip(sub_B0H);
@@ -87,19 +88,19 @@ public class TextPlayerTest {
   @Test
   public void test_playOneTurn_hit_carrier() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(6, 2, "A0\n", bytes);
+    TextPlayer player = createTextPlayer(6, 2, "B0\n", bytes);
     Board<Character> enemyBoard = new BattleShipBoard<Character>(6, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
-    V1ShipFactory f = new V1ShipFactory();
-    Ship<Character> carrier_A0H = f.makeCarrier(new Placement(new Coordinate("A0"), 'H'));
-    enemyBoard.tryAddShip(carrier_A0H);
-    player.theBoard.tryAddShip(carrier_A0H);
+    V2ShipFactory f = new V2ShipFactory();
+    Ship<Character> carrier_A0R = f.makeCarrier(new Placement(new Coordinate("A0"), 'R'));
+    enemyBoard.tryAddShip(carrier_A0R);
+    player.theBoard.tryAddShip(carrier_A0R);
     String expected = "Current state of the game:\n\n" +
         "     Your ocean                   B's ocean\n" +
         "  0|1|2|3|4|5                    0|1|2|3|4|5\n" +
-        "A c|c|c|c|c|c A                A  | | | | |  A\n" +
-        "B  | | | | |  B                B  | | | | |  B\n" +
+        "A  |c|c|c|c|  A                A  | | | | |  A\n" +
+        "B c|c|c| | |  B                B  | | | | |  B\n" +
         "  0|1|2|3|4|5                    0|1|2|3|4|5\n\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a carrier!\n";
@@ -110,19 +111,19 @@ public class TextPlayerTest {
   @Test
   public void test_playOneTurn_hit_bship() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(4, 2, "A0\n", bytes);
+    TextPlayer player = createTextPlayer(4, 2, "B1\n", bytes);
     Board<Character> enemyBoard = new BattleShipBoard<Character>(4, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
-    V1ShipFactory f = new V1ShipFactory();
-    Ship<Character> bship_A0H = f.makeBattleship(new Placement(new Coordinate("A0"), 'H'));
+    V2ShipFactory f = new V2ShipFactory();
+    Ship<Character> bship_A0H = f.makeBattleship(new Placement(new Coordinate("A0"), 'd'));
     enemyBoard.tryAddShip(bship_A0H);
     player.theBoard.tryAddShip(bship_A0H);
     String expected = "Current state of the game:\n\n" +
         "     Your ocean               B's ocean\n" +
         "  0|1|2|3                    0|1|2|3\n" +
-        "A b|b|b|b A                A  | | |  A\n" +
-        "B  | | |  B                B  | | |  B\n" +
+        "A b|b|b|  A                A  | | |  A\n" +
+        "B  |b| |  B                B  | | |  B\n" +
         "  0|1|2|3                    0|1|2|3\n\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a battleship!\n";
@@ -137,7 +138,7 @@ public class TextPlayerTest {
     Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
-    V1ShipFactory f = new V1ShipFactory();
+    V2ShipFactory f = new V2ShipFactory();
     Ship<Character> destroyer_A0H = f.makeDestroyer(new Placement(new Coordinate("A0"), 'H'));
     enemyBoard.tryAddShip(destroyer_A0H);
     player.theBoard.tryAddShip(destroyer_A0H);
@@ -160,7 +161,7 @@ public class TextPlayerTest {
     Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
-    V1ShipFactory f = new V1ShipFactory();
+    V2ShipFactory f = new V2ShipFactory();
     Ship<Character> sub_A0V = f.makeSubmarine(new Placement(new Coordinate("A0"), 'V'));
     enemyBoard.tryAddShip(sub_A0V);
     player.theBoard.tryAddShip(sub_A0V);
@@ -179,12 +180,16 @@ public class TextPlayerTest {
   @Test
   public void test_read_placement() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\na4v\n", bytes);
+    TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\na4v\nA0U\nA0D\nA0L\nA0R\n", bytes);
     String prompt = "Please enter a location for a ship:";
-    Placement[] expected = new Placement[3];
+    Placement[] expected = new Placement[7];
     expected[0] = new Placement(new Coordinate(1, 2), 'V');
     expected[1] = new Placement(new Coordinate(2, 8), 'H');
     expected[2] = new Placement(new Coordinate(0, 4), 'V');
+    expected[3] = new Placement(new Coordinate(0, 0), 'U');
+    expected[4] = new Placement(new Coordinate(0, 0), 'D');
+    expected[5] = new Placement(new Coordinate(0, 0), 'L');
+    expected[6] = new Placement(new Coordinate(0, 0), 'R');
     for (int i = 0; i < expected.length; i++) {
       Placement p = player.readPlacement(prompt);
       assertEquals(p, expected[i]);
@@ -199,7 +204,7 @@ public class TextPlayerTest {
     String expectedHeader = "  0|1|2|3\n";
     String expectedBody = "A d|d|d|  A\n" + "B  | | |  B\n" + "C  | | |  C\n";
     String expectedBoard = expectedHeader + expectedBody + expectedHeader;
-    V1ShipFactory f = new V1ShipFactory();
+    V2ShipFactory f = new V2ShipFactory();
     String dstrPrompt = "Player A where do you want to place a Destroyer?\n";
     // Test a simple, correct placement of Destroyer at A0h
     ByteArrayOutputStream bytes1 = new ByteArrayOutputStream();
@@ -255,19 +260,27 @@ public class TextPlayerTest {
         dstrPrompt + "Please try again -> That placement is invalid: the ship goes off the bottom of the board.\n"
             + dstrPrompt + expectedBoard,
         bytes8.toString());
+    // Test error handling for entering 'U', 'D', 'L', or 'R' for a submarine/destroyer in V2
+    ByteArrayOutputStream bytes9 = new ByteArrayOutputStream();
+    TextPlayer player9 = createTextPlayer(4, 3, "C0u\nA0h\n", bytes9);
+    player9.doOnePlacement("Destroyer", (p) -> f.makeDestroyer(p));
+    assertEquals(
+        dstrPrompt + "Please try again -> That placement is invalid: Invalid orientation for Destroyer\n"
+            + dstrPrompt + expectedBoard,
+        bytes9.toString());
   }
 
   /**
-  public String helper_diff(String s1, String s2) {
-    StringBuilder sb = new StringBuilder(" \n");
-    for (int i = 0; i < s1.length(); i++) {
-      if (s1.charAt(i) != s2.charAt(i)) {
-        sb.append("s1 has " + s1.charAt(i) + ", but s2 has " + s2.charAt(i) + "\n");
-      }
-    }
-    return sb.toString();
-  }
-  */
+   * public String helper_diff(String s1, String s2) {
+   * StringBuilder sb = new StringBuilder(" \n");
+   * for (int i = 0; i < s1.length(); i++) {
+   * if (s1.charAt(i) != s2.charAt(i)) {
+   * sb.append("s1 has " + s1.charAt(i) + ", but s2 has " + s2.charAt(i) + "\n");
+   * }
+   * }
+   * return sb.toString();
+   * }
+   */
 
   @Test
   public void test_doAttackingPhase_A_wins() throws IOException {
@@ -278,7 +291,7 @@ public class TextPlayerTest {
     String inputData = "A0\nA0\n";
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
-    V1ShipFactory f = new V1ShipFactory();
+    V2ShipFactory f = new V2ShipFactory();
     TextPlayer player2 = new TextPlayer("B", b2, input, output, f);
     //
     Ship<Character> s1 = f.makeSubmarine(new Placement(new Coordinate("A0"), 'H'));
@@ -324,7 +337,7 @@ public class TextPlayerTest {
     String inputData = "A0\nA1\n";
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
-    V1ShipFactory f = new V1ShipFactory();
+    V2ShipFactory f = new V2ShipFactory();
     TextPlayer player2 = new TextPlayer("B", b2, input, output, f);
     //
     Ship<Character> s1 = f.makeSubmarine(new Placement(new Coordinate("A0"), 'H'));
@@ -372,56 +385,85 @@ public class TextPlayerTest {
   @Test
   public void test_doPlacementPhase_and_hasLost() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    String inputString = "A0h\nA0h\nC0h\n";
+    String inputString = "A0L\nA0L\nA2R\n";
     BufferedReader input = new BufferedReader(new StringReader(inputString));
     PrintStream output = new PrintStream(bytes, true);
-    AbstractShipFactory<Character> f = new V1ShipFactory();
-    Board<Character> b = new BattleShipBoard<Character>(4, 3, 'X');
+    AbstractShipFactory<Character> f = new V2ShipFactory();
+    Board<Character> b = new BattleShipBoard<Character>(7, 3, 'X');
     TextPlayer player = new TextPlayer("A", b, input, output, f) {
       protected void setupShipCreationList() {
-        shipsToPlace.addAll(Collections.nCopies(1, "Submarine"));
-        shipsToPlace.addAll(Collections.nCopies(1, "Destroyer"));
+        shipsToPlace.addAll(Collections.nCopies(1, "Battleship"));
+        shipsToPlace.addAll(Collections.nCopies(1, "Carrier"));
       }
     };
     player.doPlacementPhase();
-    String expectedHeader = "  0|1|2|3\n";
-    String expectedBody1 = "A  | | |  A\n" + "B  | | |  B\n" + "C  | | |  C\n";
+    String expectedHeader = "  0|1|2|3|4|5|6\n";
+    String expectedBody1 =  "A  | | | | | |  A\n" +
+                            "B  | | | | | |  B\n" +
+                            "C  | | | | | |  C\n";
     String expectedBoard1 = expectedHeader + expectedBody1 + expectedHeader;
-    String expectedBody2 = "A s|s| |  A\n" + "B  | | |  B\n" + "C  | | |  C\n";
+    String expectedBody2 =  "A  |b| | | | |  A\n" +
+                            "B b|b| | | | |  B\n" +
+                            "C  |b| | | | |  C\n";
     String expectedBoard2 = expectedHeader + expectedBody2 + expectedHeader;
-    String expectedBody3 = "A s|s| |  A\n" + "B  | | |  B\n" + "C d|d|d|  C\n";
+    String expectedBody3 =  "A  |b| |c|c|c|c A\n" +
+                            "B b|b|c|c|c| |  B\n" +
+                            "C  |b| | | | |  C\n";
     String expectedBoard3 = expectedHeader + expectedBody3 + expectedHeader;
-    String expected = expectedBoard1 + "\n"
-        + "--------------------------------------------------------------------------------\n" +
-        "Player A: you are going to place the following ships (which are all " +
-        "rectangular). For each ship, type the coordinate of the upper left " +
-        "side of the ship, followed by either H (for horizontal) or V (for " +
-        "vertical).  For example M4H would place a ship horizontally starting " +
-        "at M4 and going to the right.  You have" +
-        "\n\n" +
-        "2 \"Submarines\" ships that are 1x2\n" +
-        "3 \"Destroyers\" that are 1x3\n" +
-        "3 \"Battleships\" that are 1x4\n" +
-        "2 \"Carriers\" that are 1x6\n" +
-        "--------------------------------------------------------------------------------\n" +
-        "Player A where do you want to place a Submarine?\n" +
+    String expectedPrompt = "Player A"
+        + ": You have ten ships that you are going to place on your board one by one.\n\n" +
+        "First, you will place two submarines, which are 1x2 rectangles.\n" +
+        "Next, you will place three destroyers, which are 1x3 rectangles.\n\n" +
+        "To place a submarine or a destroyer, you will type the upper left coordinate for the ship," +
+        "followed by H (for a horizontal orientation) or V (vertical).\n" +
+        "For example, M4H would place a ship horizontally starting at M4 and going to the right.\n\n" +
+        "Next, you will place three battleships, which are shaped like a T.\n" +
+        "Battleships can have four different orientations: Up, Down, Left, or Right:\n\n" +
+        "  b      bbb       b        b\n" +
+        " bbb      b       bb        bb\n " +
+        "                  b        b\n\n" +
+        " UP      DOWN     LEFT      RIGHT\n\n" +
+        "To specify where you want to place your battleships, first type the coordinate of the upper left corner of the smallest rectangle containing your ship\n" +
+        "Then type either U, D, L, or R to specify the orientation\n\n" +
+        "Finally, you will place two carriers that are shaped like a Z and can have the same four orienations as a battleship\n\n" +
+        "  c       c        ccc     cccc\n" +
+        "  c       cc     cccc     ccc\n" +
+        "  cc      cc\n" +
+        "  cc       c\n" +
+        "   c       c\n\n" +
+        "  UP     DOWN     LEFT     RIGHT\n\n" +
+        "You should specify how you want to place a carrier in the same way as for battleships\n\n";
+    String expected = expectedBoard1 + "\n" + expectedPrompt + "\n"+
+        "Player A where do you want to place a Battleship?\n" +
         expectedBoard2 +
-        "Player A where do you want to place a Destroyer?\n" +
+        "Player A where do you want to place a Carrier?\n" +
         "Please try again -> That placement is invalid: the ship overlaps another ship.\n" +
-        "Player A where do you want to place a Destroyer?\n" +
+        "Player A where do you want to place a Carrier?\n" +
         expectedBoard3;
     assertEquals(expected, bytes.toString());
     // Now let's test hasLost
     assertNull(player.hasLost());
-    b.fireAt(new Coordinate("A0"));
-    assertNull(player.hasLost());
     b.fireAt(new Coordinate("A1"));
     assertNull(player.hasLost());
-    b.fireAt(new Coordinate("C0"));
+    b.fireAt(new Coordinate("B0"));
+    assertNull(player.hasLost());
+    b.fireAt(new Coordinate("B1"));
     assertNull(player.hasLost());
     b.fireAt(new Coordinate("C1"));
     assertNull(player.hasLost());
-    b.fireAt(new Coordinate("C2"));
+    b.fireAt(new Coordinate("B2"));
+    assertNull(player.hasLost());
+    b.fireAt(new Coordinate("B3"));
+    assertNull(player.hasLost());
+    b.fireAt(new Coordinate("B4"));
+    assertNull(player.hasLost());
+    b.fireAt(new Coordinate("A3"));
+    assertNull(player.hasLost());
+    b.fireAt(new Coordinate("A4"));
+    assertNull(player.hasLost());
+    b.fireAt(new Coordinate("A5"));
+    assertNull(player.hasLost());
+    b.fireAt(new Coordinate("A6"));
     assertEquals("A", player.hasLost());
   }
 
