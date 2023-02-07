@@ -268,6 +268,19 @@ public class TextPlayerTest {
         dstrPrompt + "Please try again -> That placement is invalid: Invalid orientation for Destroyer\n"
             + dstrPrompt + expectedBoard,
         bytes9.toString());
+    // Test error handling for enterin 'H' or 'V' for battleship/carrier in V2
+    ByteArrayOutputStream bytes10 = new ByteArrayOutputStream();
+    TextPlayer player10 = createTextPlayer(4, 3, "A0h\nA0u\n", bytes10);
+    player10.doOnePlacement("Battleship", (p) -> f.makeBattleship(p));
+    assertEquals(
+        "Player A where do you want to place a Battleship?\n" + "Please try again -> Placement orientation for a battleship must be in [U, D, L, R] but instead was H\n"
+            + "Player A where do you want to place a Battleship?\n" +
+        "  0|1|2|3\n" +
+        "A  |b| |  A\n" +
+        "B b|b|b|  B\n" +
+        "C  | | |  C\n" +
+        "  0|1|2|3\n",
+        bytes10.toString());
   }
 
   /**

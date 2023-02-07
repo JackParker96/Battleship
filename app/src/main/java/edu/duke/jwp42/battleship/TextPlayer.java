@@ -162,7 +162,22 @@ public class TextPlayer {
           continue;
         }
       }
-      Ship<Character> s = createFn.apply(p);
+      try {
+        Ship<Character> s = createFn.apply(p);
+        String addShipErrorMessage = theBoard.tryAddShip(s);
+        if (addShipErrorMessage == null) {
+          out.print(view.displayMyOwnBoard());
+          break;
+        }
+        else {
+          out.println("Please try again -> " + addShipErrorMessage);
+        }
+      }
+      catch(IllegalArgumentException e) {
+        out.println("Please try again -> " + e.getMessage());
+        continue;
+      }
+      /**
       String addShipErrorMessage = theBoard.tryAddShip(s);
       if (addShipErrorMessage == null) {
         out.print(view.displayMyOwnBoard());
@@ -170,6 +185,7 @@ public class TextPlayer {
       } else {
         out.println("Please try again -> " + addShipErrorMessage);
       }
+      */
     }
   }
 
