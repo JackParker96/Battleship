@@ -27,6 +27,31 @@ public class TextPlayerTest {
   }
 
   @Test
+  public void test_sonarScanMyBoard() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    PrintStream output = new PrintStream(bytes, true);
+    BufferedReader input = new BufferedReader(new StringReader(""));
+    Board<Character> board = new BattleShipBoard<Character>(5, 4, 'X');
+    V2ShipFactory f = new V2ShipFactory();
+    TextPlayer player = new TextPlayer("A", board, input, output, f);
+    Ship<Character> sub_b3h = f.makeSubmarine(new Placement(new Coordinate("B3"), 'h'));
+    board.tryAddShip(sub_b3h);
+    Ship<Character> dest_a2h = f.makeDestroyer(new Placement(new Coordinate("A2"), 'h'));
+    board.tryAddShip(dest_a2h);
+    Ship<Character> bship_a1r = f.makeBattleship(new Placement(new Coordinate("A1"), 'R'));
+    board.tryAddShip(bship_a1r);
+    Ship<Character> carrier_c0l = f.makeCarrier(new Placement(new Coordinate("C0"), 'l'));
+    board.tryAddShip(carrier_c0l);
+    String expected1 = "Result of sonar scan centered at coordinate (1, 2):\n\n" +
+            "Submarines occupy 2 square(s)\n" +
+            "Destroyers occupy 3 square(s)\n" +
+            "Battleships occupy 4 square(s)\n" +
+            "Carriers occupy 6 square(s)\n\n";
+    player.sonarScanMyBoard(new Coordinate(1, 2));
+    assertEquals(expected1, bytes.toString());
+  }
+  
+  @Test
   public void test_playOneTurn_invalid_inputs() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer player = createTextPlayer(3, 2, "A\nA0V\nA3\nC0\n*2\nA*\nA2\n", bytes);

@@ -63,6 +63,20 @@ public class TextPlayer {
     shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
   }
 
+  public void sonarScanMyBoard(Coordinate center) throws IOException {
+    HashMap<String, Integer> scanResult = theBoard.doSonarScan(center);
+    int numSubs = scanResult.get("submarine");
+    int numDestroyers = scanResult.get("destroyer");
+    int numBattleships = scanResult.get("battleship");
+    int numCarriers = scanResult.get("carrier");
+    out.println(
+        "Result of sonar scan centered at coordinate (" + center.getRow() + ", " + center.getColumn() + "):\n\n" +
+            "Submarines occupy " + numSubs + " square(s)\n" +
+            "Destroyers occupy " + numDestroyers + " square(s)\n" +
+            "Battleships occupy " + numBattleships + " square(s)\n" +
+            "Carriers occupy " + numCarriers + " square(s)\n");
+  }
+
   /**
    * Goes through one turn for a single player
    *
