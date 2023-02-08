@@ -20,7 +20,7 @@ public class TextPlayer {
   protected final PrintStream out;
   // The name of a player (e.g. "A" or "B")
   protected final String name;
-  // List of all ships that a player needs to place (in V1, 2 subs, 3 destroyers,
+  // List of all ships that a player needs to place (2 subs, 3 destroyers,
   // 3 bships, 2 carriers)
   protected final ArrayList<String> shipsToPlace;
   // Map from ship names (Submarine, Battleship, etc.) to functions in
@@ -168,24 +168,13 @@ public class TextPlayer {
         if (addShipErrorMessage == null) {
           out.print(view.displayMyOwnBoard());
           break;
-        }
-        else {
+        } else {
           out.println("Please try again -> " + addShipErrorMessage);
         }
-      }
-      catch(IllegalArgumentException e) {
+      } catch (IllegalArgumentException e) {
         out.println("Please try again -> " + e.getMessage());
         continue;
       }
-      /**
-      String addShipErrorMessage = theBoard.tryAddShip(s);
-      if (addShipErrorMessage == null) {
-        out.print(view.displayMyOwnBoard());
-        break;
-      } else {
-        out.println("Please try again -> " + addShipErrorMessage);
-      }
-      */
     }
   }
 
@@ -198,20 +187,6 @@ public class TextPlayer {
   public void doPlacementPhase() throws IOException {
     String emptyBoard = view.displayMyOwnBoard();
     out.println(emptyBoard);
-    /** 
-    String prompt = "--------------------------------------------------------------------------------\n" +
-        "Player " + name + ": you are going to place the following ships (which are all " +
-        "rectangular). For each ship, type the coordinate of the upper left " +
-        "side of the ship, followed by either H (for horizontal) or V (for " +
-        "vertical).  For example M4H would place a ship horizontally starting " +
-        "at M4 and going to the right.  You have" +
-        "\n\n" +
-        "2 \"Submarines\" ships that are 1x2\n" +
-        "3 \"Destroyers\" that are 1x3\n" +
-        "3 \"Battleships\" that are 1x4\n" +
-        "2 \"Carriers\" that are 1x6\n" +
-        "--------------------------------------------------------------------------------";
-    */
     String prompt = "Player " + name
         + ": You have ten ships that you are going to place on your board one by one.\n\n" +
         "First, you will place two submarines, which are 1x2 rectangles.\n" +
@@ -225,9 +200,11 @@ public class TextPlayer {
         " bbb      b       bb        bb\n " +
         "                  b        b\n\n" +
         " UP      DOWN     LEFT      RIGHT\n\n" +
-        "To specify where you want to place your battleships, first type the coordinate of the upper left corner of the smallest rectangle containing your ship\n" +
+        "To specify where you want to place your battleships, first type the coordinate of the upper left corner of the smallest rectangle containing your ship\n"
+        +
         "Then type either U, D, L, or R to specify the orientation\n\n" +
-        "Finally, you will place two carriers that are shaped like a Z and can have the same four orienations as a battleship\n\n" +
+        "Finally, you will place two carriers that are shaped like a Z and can have the same four orienations as a battleship\n\n"
+        +
         "  c       c        ccc     cccc\n" +
         "  c       cc     cccc     ccc\n" +
         "  cc      cc\n" +

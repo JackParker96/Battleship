@@ -1,6 +1,13 @@
 package edu.duke.jwp42.battleship;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +21,35 @@ public class BattleShipBoardTest {
         assertEquals(expected[i][j], b.whatIsAtForSelf(c));
       }
     }
+  }
+
+  private void sonarScanTestHelper(Board<Character> b, Coordinate center, int subs, int destroyers, int bships, int carriers) {
+    HashMap<String, Integer> expected = new HashMap<String, Integer>();
+    expected.put("submarine", subs);
+    expected.put("destroyer", destroyers);
+    expected.put("battleship", bships);
+    expected.put("carrier", carriers);
+    assertEquals(expected, b.doSonarScan(center));
+  }
+    
+  @Test
+  public void test_doSonarScan() {
+    Board<Character> b = new BattleShipBoard<Character>(8, 8, 'X');
+    V2ShipFactory f = new V2ShipFactory();
+    Ship<Character> sub_b1h = f.makeSubmarine(new Placement(new Coordinate("B1"), 'H'));
+    Ship<Character> bship_b3d = f.makeBattleship(new Placement(new Coordinate("B3"), 'D'));
+    Ship<Character> carrier_d3r = f.makeCarrier(new Placement(new Coordinate("D3"), 'R'));
+    Ship<Character> destroyer_g2h = f.makeDestroyer(new Placement(new Coordinate("G2"), 'H'));
+    b.tryAddShip(sub_b1h);
+    b.tryAddShip(destroyer_g2h);
+    b.tryAddShip(carrier_d3r);
+    b.tryAddShip(bship_b3d);
+    sonarScanTestHelper(b, new Coordinate("D3"), 1, 1, 3, 6);
+    assertThrows(IllegalArgumentException.class, () -> b.doSonarScan(new Coordinate("H8")));
+    assertThrows(IllegalArgumentException.class, () -> b.doSonarScan(new Coordinate("i0")));
+    sonarScanTestHelper(b, new Coordinate("D1"), 2, 0, 0, 2);
+    sonarScanTestHelper(b, new Coordinate("D4"), 0, 1, 4, 7);
+    sonarScanTestHelper(b, new Coordinate("H7"), 0, 0, 0, 0);
   }
 
   @Test
@@ -36,9 +72,9 @@ public class BattleShipBoardTest {
     b.fireAt(new Coordinate("C2"));
     assertFalse(b.allShipsSunk());
     b.fireAt(new Coordinate("C3"));
-    assert(b.allShipsSunk());
+    assert (b.allShipsSunk());
   }
-  
+
   @Test
   public void test_whatIsAtForEnemy() {
     Board<Character> b = new BattleShipBoard<Character>(4, 3, 'X');
@@ -51,12 +87,12 @@ public class BattleShipBoardTest {
     assertNull(b.fireAt(c1));
     assertNull(b.fireAt(c2));
     assertEquals('X', b.whatIsAtForEnemy(c1));
-    assertEquals('X', b.whatIsAtForEnemy(c2));    
+    assertEquals('X', b.whatIsAtForEnemy(c2));
     assertSame(sub_A0V, b.fireAt(c3));
     assertEquals('s', b.whatIsAtForEnemy(c3));
     assertEquals('*', b.whatIsAtForSelf(c3));
   }
-  
+
   @Test
   public void test_fireAt() {
     Board<Character> b = new BattleShipBoard<Character>(3, 4, 'X');
@@ -70,7 +106,7 @@ public class BattleShipBoardTest {
     assertFalse(sub_B1V.isSunk());
     assertSame(sub_B1V, b.fireAt(new Coordinate("C1")));
     assertTrue(sub_B1V.isSunk());
-    
+
   }
 
   @Test

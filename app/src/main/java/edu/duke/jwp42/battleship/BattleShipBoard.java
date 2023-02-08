@@ -1,6 +1,7 @@
 package edu.duke.jwp42.battleship;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -17,19 +18,26 @@ public class BattleShipBoard<T> implements Board<T> {
 
   private final PlacementRuleChecker<T> placementChecker;
 
-  // Keeps track of all the coordinates that have been fired at but that were misses
+  // Keeps track of all the coordinates that have been fired at but that were
+  // misses
   private final HashSet<Coordinate> enemyMisses;
 
-  // In V1, this holds a character that we display on the enemy's view of the board for squares that they have fired at but missed
+  // In V1, this holds a character that we display on the enemy's view of the
+  // board for squares that they have fired at but missed
   private final T missInfo;
 
   /**
    * Construct a BattleShipBoard
    *
-   * @param w is the width of the board (number of columns)
-   * @param h is the height of the board (number of rows)
-   * @param placementChecker is an object that will enforce various criteria for placing ships on the board (e.g. must not go out of bounds of the board, must not collide with any ships already on the board)
-   * @param missInfo is the graphical symbol which will appear on the enemy's view of the board for any square where they have fired and missed
+   * @param w                is the width of the board (number of columns)
+   * @param h                is the height of the board (number of rows)
+   * @param placementChecker is an object that will enforce various criteria for
+   *                         placing ships on the board (e.g. must not go out of
+   *                         bounds of the board, must not collide with any ships
+   *                         already on the board)
+   * @param missInfo         is the graphical symbol which will appear on the
+   *                         enemy's view of the board for any square where they
+   *                         have fired and missed
    */
   public BattleShipBoard(int w, int h, PlacementRuleChecker<T> placementChecker, T missInfo) {
     // Board width must be strictly positive
@@ -64,7 +72,7 @@ public class BattleShipBoard<T> implements Board<T> {
     }
     return true;
   }
-  
+
   public Ship<T> fireAt(Coordinate c) {
     for (Ship<T> s : myShips) {
       if (s.occupiesCoordinates(c)) {
@@ -101,10 +109,13 @@ public class BattleShipBoard<T> implements Board<T> {
   }
 
   /**
-   * Method for retrieving the graphical symbol corresponding to the current state of the board at a particular Coordinate (from the POV of the player who owns the board)
+   * Method for retrieving the graphical symbol corresponding to the current state
+   * of the board at a particular Coordinate (from the POV of the player who owns
+   * the board)
    *
    * @param where is the Coordinate where we want to retrieve the symbol from
-   * @return the symbol (e.g. 's' if your own sub lives at 'where' or '*' if your ship at 'where' has been hit)
+   * @return the symbol (e.g. 's' if your own sub lives at 'where' or '*' if your
+   *         ship at 'where' has been hit)
    */
   public T whatIsAtForSelf(Coordinate where) {
     return whatIsAt(where, true);
@@ -113,8 +124,10 @@ public class BattleShipBoard<T> implements Board<T> {
   /**
    * Same as whatIsAtForSelf, but from the enemy's perspective
    *
-   * @param where is the coordinate where we want to retrieve the graphical symbol from
-   * @return the symbol (e.g. 's' if you have fired at 'where' and hit a submarine, missInfo if you have fired at 'where' and missed)
+   * @param where is the coordinate where we want to retrieve the graphical symbol
+   *              from
+   * @return the symbol (e.g. 's' if you have fired at 'where' and hit a
+   *         submarine, missInfo if you have fired at 'where' and missed)
    */
   public T whatIsAtForEnemy(Coordinate where) {
     return whatIsAt(where, false);
@@ -130,5 +143,42 @@ public class BattleShipBoard<T> implements Board<T> {
       return missInfo;
     }
     return null;
+  }
+
+  /**
+   * Method to perform a sonar scan of the board
+   *
+   * @param center is the Coordinate of the center of the sonar scan
+   * @return a mapping from the four ship names to the total number of squares
+   *         occupied by that ship within the sonar scan diamond-shaped range
+   * @throws IllegalArgumentException if center is not on the board
+   */
+  @Override
+  public HashMap<String, Integer> doSonarScan(Coordinate center) {
+    if (center.getRow() >= height || center.getColumn() >= width) {
+      throw new IllegalArgumentException("Error - Center of sonar scan is not on the board");
+    }
+    HashMap<String, Integer> ans = new HashMap<String, Integer>();
+    ans.put("submarine", 0);
+    ans.put("destroyer", 0);
+    ans.put("battleship", 0);
+    ans.put("carrier", 0);
+    int cRow = center.getRow();
+    int cCol = center.getColumn();
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        int manhattanDistance = Math.abs(cRow - i) + Math.abs(cCol - j);
+        if (manhattanDistance <= 3) {
+          Coordinate c = new Coordinate(i, j);
+          for (Ship<T> s : myShips) {
+            if (s.occupiesCoordinates(c)) {
+              int current = ans.get(s.getName());
+              ans.put(s.getName(), current + 1);
+            }
+          }
+        }
+      }
+    }
+    return ans;
   }
 }
