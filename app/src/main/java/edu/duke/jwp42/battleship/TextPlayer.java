@@ -166,10 +166,12 @@ public class TextPlayer {
         sonarScanEnemyBoard(enemyBoard);
         break;
       }
+      /**
       if (action.equals("M")) {
         // TODO - We'll come back and fill this in later
         break;
       }
+      */
       out.println("Please try again -> You must type either f, m, or s to specify which action you'd like to take");
     }
   }
