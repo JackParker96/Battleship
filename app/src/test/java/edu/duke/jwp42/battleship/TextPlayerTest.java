@@ -27,6 +27,36 @@ public class TextPlayerTest {
   }
 
   @Test
+  public void test_playOneTurn_sonar_scan() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer playerA = createTextPlayer(3, 2, "K\ns\nA3\nA0\n", bytes);
+    Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
+    BoardTextView enemyView = new BoardTextView(enemyBoard);
+    String enemyName = "B";
+    playerA.playOneTurn(enemyBoard, enemyView, enemyName);
+    String expected = "Current state of the game:\n\n" +
+        "     Your ocean             B's ocean\n" +
+        "  0|1|2                    0|1|2\n" +
+        "A  | |  A                A  | |  A\n" +
+        "B  | |  B                B  | |  B\n" +
+        "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
+        "Please try again -> You must type either f, m, or s to specify which action you'd like to take\n" +
+        "Please enter a coordinate on your enemy board that you'd like to be the center of your sonar scan\n" +
+        "Please try again -> Error - Center of sonar scan is not on the board\n" +
+        "Result of sonar scan centered at coordinate (0, 0):\n\n" +
+        "Submarines occupy 0 square(s)\n" +
+        "Destroyers occupy 0 square(s)\n" +
+        "Battleships occupy 0 square(s)\n" +
+        "Carriers occupy 0 square(s)\n\n";
+    assertEquals(expected, bytes.toString());
+  }
+
+  @Test
   public void test_sonarScanMyBoard() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     PrintStream output = new PrintStream(bytes, true);

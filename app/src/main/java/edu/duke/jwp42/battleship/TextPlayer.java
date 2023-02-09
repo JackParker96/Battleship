@@ -121,7 +121,7 @@ public class TextPlayer {
       String centerString = input.readLine();
       try {
         Coordinate centerCoordinate = new Coordinate(centerString);
-        HashMap<String, Integer> scanResult = enemyBoard.doSonarScan(null);
+        HashMap<String, Integer> scanResult = enemyBoard.doSonarScan(centerCoordinate);
         int numSubs = scanResult.get("submarine");
         int numDestroyers = scanResult.get("destroyer");
         int numBattleships = scanResult.get("battleship");

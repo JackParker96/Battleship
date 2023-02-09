@@ -163,10 +163,6 @@ public class BattleShipBoard<T> implements Board<T> {
     if (center.getRow() >= height || center.getColumn() >= width) {
       throw new IllegalArgumentException("Error - Center of sonar scan is not on the board");
     }
-    int numSubs = 0;
-    int numDestroyers = 0;
-    int numBattleships = 0;
-    int numCarriers = 0;
     int cRow = center.getRow();
     int cCol = center.getColumn();
     for (int i = 0; i < height; i++) {
