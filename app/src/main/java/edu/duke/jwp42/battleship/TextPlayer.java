@@ -78,16 +78,12 @@ public class TextPlayer {
   }
 
   /**
-   * Goes through one turn for a single player
+   * Takes care of all the functionality for firing at the enemy board
    *
    * @param enemyBoard is the enemy's board
    * @param enemyView  is the BoardTextView version of enemyBoard
-   * @param enemyName  is the name of the other player
    */
-  public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) throws IOException {
-    out.println("Current state of the game:\n");
-    String enemyHeader = enemyName + "'s ocean";
-    out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your ocean", enemyHeader));
+  public void fireAtEnemy(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
     Coordinate c = null;
     while (true) {
       out.println("Please enter a coordinate on your enemy's board you'd like to fire at.");
@@ -116,6 +112,65 @@ public class TextPlayer {
       out.println("You hit a carrier!");
     } else {
       out.println("You missed!");
+    }
+  }
+
+  public void sonarScanEnemyBoard(Board<Character> enemyBoard) throws IOException {
+    out.println("Please enter a coordinate on your enemy board that you'd like to be the center of your sonar scan");
+    while (true) {
+      String centerString = input.readLine();
+      try {
+        Coordinate centerCoordinate = new Coordinate(centerString);
+        HashMap<String, Integer> scanResult = enemyBoard.doSonarScan(null);
+        int numSubs = scanResult.get("submarine");
+        int numDestroyers = scanResult.get("destroyer");
+        int numBattleships = scanResult.get("battleship");
+        int numCarriers = scanResult.get("carrier");
+        out.println(
+            "Result of sonar scan centered at coordinate (" + centerCoordinate.getRow() + ", " + centerCoordinate.getColumn() + "):\n\n" +
+                "Submarines occupy " + numSubs + " square(s)\n" +
+                "Destroyers occupy " + numDestroyers + " square(s)\n" +
+                "Battleships occupy " + numBattleships + " square(s)\n" +
+                "Carriers occupy " + numCarriers + " square(s)\n");
+        break;
+      }
+      catch (IllegalArgumentException e) {
+        out.println("Please try again -> " + e.getMessage());
+      }
+    }
+  }
+
+  /**
+   * Goes through one turn for a single player
+   *
+   * @param enemyBoard is the enemy's board
+   * @param enemyView  is the BoardTextView version of enemyBoard
+   * @param enemyName  is the name of the other player
+   */
+  public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) throws IOException {
+    out.println("Current state of the game:\n");
+    String enemyHeader = enemyName + "'s ocean";
+    out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your ocean", enemyHeader));
+    out.println("Possible actions for Player " + name + ":\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player " + name + " what would you like to do?");
+    while (true) {
+      String action = input.readLine().toUpperCase();
+      if (action.equals("F")) {
+        fireAtEnemy(enemyBoard, enemyView);
+        break;
+      }
+      if (action.equals("S")) {
+        sonarScanEnemyBoard(enemyBoard);
+        break;
+      }
+      if (action.equals("M")) {
+        // TODO - We'll come back and fill this in later
+        break;
+      }
+      out.println("Please try again -> You must type either f, m, or s to specify which action you'd like to take");
     }
   }
 

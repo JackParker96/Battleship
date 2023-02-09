@@ -155,14 +155,18 @@ public class BattleShipBoard<T> implements Board<T> {
    */
   @Override
   public HashMap<String, Integer> doSonarScan(Coordinate center) {
-    if (center.getRow() >= height || center.getColumn() >= width) {
-      throw new IllegalArgumentException("Error - Center of sonar scan is not on the board");
-    }
     HashMap<String, Integer> ans = new HashMap<String, Integer>();
     ans.put("submarine", 0);
     ans.put("destroyer", 0);
     ans.put("battleship", 0);
     ans.put("carrier", 0);
+    if (center.getRow() >= height || center.getColumn() >= width) {
+      throw new IllegalArgumentException("Error - Center of sonar scan is not on the board");
+    }
+    int numSubs = 0;
+    int numDestroyers = 0;
+    int numBattleships = 0;
+    int numCarriers = 0;
     int cRow = center.getRow();
     int cCol = center.getColumn();
     for (int i = 0; i < height; i++) {

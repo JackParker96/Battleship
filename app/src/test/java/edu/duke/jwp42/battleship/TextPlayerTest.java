@@ -43,18 +43,18 @@ public class TextPlayerTest {
     Ship<Character> carrier_c0l = f.makeCarrier(new Placement(new Coordinate("C0"), 'l'));
     board.tryAddShip(carrier_c0l);
     String expected1 = "Result of sonar scan centered at coordinate (1, 2):\n\n" +
-            "Submarines occupy 2 square(s)\n" +
-            "Destroyers occupy 3 square(s)\n" +
-            "Battleships occupy 4 square(s)\n" +
-            "Carriers occupy 6 square(s)\n\n";
+        "Submarines occupy 2 square(s)\n" +
+        "Destroyers occupy 3 square(s)\n" +
+        "Battleships occupy 4 square(s)\n" +
+        "Carriers occupy 6 square(s)\n\n";
     player.sonarScanMyBoard(new Coordinate(1, 2));
     assertEquals(expected1, bytes.toString());
   }
-  
+
   @Test
   public void test_playOneTurn_invalid_inputs() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(3, 2, "A\nA0V\nA3\nC0\n*2\nA*\nA2\n", bytes);
+    TextPlayer player = createTextPlayer(3, 2, "f\nA\nA0V\nA3\nC0\n*2\nA*\nA2\n", bytes);
     Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
@@ -67,6 +67,11 @@ public class TextPlayerTest {
         "A  | |  A                A  | |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "Please try again -> String representation of coordinate must have exactly two characters, but has 1 characters\n"
         +
@@ -90,7 +95,7 @@ public class TextPlayerTest {
   @Test
   public void test_playOneTurn_miss() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(3, 2, "A0\n", bytes);
+    TextPlayer player = createTextPlayer(3, 2, "f\nA0\n", bytes);
     Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
@@ -104,6 +109,11 @@ public class TextPlayerTest {
         "A  | |  A                A  | |  A\n" +
         "B s|s|  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You missed!\n";
     player.playOneTurn(enemyBoard, enemyView, enemyName);
@@ -113,7 +123,7 @@ public class TextPlayerTest {
   @Test
   public void test_playOneTurn_hit_carrier() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(6, 2, "B0\n", bytes);
+    TextPlayer player = createTextPlayer(6, 2, "F\nB0\n", bytes);
     Board<Character> enemyBoard = new BattleShipBoard<Character>(6, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
@@ -127,6 +137,11 @@ public class TextPlayerTest {
         "A  |c|c|c|c|  A                A  | | | | |  A\n" +
         "B c|c|c| | |  B                B  | | | | |  B\n" +
         "  0|1|2|3|4|5                    0|1|2|3|4|5\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a carrier!\n";
     player.playOneTurn(enemyBoard, enemyView, enemyName);
@@ -136,7 +151,7 @@ public class TextPlayerTest {
   @Test
   public void test_playOneTurn_hit_bship() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(4, 2, "B1\n", bytes);
+    TextPlayer player = createTextPlayer(4, 2, "f\nB1\n", bytes);
     Board<Character> enemyBoard = new BattleShipBoard<Character>(4, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
@@ -150,6 +165,11 @@ public class TextPlayerTest {
         "A b|b|b|  A                A  | | |  A\n" +
         "B  |b| |  B                B  | | |  B\n" +
         "  0|1|2|3                    0|1|2|3\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a battleship!\n";
     player.playOneTurn(enemyBoard, enemyView, enemyName);
@@ -159,7 +179,7 @@ public class TextPlayerTest {
   @Test
   public void test_playOneTurn_hit_destroyer() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(3, 2, "A0\n", bytes);
+    TextPlayer player = createTextPlayer(3, 2, "f\nA0\n", bytes);
     Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
@@ -173,6 +193,11 @@ public class TextPlayerTest {
         "A d|d|d A                A  | |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a destroyer!\n";
     player.playOneTurn(enemyBoard, enemyView, enemyName);
@@ -182,7 +207,7 @@ public class TextPlayerTest {
   @Test
   public void test_playOneTurn_hit_sub() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(3, 2, "A0\n", bytes);
+    TextPlayer player = createTextPlayer(3, 2, "F\nA0\n", bytes);
     Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
     BoardTextView enemyView = new BoardTextView(enemyBoard);
     String enemyName = "B";
@@ -196,6 +221,11 @@ public class TextPlayerTest {
         "A s| |  A                A  | |  A\n" +
         "B s| |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a submarine!\n";
     player.playOneTurn(enemyBoard, enemyView, enemyName);
@@ -285,7 +315,8 @@ public class TextPlayerTest {
         dstrPrompt + "Please try again -> That placement is invalid: the ship goes off the bottom of the board.\n"
             + dstrPrompt + expectedBoard,
         bytes8.toString());
-    // Test error handling for entering 'U', 'D', 'L', or 'R' for a submarine/destroyer in V2
+    // Test error handling for entering 'U', 'D', 'L', or 'R' for a
+    // submarine/destroyer in V2
     ByteArrayOutputStream bytes9 = new ByteArrayOutputStream();
     TextPlayer player9 = createTextPlayer(4, 3, "C0u\nA0h\n", bytes9);
     player9.doOnePlacement("Destroyer", (p) -> f.makeDestroyer(p));
@@ -298,13 +329,14 @@ public class TextPlayerTest {
     TextPlayer player10 = createTextPlayer(4, 3, "A0h\nA0u\n", bytes10);
     player10.doOnePlacement("Battleship", (p) -> f.makeBattleship(p));
     assertEquals(
-        "Player A where do you want to place a Battleship?\n" + "Please try again -> Placement orientation for a battleship must be in [U, D, L, R] but instead was H\n"
+        "Player A where do you want to place a Battleship?\n"
+            + "Please try again -> Placement orientation for a battleship must be in [U, D, L, R] but instead was H\n"
             + "Player A where do you want to place a Battleship?\n" +
-        "  0|1|2|3\n" +
-        "A  |b| |  A\n" +
-        "B b|b|b|  B\n" +
-        "C  | | |  C\n" +
-        "  0|1|2|3\n",
+            "  0|1|2|3\n" +
+            "A  |b| |  A\n" +
+            "B b|b|b|  B\n" +
+            "C  | | |  C\n" +
+            "  0|1|2|3\n",
         bytes10.toString());
   }
 
@@ -323,10 +355,10 @@ public class TextPlayerTest {
   @Test
   public void test_doAttackingPhase_A_wins() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player1 = createTextPlayer(3, 2, "A0\nA1\n", bytes);
+    TextPlayer player1 = createTextPlayer(3, 2, "f\nA0\nF\nA1\n", bytes);
     // Create Player 2 with a different name from Player 1
     Board<Character> b2 = new BattleShipBoard<Character>(3, 2, 'X');
-    String inputData = "A0\nA0\n";
+    String inputData = "f\nA0\nf\nA0\n";
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
     V2ShipFactory f = new V2ShipFactory();
@@ -344,6 +376,11 @@ public class TextPlayerTest {
         "A s|s|  A                A  | |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a submarine!\n" +
         "Current state of the game:\n\n" +
@@ -352,6 +389,11 @@ public class TextPlayerTest {
         "A *|s|  A                A  | |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player B:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player B what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a submarine!\n" +
         "Current state of the game:\n\n" +
@@ -360,6 +402,11 @@ public class TextPlayerTest {
         "A *|s|  A                A s| |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a submarine!\n" +
         "A has won the game!\n";
@@ -369,10 +416,10 @@ public class TextPlayerTest {
   @Test
   public void test_doAttackingPhase_B_wins() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player1 = createTextPlayer(3, 2, "A0\nA0\n", bytes);
+    TextPlayer player1 = createTextPlayer(3, 2, "f\nA0\nf\nA0\n", bytes);
     // Create Player 2 with a different name from Player 1
     Board<Character> b2 = new BattleShipBoard<Character>(3, 2, 'X');
-    String inputData = "A0\nA1\n";
+    String inputData = "f\nA0\nf\nA1\n";
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
     V2ShipFactory f = new V2ShipFactory();
@@ -390,6 +437,11 @@ public class TextPlayerTest {
         "A s|s|  A                A  | |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a submarine!\n" +
         "Current state of the game:\n\n" +
@@ -398,6 +450,11 @@ public class TextPlayerTest {
         "A *|s|  A                A  | |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player B:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player B what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a submarine!\n" +
         "Current state of the game:\n\n" +
@@ -406,6 +463,11 @@ public class TextPlayerTest {
         "A *|s|  A                A s| |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a submarine!\n" +
         "Current state of the game:\n\n" +
@@ -414,6 +476,11 @@ public class TextPlayerTest {
         "A *|s|  A                A s| |  A\n" +
         "B  | |  B                B  | |  B\n" +
         "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player B:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player B what would you like to do?\n" +
         "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
         "You hit a submarine!\n" +
         "B has won the game!\n";
@@ -436,17 +503,17 @@ public class TextPlayerTest {
     };
     player.doPlacementPhase();
     String expectedHeader = "  0|1|2|3|4|5|6\n";
-    String expectedBody1 =  "A  | | | | | |  A\n" +
-                            "B  | | | | | |  B\n" +
-                            "C  | | | | | |  C\n";
+    String expectedBody1 = "A  | | | | | |  A\n" +
+        "B  | | | | | |  B\n" +
+        "C  | | | | | |  C\n";
     String expectedBoard1 = expectedHeader + expectedBody1 + expectedHeader;
-    String expectedBody2 =  "A  |b| | | | |  A\n" +
-                            "B b|b| | | | |  B\n" +
-                            "C  |b| | | | |  C\n";
+    String expectedBody2 = "A  |b| | | | |  A\n" +
+        "B b|b| | | | |  B\n" +
+        "C  |b| | | | |  C\n";
     String expectedBoard2 = expectedHeader + expectedBody2 + expectedHeader;
-    String expectedBody3 =  "A  |b| |c|c|c|c A\n" +
-                            "B b|b|c|c|c| |  B\n" +
-                            "C  |b| | | | |  C\n";
+    String expectedBody3 = "A  |b| |c|c|c|c A\n" +
+        "B b|b|c|c|c| |  B\n" +
+        "C  |b| | | | |  C\n";
     String expectedBoard3 = expectedHeader + expectedBody3 + expectedHeader;
     String expectedPrompt = "Player A"
         + ": You have ten ships that you are going to place on your board one by one.\n\n" +
@@ -461,9 +528,11 @@ public class TextPlayerTest {
         " bbb      b       bb        bb\n " +
         "                  b        b\n\n" +
         " UP      DOWN     LEFT      RIGHT\n\n" +
-        "To specify where you want to place your battleships, first type the coordinate of the upper left corner of the smallest rectangle containing your ship\n" +
+        "To specify where you want to place your battleships, first type the coordinate of the upper left corner of the smallest rectangle containing your ship\n"
+        +
         "Then type either U, D, L, or R to specify the orientation\n\n" +
-        "Finally, you will place two carriers that are shaped like a Z and can have the same four orienations as a battleship\n\n" +
+        "Finally, you will place two carriers that are shaped like a Z and can have the same four orienations as a battleship\n\n"
+        +
         "  c       c        ccc     cccc\n" +
         "  c       cc     cccc     ccc\n" +
         "  cc      cc\n" +
@@ -471,7 +540,7 @@ public class TextPlayerTest {
         "   c       c\n\n" +
         "  UP     DOWN     LEFT     RIGHT\n\n" +
         "You should specify how you want to place a carrier in the same way as for battleships\n\n";
-    String expected = expectedBoard1 + "\n" + expectedPrompt + "\n"+
+    String expected = expectedBoard1 + "\n" + expectedPrompt + "\n" +
         "Player A where do you want to place a Battleship?\n" +
         expectedBoard2 +
         "Player A where do you want to place a Carrier?\n" +
