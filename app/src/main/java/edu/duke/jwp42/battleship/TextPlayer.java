@@ -12,7 +12,7 @@ import java.util.function.Function;
 /**
  * A class for a player in a text-based game of battleship
  */
-public class TextPlayer {
+public class TextPlayer implements Player{
   private final AbstractShipFactory<Character> shipFactory;
   protected final Board<Character> theBoard;
   protected final BoardTextView view;
@@ -48,7 +48,7 @@ public class TextPlayer {
   }
 
   // Adds four key/value pairs to shipCreationFns, one for each ship type in V1
-  protected void setupShipCreationMap() {
+  public void setupShipCreationMap() {
     shipCreationFns.put("Submarine", (p) -> shipFactory.makeSubmarine(p));
     shipCreationFns.put("Destroyer", (p) -> shipFactory.makeDestroyer(p));
     shipCreationFns.put("Battleship", (p) -> shipFactory.makeBattleship(p));
@@ -56,7 +56,7 @@ public class TextPlayer {
   }
 
   // Adds 10 ships to shipsToPlace (the 10 ships used in V1)
-  protected void setupShipCreationList() {
+  public void setupShipCreationList() {
     shipsToPlace.addAll(Collections.nCopies(2, "Submarine"));
     shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
     shipsToPlace.addAll(Collections.nCopies(3, "Battleship"));
@@ -215,6 +215,7 @@ public class TextPlayer {
    * @param enemyView  is the BoardTextView version of enemyBoard
    * @param enemyName  is the name of the other player
    */
+  @Override
   public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) throws IOException {
     out.println("Current state of the game:\n");
     String enemyHeader = enemyName + "'s ocean";

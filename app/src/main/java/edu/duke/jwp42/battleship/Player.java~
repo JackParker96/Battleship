@@ -1,0 +1,5 @@
+package edu.duke.jwp42.battleship;
+
+public interface Player {
+
+}

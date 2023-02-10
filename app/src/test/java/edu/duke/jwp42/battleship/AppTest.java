@@ -34,13 +34,13 @@ class AppTest {
     Board<Character> b1 = new BattleShipBoard<Character>(4, 3, 'X');
     Board<Character> b2 = new BattleShipBoard<Character>(4, 3, 'X');
     TextPlayer player1 = new TextPlayer("A", b1, input1, output1, f) {
-      protected void setupShipCreationList() {
+      public void setupShipCreationList() {
         shipsToPlace.addAll(Collections.nCopies(1, "Submarine"));
         shipsToPlace.addAll(Collections.nCopies(1, "Destroyer"));
       }
     };
     TextPlayer player2 = new TextPlayer("B", b2, input2, output2, f) {
-      protected void setupShipCreationList() {
+      public void setupShipCreationList() {
         shipsToPlace.addAll(Collections.nCopies(1, "Submarine"));
         shipsToPlace.addAll(Collections.nCopies(1, "Destroyer"));
       }
@@ -74,13 +74,13 @@ class AppTest {
     Board<Character> b1 = new BattleShipBoard<Character>(4, 3, 'X');
     Board<Character> b2 = new BattleShipBoard<Character>(4, 3, 'X');
     TextPlayer player1 = new TextPlayer("A", b1, input1, output1, f) {
-      protected void setupShipCreationList() {
+      public void setupShipCreationList() {
         shipsToPlace.addAll(Collections.nCopies(1, "Submarine"));
         shipsToPlace.addAll(Collections.nCopies(1, "Destroyer"));
       }
     };
     TextPlayer player2 = new TextPlayer("B", b2, input2, output2, f) {
-      protected void setupShipCreationList() {
+      public void setupShipCreationList() {
         shipsToPlace.addAll(Collections.nCopies(1, "Submarine"));
         shipsToPlace.addAll(Collections.nCopies(1, "Destroyer"));
       }

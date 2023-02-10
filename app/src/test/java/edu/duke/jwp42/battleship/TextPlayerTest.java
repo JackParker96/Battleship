@@ -629,7 +629,7 @@ public class TextPlayerTest {
     AbstractShipFactory<Character> f = new V2ShipFactory();
     Board<Character> b = new BattleShipBoard<Character>(7, 3, 'X');
     TextPlayer player = new TextPlayer("A", b, input, output, f) {
-      protected void setupShipCreationList() {
+      public void setupShipCreationList() {
         shipsToPlace.addAll(Collections.nCopies(1, "Battleship"));
         shipsToPlace.addAll(Collections.nCopies(1, "Carrier"));
       }
