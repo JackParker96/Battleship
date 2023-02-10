@@ -8,6 +8,49 @@ import org.junit.jupiter.api.Test;
 public class TShapedShipTest {
 
   @Test
+  public void test_move() {
+    V2ShipFactory f = new V2ShipFactory();
+    // Move TShip from U to D
+    Ship<Character> bship_A2u = f.makeBattleship(new Placement("A2u"));
+    bship_A2u.recordHitAt(new Coordinate("A3"));
+    bship_A2u.recordHitAt(new Coordinate("B4"));
+    bship_A2u.move(new Placement("D4d"));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("D4")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("D5")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("D6")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("E5")));
+    assert(bship_A2u.wasHitAt(new Coordinate("E5")));
+    assert(bship_A2u.wasHitAt(new Coordinate("D4")));
+    assertFalse(bship_A2u.wasHitAt(new Coordinate("D5")));
+    assertFalse(bship_A2u.wasHitAt(new Coordinate("D6")));
+    assertFalse(bship_A2u.occupiesCoordinates(new Coordinate("A3")));
+    // Move TShip from D to L
+    bship_A2u.move(new Placement("G5l"));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("H5")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("H6")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("G6")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("I6")));
+    assert(bship_A2u.wasHitAt(new Coordinate("H5")));
+    assert(bship_A2u.wasHitAt(new Coordinate("G6")));
+    // Move TShip from L to R
+    bship_A2u.move(new Placement("H2r"));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("H2")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("I2")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("J2")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("I3")));
+    assert(bship_A2u.wasHitAt(new Coordinate("I3")));
+    assert(bship_A2u.wasHitAt(new Coordinate("J2")));
+    // Move TShip from R to U
+    bship_A2u.move(new Placement("e1u"));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("e2")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("f1")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("f2")));
+    assert(bship_A2u.occupiesCoordinates(new Coordinate("f3")));
+    assert(bship_A2u.wasHitAt(new Coordinate("e2")));
+    assert(bship_A2u.wasHitAt(new Coordinate("f3")));
+  }
+  
+  @Test
   public void test_invalid_orientation() {
     Placement p1 = new Placement(new Coordinate("A0"), 'V');
     Placement p2 = new Placement(new Coordinate("A0"), 'H');
