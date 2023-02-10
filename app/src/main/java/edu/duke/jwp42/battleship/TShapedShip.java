@@ -1,6 +1,7 @@
 package edu.duke.jwp42.battleship;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 /**
  * This class allows us to construct a battleship in Version 2
@@ -19,7 +20,7 @@ public class TShapedShip<T> extends BasicShip<T> {
    * @return a HashSet containing all Coordinate occupied by the t-shaped ship
    */
   public static final HashSet<Coordinate> makeCoords(Placement upperLeft) {
-    HashSet<Coordinate> ans = new HashSet<Coordinate>();
+    HashSet<Coordinate> ans = new LinkedHashSet<Coordinate>();
     Coordinate where = upperLeft.getWhere();
     int row = where.getRow();
     int column = where.getColumn();
@@ -97,6 +98,11 @@ public class TShapedShip<T> extends BasicShip<T> {
   @Override
   public String getName() {
     return name;
+  }
+
+  @Override
+  public void move(Placement newPlacement) {
+    
   }
 
 }

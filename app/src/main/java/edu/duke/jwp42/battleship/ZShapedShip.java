@@ -1,6 +1,7 @@
 package edu.duke.jwp42.battleship;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 /**
  * Class for making a carrier for Version 2
@@ -19,7 +20,7 @@ public class ZShapedShip<T> extends BasicShip<T> {
    *                  coordinate of the ship
    */
   public static final HashSet<Coordinate> makeCoords(Placement upperLeft) {
-    HashSet<Coordinate> ans = new HashSet<Coordinate>();
+    HashSet<Coordinate> ans = new LinkedHashSet<Coordinate>();
     Coordinate where = upperLeft.getWhere();
     int row = where.getRow();
     int column = where.getColumn();
@@ -88,6 +89,11 @@ public class ZShapedShip<T> extends BasicShip<T> {
   @Override
   public String getName() {
     return name;
+  }
+
+  @Override
+  public void move(Placement newPlacement) {
+    
   }
 
 }

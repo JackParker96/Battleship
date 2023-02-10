@@ -63,6 +63,12 @@ public class TextPlayer {
     shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
   }
 
+  /**
+   * Does a sonar scan of the player's own board - not used at all in this program, but I thought it could be useful to have
+   *
+   * @param center is the coordinate (input by the player) of the center of hte sonar scan
+   * @throws IOException 
+   */
   public void sonarScanMyBoard(Coordinate center) throws IOException {
     HashMap<String, Integer> scanResult = theBoard.doSonarScan(center);
     int numSubs = scanResult.get("submarine");
@@ -115,6 +121,12 @@ public class TextPlayer {
     }
   }
 
+  /**
+   * Method for doing a sonar scan of an enemy board
+   *
+   * @param enemyBoard is the enemy's board
+   * @throws IOException
+   */
   public void sonarScanEnemyBoard(Board<Character> enemyBoard) throws IOException {
     out.println("Please enter a coordinate on your enemy board that you'd like to be the center of your sonar scan");
     while (true) {

@@ -1,6 +1,7 @@
 package edu.duke.jwp42.battleship;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * The BasicShip class is just a 1x1 ship (takes up only one square on the
@@ -24,7 +25,7 @@ public abstract class BasicShip<T> implements Ship<T> {
    * (b) True: The BasicShip does occupy Coordinate c and has been hit
    * (c) False: The BasicShip does occupy Coordinate c and has not been hit
    */
-  protected HashMap<Coordinate, Boolean> myPieces;
+  protected LinkedHashMap<Coordinate, Boolean> myPieces;
 
   /**
    * Constructs a BasicShip
@@ -47,7 +48,7 @@ public abstract class BasicShip<T> implements Ship<T> {
   public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo, ShipDisplayInfo<T> enemyDisplayInfo) {
     this.myDisplayInfo = myDisplayInfo;
     this.enemyDisplayInfo = enemyDisplayInfo;
-    this.myPieces = new HashMap<Coordinate, Boolean>();
+    this.myPieces = new LinkedHashMap<Coordinate, Boolean>();
     for (Coordinate c : where) {
       this.myPieces.put(c, false);
     }
@@ -109,5 +110,8 @@ public abstract class BasicShip<T> implements Ship<T> {
   public Iterable<Coordinate> getCoordinates() {
     return myPieces.keySet();
   }
+
+  @Override
+  abstract public void move(Placement newPlacement);
 
 }

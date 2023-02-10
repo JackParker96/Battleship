@@ -1,6 +1,7 @@
 package edu.duke.jwp42.battleship;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 /**
  * Class RectangleShip<T> is generic in the way that it is displayed to the user
@@ -21,7 +22,7 @@ public class RectangleShip<T> extends BasicShip<T> {
    *                  with the specified upperLeft, width, and height would occupy
    */
   public static HashSet<Coordinate> makeCoords(Coordinate upperLeft, int width, int height) {
-    HashSet<Coordinate> ans = new HashSet<Coordinate>();
+    HashSet<Coordinate> ans = new LinkedHashSet<Coordinate>();
     for (int w = 0; w < width; w++) {
       for (int h = 0; h < height; h++) {
         Coordinate c = new Coordinate(upperLeft.getRow() + h, upperLeft.getColumn() + w);
@@ -61,6 +62,11 @@ public class RectangleShip<T> extends BasicShip<T> {
   @Override
   public String getName() {
     return name;
+  }
+
+  @Override
+  public void move(Placement newPlacement) {
+    
   }
 
 }
