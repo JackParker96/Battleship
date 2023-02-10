@@ -4,10 +4,68 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class ZShapedShipTest {
 
+  @Test
+  public void test_move() {
+    V2ShipFactory f = new V2ShipFactory();
+    Ship<Character> carrA2u = f.makeCarrier(new Placement("A2u"));
+    carrA2u.recordHitAt(new Coordinate("A2"));
+    carrA2u.recordHitAt(new Coordinate("C2"));
+    carrA2u.recordHitAt(new Coordinate("D3"));
+    // Move U to D
+    carrA2u.move(new Placement("A5d"));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("A5")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("B5")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("B6")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("C5")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("C6")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("D6")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("E6")));
+    assert(carrA2u.wasHitAt(new Coordinate("B5")));
+    assert(carrA2u.wasHitAt(new Coordinate("C6")));
+    assert(carrA2u.wasHitAt(new Coordinate("E6")));
+
+    carrA2u.move(new Placement("F2r"));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("F3")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("f4")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("f5")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("f6")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("g2")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("g3")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("g4")));
+    assert(carrA2u.wasHitAt(new Coordinate("f4")));
+    assert(carrA2u.wasHitAt(new Coordinate("f6")));
+    assert(carrA2u.wasHitAt(new Coordinate("g3")));
+
+    carrA2u.move(new Placement("I0L"));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("i2")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("i3")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("i4")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("j0")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("j1")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("j2")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("j3")));
+    assert(carrA2u.wasHitAt(new Coordinate("i3")));
+    assert(carrA2u.wasHitAt(new Coordinate("j0")));
+    assert(carrA2u.wasHitAt(new Coordinate("j2")));
+ 
+    carrA2u.move(new Placement("A0u"));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("a0")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("b0")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("c0")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("d0")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("C1")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("D1")));
+    assert(carrA2u.occupiesCoordinates(new Coordinate("E1")));
+    assert(carrA2u.wasHitAt(new Coordinate("a0")));
+    assert(carrA2u.wasHitAt(new Coordinate("c0")));
+    assert(carrA2u.wasHitAt(new Coordinate("d1")));
+  }
+  
   @Test
   public void test_invalid_orientation() {
     Placement p1 = new Placement(new Coordinate("A0"), 'V');

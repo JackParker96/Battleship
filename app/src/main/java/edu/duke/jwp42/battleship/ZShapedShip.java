@@ -1,6 +1,8 @@
 package edu.duke.jwp42.battleship;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 
 /**
@@ -40,32 +42,32 @@ public class ZShapedShip<T> extends BasicShip<T> {
       }
     }
     if (orientation == 'R') {
-      for (int i = 0; i < 4; i++) {
-        Coordinate c = new Coordinate(row, column + 1 + i);
+      for (int i = 4; i > 0; i--) {
+        Coordinate c = new Coordinate(row, column + i);
         ans.add(c);
       }
-      for (int i = 0; i < 3; i++) {
+      for (int i = 2; i > -1; i--) {
         Coordinate c = new Coordinate(row + 1, column + i);
         ans.add(c);
       }
     }
     if (orientation == 'D') {
-      for (int i = 0; i < 3; i++) {
-        Coordinate c = new Coordinate(row + i, column);
+      for (int i = 4; i > 0; i--) {
+        Coordinate c = new Coordinate(row + i, column + 1);
         ans.add(c);
       }
-      for (int i = 0; i < 4; i++) {
-        Coordinate c = new Coordinate(row + 1 + i, column + 1);
+      for (int i = 2; i > -1; i--) {
+        Coordinate c = new Coordinate(row + i, column);
         ans.add(c);
       }
     }
     if (orientation == 'L') {
-      for (int i = 0; i < 3; i++) {
-        Coordinate c = new Coordinate(row, column + 2 + i);
-        ans.add(c);
-      }
       for (int i = 0; i < 4; i++) {
         Coordinate c = new Coordinate(row + 1, column + i);
+        ans.add(c);
+      }
+      for (int i = 2; i < 5; i++) {
+        Coordinate c = new Coordinate(row, column + i);
         ans.add(c);
       }
     }
@@ -93,7 +95,83 @@ public class ZShapedShip<T> extends BasicShip<T> {
 
   @Override
   public void move(Placement newPlacement) {
-    
+    Coordinate upperLeft = newPlacement.getWhere();
+    int row = upperLeft.getRow();
+    int column = upperLeft.getColumn();
+    char orientation = newPlacement.getOrientation();
+    // Populate an ArrayList with the new Coordinates in a specified order
+    ArrayList<Coordinate> newCoords = new ArrayList<Coordinate>();
+    if (orientation == 'U') {
+      Coordinate b1 = new Coordinate(row, column);
+      Coordinate b2 = new Coordinate(row + 1, column);
+      Coordinate b3 = new Coordinate(row + 2, column);
+      Coordinate b4 = new Coordinate(row + 3, column);
+      Coordinate b5 = new Coordinate(row + 2, column + 1);
+      Coordinate b6 = new Coordinate(row + 3, column + 1);
+      Coordinate b7 = new Coordinate(row + 4, column + 1);
+      newCoords.add(b1);
+      newCoords.add(b2);
+      newCoords.add(b3);
+      newCoords.add(b4);
+      newCoords.add(b5);
+      newCoords.add(b6);
+      newCoords.add(b7);
+    }
+    if (orientation == 'L') {
+      Coordinate b1 = new Coordinate(row + 1, column);
+      Coordinate b2 = new Coordinate(row + 1, column + 1);
+      Coordinate b3 = new Coordinate(row + 1, column + 2);
+      Coordinate b4 = new Coordinate(row + 1, column + 3);
+      Coordinate b5 = new Coordinate(row, column + 2);
+      Coordinate b6 = new Coordinate(row, column + 3);
+      Coordinate b7 = new Coordinate(row, column + 4);
+      newCoords.add(b1);
+      newCoords.add(b2);
+      newCoords.add(b3);
+      newCoords.add(b4);
+      newCoords.add(b5);
+      newCoords.add(b6);
+      newCoords.add(b7);
+    }
+    if (orientation == 'D') {
+      Coordinate b1 = new Coordinate(row + 4, column + 1);
+      Coordinate b2 = new Coordinate(row + 3, column + 1);
+      Coordinate b3 = new Coordinate(row + 2, column + 1);
+      Coordinate b4 = new Coordinate(row + 1, column + 1);
+      Coordinate b5 = new Coordinate(row + 2, column);
+      Coordinate b6 = new Coordinate(row + 1, column);
+      Coordinate b7 = new Coordinate(row, column);
+      newCoords.add(b1);
+      newCoords.add(b2);
+      newCoords.add(b3);
+      newCoords.add(b4);
+      newCoords.add(b5);
+      newCoords.add(b6);
+      newCoords.add(b7);
+    }
+    if (orientation == 'R') {
+      Coordinate b1 = new Coordinate(row, column + 4);
+      Coordinate b2 = new Coordinate(row, column + 3);
+      Coordinate b3 = new Coordinate(row, column + 2);
+      Coordinate b4 = new Coordinate(row, column + 1);
+      Coordinate b5= new Coordinate(row + 1, column + 2);
+      Coordinate b6 = new Coordinate(row + 1, column + 1);
+      Coordinate b7 = new Coordinate(row + 1, column);
+      newCoords.add(b1);
+      newCoords.add(b2);
+      newCoords.add(b3);
+      newCoords.add(b4);
+      newCoords.add(b5);
+      newCoords.add(b6);
+      newCoords.add(b7);
+    }
+    Collection<Boolean> hitsCollection = myPieces.values();
+    ArrayList<Boolean> hits = new ArrayList<Boolean>(hitsCollection);
+    LinkedHashMap<Coordinate, Boolean> newPieces = new LinkedHashMap<Coordinate, Boolean>();
+    for (int i = 0; i < newCoords.size(); i++) {
+      newPieces.put(newCoords.get(i), hits.get(i));
+    }
+    myPieces = newPieces;
   }
 
 }
