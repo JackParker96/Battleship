@@ -6,9 +6,42 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.LinkedHashMap;
+
 import org.junit.jupiter.api.Test;
 
 public class RectangleShipTest {
+
+  @Test
+  public void test_move() {
+    V2ShipFactory f = new V2ShipFactory();
+    // Test moving a sub from vertical to horizontal
+    Ship<Character> sub_B1v = f.makeSubmarine(new Placement(new Coordinate("B1"), 'v'));
+    sub_B1v.recordHitAt(new Coordinate("C1"));
+    sub_B1v.move(new Placement(new Coordinate("D2"), 'h'));
+    assert (sub_B1v.occupiesCoordinates(new Coordinate("D2")));
+    assert (sub_B1v.occupiesCoordinates(new Coordinate("D3")));
+    assert (sub_B1v.wasHitAt(new Coordinate("D3")));
+    assertFalse(sub_B1v.occupiesCoordinates(new Coordinate("B1")));
+    // Test moving a destroyer from horizontal to vertical
+    Ship<Character> dstr_E0h = f.makeDestroyer(new Placement(new Coordinate("E0"), 'h'));
+    dstr_E0h.recordHitAt(new Coordinate("E1"));
+    dstr_E0h.recordHitAt(new Coordinate("E2"));
+    dstr_E0h.move(new Placement(new Coordinate("B2"), 'v'));
+    assert (dstr_E0h.occupiesCoordinates(new Coordinate("B2")));
+    assert (dstr_E0h.occupiesCoordinates(new Coordinate("C2")));
+    assert (dstr_E0h.occupiesCoordinates(new Coordinate("D2")));
+    assert (dstr_E0h.wasHitAt(new Coordinate("C2")));
+    assert (dstr_E0h.wasHitAt(new Coordinate("D2")));
+    // Test moving a sub from horizontal to horizontal
+    Ship<Character> sub_C2h = f.makeSubmarine(new Placement("C2h"));
+    sub_C2h.recordHitAt(new Coordinate("C2"));
+    sub_C2h.move(new Placement("D0h"));
+    assert (sub_C2h.occupiesCoordinates(new Coordinate("D0")));
+    assert (sub_C2h.occupiesCoordinates(new Coordinate("D1")));
+    assert(sub_C2h.wasHitAt(new Coordinate("D0")));
+    // Test moving a destroyer from vertical to vertical
+  }
 
   @Test
   public void test_getCoordinates() {
@@ -16,7 +49,7 @@ public class RectangleShipTest {
     Iterable<Coordinate> coords = s.getCoordinates();
     for (Coordinate c : coords) {
       assertNotEquals(c, new Coordinate("A1"));
-      assert(c.equals(new Coordinate("A0")) || c.equals(new Coordinate("B0")));
+      assert (c.equals(new Coordinate("A0")) || c.equals(new Coordinate("B0")));
     }
   }
 

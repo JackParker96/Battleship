@@ -19,8 +19,8 @@ public class TShapedShip<T> extends BasicShip<T> {
    * @param upperLeft is a placement for the upper left corner of the ship
    * @return a HashSet containing all Coordinate occupied by the t-shaped ship
    */
-  public static final HashSet<Coordinate> makeCoords(Placement upperLeft) {
-    HashSet<Coordinate> ans = new LinkedHashSet<Coordinate>();
+  public static final LinkedHashSet<Coordinate> makeCoords(Placement upperLeft) {
+    LinkedHashSet<Coordinate> ans = new LinkedHashSet<Coordinate>();
     Coordinate where = upperLeft.getWhere();
     int row = where.getRow();
     int column = where.getColumn();
