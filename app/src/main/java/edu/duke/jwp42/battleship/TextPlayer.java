@@ -64,10 +64,12 @@ public class TextPlayer {
   }
 
   /**
-   * Does a sonar scan of the player's own board - not used at all in this program, but I thought it could be useful to have
+   * Does a sonar scan of the player's own board - not used at all in this
+   * program, but I thought it could be useful to have
    *
-   * @param center is the coordinate (input by the player) of the center of hte sonar scan
-   * @throws IOException 
+   * @param center is the coordinate (input by the player) of the center of hte
+   *               sonar scan
+   * @throws IOException
    */
   public void sonarScanMyBoard(Coordinate center) throws IOException {
     HashMap<String, Integer> scanResult = theBoard.doSonarScan(center);
@@ -139,17 +141,71 @@ public class TextPlayer {
         int numBattleships = scanResult.get("battleship");
         int numCarriers = scanResult.get("carrier");
         out.println(
-            "Result of sonar scan centered at coordinate (" + centerCoordinate.getRow() + ", " + centerCoordinate.getColumn() + "):\n\n" +
+            "Result of sonar scan centered at coordinate (" + centerCoordinate.getRow() + ", "
+                + centerCoordinate.getColumn() + "):\n\n" +
                 "Submarines occupy " + numSubs + " square(s)\n" +
                 "Destroyers occupy " + numDestroyers + " square(s)\n" +
                 "Battleships occupy " + numBattleships + " square(s)\n" +
                 "Carriers occupy " + numCarriers + " square(s)\n");
         break;
-      }
-      catch (IllegalArgumentException e) {
+      } catch (IllegalArgumentException e) {
         out.println("Please try again -> " + e.getMessage());
       }
     }
+  }
+
+  // Takes care of all the functionality for allowing a player to move a ship to a
+  // new location on their board
+  public Boolean moveShipOnMyBoard() throws IOException {
+    String tryAgainPrompt = "A problem occurred. Either you entered a coordinate that doesn't have a ship, or you entered an invalid placement. Please select your action again. You can choose move ship again, or you can choose a different action";
+    out.println(
+        "Please choose a ship you'd like to move, select any Coordinate occupied by that ship, and input the Coordinate.");
+    // Prompt until user enters a valid coordinate
+    Coordinate c = null;
+    while (true) {
+      String chosenCoord = input.readLine();
+      try {
+        c = new Coordinate(chosenCoord);
+        break;
+      } catch (IllegalArgumentException e) {
+        out.println("Please try again -> " + e.getMessage());
+      }
+    }
+    // If they entered a Coordinate with no ship, kick them back to playOneTurn
+    // where they choose their action
+    Ship<Character> shipToMove = theBoard.getShipAt(c);
+    if (shipToMove == null) {
+      out.println(tryAgainPrompt);
+      return false;
+    }
+    // At this point, user has entered a valid coordinate occupied by a ship
+    // Prompt user until they enter a placement in a valid format
+    Placement p = readPlacement(
+        "Ship located. Now please enter a new placement for the ship in the same format as you entered placements at the beginning of the game (e.g. M4V)");
+    String shipType = shipToMove.getName();
+    // Now use the placement to create a ship of the same type as shipToMove placed at the new location
+    Ship<Character> potentialNewShip;
+    if (shipType == "submarine") {
+      potentialNewShip = shipFactory.makeSubmarine(p);
+    }
+    else if (shipType == "destroyer") {
+      potentialNewShip = shipFactory.makeDestroyer(p);
+    }
+    else if (shipType == "battleship") {
+      potentialNewShip = shipFactory.makeBattleship(p);
+    }
+    else {
+      potentialNewShip = shipFactory.makeCarrier(p);
+    }
+    // Now use a placementRuleChecker to check if the new placement is valid. If
+    // not, kick them back to playOneTurn where they choose their action
+    Boolean okayToMove = theBoard.checkForValidShipMove(potentialNewShip);
+    if (!okayToMove) {
+      out.println(tryAgainPrompt);
+      return false;
+    }
+    shipToMove.move(p);
+    return true;
   }
 
   /**
@@ -178,12 +234,13 @@ public class TextPlayer {
         sonarScanEnemyBoard(enemyBoard);
         break;
       }
-      /**
       if (action.equals("M")) {
-        // TODO - We'll come back and fill this in later
+        Boolean validPlacement = moveShipOnMyBoard();
+        if (!validPlacement) {
+          continue;
+        }
         break;
       }
-      */
       out.println("Please try again -> You must type either f, m, or s to specify which action you'd like to take");
     }
   }

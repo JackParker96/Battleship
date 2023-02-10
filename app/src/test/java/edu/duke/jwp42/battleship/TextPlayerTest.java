@@ -27,6 +27,109 @@ public class TextPlayerTest {
   }
 
   @Test
+  public void test_playOneTurn_moveShip() throws IOException {
+    String Prompt1 = "Please choose a ship you'd like to move, select any Coordinate occupied by that ship, and input the Coordinate.\n";
+    String Prompt2 = "Ship located. Now please enter a new placement for the ship in the same format as you entered placements at the beginning of the game (e.g. M4V)\n";
+    Board<Character> bA = new BattleShipBoard<Character>(3, 2, 'X');
+    ByteArrayOutputStream bytesA = new ByteArrayOutputStream();
+    String inputData = "m\nA0\nB2h\nm\nA0\nB1h\n";
+    BufferedReader input = new BufferedReader(new StringReader(inputData));
+    PrintStream output = new PrintStream(bytesA, true);
+    V2ShipFactory f = new V2ShipFactory();
+    TextPlayer playerA = new TextPlayer("A", bA, input, output, f);
+    Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
+    BoardTextView enemyView = new BoardTextView(enemyBoard);
+    String enemyName = "B";
+    Ship<Character> sub_A0V = f.makeSubmarine(new Placement(new Coordinate("A0"), 'V'));
+    bA.tryAddShip(sub_A0V);
+    String expected = "Current state of the game:\n\n" +
+        "     Your ocean             B's ocean\n" +
+        "  0|1|2                    0|1|2\n" +
+        "A s| |  A                A  | |  A\n" +
+        "B s| |  B                B  | |  B\n" +
+        "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (3 remaining)\n" +
+        "S - Sonar scan (3 remaining)\n\n" +
+        "Player A what would you like to do?\n" +
+        Prompt1 + Prompt2+
+        "A problem occurred. Either you entered a coordinate that doesn't have a ship, or you entered an invalid placement. Please select your action again. You can choose move ship again, or you can choose a different action\n" +
+      Prompt1 + Prompt2;
+    playerA.playOneTurn(enemyBoard, enemyView, enemyName);
+    assertEquals(expected, bytesA.toString());
+  }
+
+  @Test
+  public void test_moveShipOnMyBoard() throws IOException {
+    String Prompt1 = "Please choose a ship you'd like to move, select any Coordinate occupied by that ship, and input the Coordinate.\n";
+    String Prompt2 = "Ship located. Now please enter a new placement for the ship in the same format as you entered placements at the beginning of the game (e.g. M4V)\n";
+    Board<Character> b = new BattleShipBoard<Character>(7, 10, 'X');
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    String inputData = "A0\nB1h\n" +
+        "A\nE0\n" +
+        "B2\nA6\nA6h\n" +
+        "C2\nd0h\n" +
+        "e1\ng0l\n" +
+        "d4\na5d\n";
+    BufferedReader input = new BufferedReader(new StringReader(inputData));
+    PrintStream output = new PrintStream(bytes, true);
+    V2ShipFactory f = new V2ShipFactory();
+    TextPlayer player = new TextPlayer("A", b, input, output, f);
+    // Make a sub and move it
+    Ship<Character> subA0v = f.makeSubmarine(new Placement("A0v"));
+    b.tryAddShip(subA0v);
+    subA0v.recordHitAt(new Coordinate("B0"));
+    player.moveShipOnMyBoard();
+    String expected1 = Prompt1 + Prompt2;
+    assertEquals(expected1, bytes.toString());
+    bytes.reset();
+    assert (subA0v.occupiesCoordinates(new Coordinate("B1")));
+    assert (subA0v.occupiesCoordinates(new Coordinate("B2")));
+    assert (subA0v.wasHitAt(new Coordinate("B2")));
+    // Some invalid inputs
+    player.moveShipOnMyBoard();
+    String expected2 = Prompt1
+        + "Please try again -> String representation of coordinate must have exactly two characters, but has 1 characters\n"
+        +
+        "A problem occurred. Either you entered a coordinate that doesn't have a ship, or you entered an invalid placement. Please select your action again. You can choose move ship again, or you can choose a different action\n";
+    assertEquals(expected2, bytes.toString());
+    bytes.reset();
+    // More invalid inputs
+    player.moveShipOnMyBoard();
+    String expected3 = Prompt1 + Prompt2 +
+        "Please try again -> Input must have length 3 but instead has length 2\n" +
+        Prompt2
+        + "A problem occurred. Either you entered a coordinate that doesn't have a ship, or you entered an invalid placement. Please select your action again. You can choose move ship again, or you can choose a different action\n";
+    assertEquals(expected3, bytes.toString());
+    bytes.reset();
+    // Move a destroyer
+    Ship<Character> destc0h = f.makeDestroyer(new Placement("c0h"));
+    b.tryAddShip(destc0h);
+    destc0h.recordHitAt(new Coordinate("C1"));
+    player.moveShipOnMyBoard();
+    String expected4 = Prompt1 + Prompt2;
+    assertEquals(expected4, bytes.toString());
+    bytes.reset();
+    // Move a battleship
+    Ship<Character> bshipe0d = f.makeBattleship(new Placement("e0d"));
+    b.tryAddShip(bshipe0d);
+    bshipe0d.recordHitAt(new Coordinate("F1"));
+    player.moveShipOnMyBoard();
+    String expected5 = Prompt1 + Prompt2;
+    assertEquals(expected5, bytes.toString());
+    bytes.reset();
+    // Move a carrier
+    Ship<Character> carrd4u = f.makeCarrier(new Placement("d4u"));
+    b.tryAddShip(carrd4u);
+    carrd4u.recordHitAt(new Coordinate("E4"));
+    player.moveShipOnMyBoard();
+    String expected6 = Prompt1 + Prompt2;
+    assertEquals(expected6, bytes.toString());
+    bytes.reset();
+  }
+
+  @Test
   public void test_playOneTurn_sonar_scan() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer playerA = createTextPlayer(3, 2, "K\ns\nA3\nA0\n", bytes);

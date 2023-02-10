@@ -93,6 +93,20 @@ public class BattleShipBoard<T> implements Board<T> {
   }
 
   /**
+   * Checks if a ship can be moved to a particular spot on the board
+   *
+   * @param potentialMovedShip is the hypothetical new ship placed at its new placement
+   * @return true if the move is legal and false if not
+   */
+  public Boolean checkForValidShipMove(Ship<T> potentialMovedShip) {
+    String placementCheck = placementChecker.checkPlacement(potentialMovedShip, this);
+    if (placementCheck == null) {
+      return true;
+    }
+    return false;
+  }
+  
+  /**
    * Checks if all placement rules for a ship are verified and if so, adds it to
    * myShips
    *
@@ -145,6 +159,15 @@ public class BattleShipBoard<T> implements Board<T> {
     return null;
   }
 
+  public Ship<T> getShipAt(Coordinate c) {
+    for (Ship<T> s : myShips) {
+      if (s.occupiesCoordinates(c)) {
+        return s;
+      }
+    }
+    return null;
+  }
+  
   /**
    * Method to perform a sonar scan of the board
    *
