@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * An App has two fields, one for each TextPlayer
+ * An App has two fields, one for each Player
  */
 public class App {
-  private final TextPlayer player1;
-  private final TextPlayer player2;
+  private final Player player1;
+  private final Player player2;
 
-  // Construct an App by passing in two TextPlayers
-  public App(TextPlayer player1, TextPlayer player2) {
+  // Construct an App by passing in two Players
+  public App(Player player1, Player player2) {
     this.player1 = player1;
     this.player2 = player2;
   }

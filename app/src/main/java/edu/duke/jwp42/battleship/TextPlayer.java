@@ -12,55 +12,11 @@ import java.util.function.Function;
 /**
  * A class for a player in a text-based game of battleship
  */
-public class TextPlayer implements Player{
-  private final AbstractShipFactory<Character> shipFactory;
-  protected final Board<Character> theBoard;
-  protected final BoardTextView view;
-  private final BufferedReader input;
-  protected final PrintStream out;
-  // The name of a player (e.g. "A" or "B")
-  protected final String name;
-  // List of all ships that a player needs to place (2 subs, 3 destroyers,
-  // 3 bships, 2 carriers)
-  protected final ArrayList<String> shipsToPlace;
-  // Map from ship names (Submarine, Battleship, etc.) to functions in
-  // V1ShipFactory used to construct these ships
-  private final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
+public class TextPlayer extends Player {
 
-  // Constructs a TextPlayer
   public TextPlayer(String name, Board<Character> theBoard, BufferedReader input, PrintStream out,
       AbstractShipFactory<Character> factory) {
-    this.shipFactory = factory;
-    this.theBoard = theBoard;
-    this.view = new BoardTextView(theBoard);
-    this.input = input;
-    this.out = out;
-    this.name = name;
-    // Initialize shipsToPlace to an empty ArrayList, then call
-    // setupShipCreationList() to fill it up with ships
-    this.shipsToPlace = new ArrayList<String>();
-    setupShipCreationList();
-    // Initialize shipCreationFns to an empty HashMap, then call
-    // setupShipCreationMap to fill it up with mappings from ship names to the
-    // functions used to create that ship
-    this.shipCreationFns = new HashMap<String, Function<Placement, Ship<Character>>>();
-    setupShipCreationMap();
-  }
-
-  // Adds four key/value pairs to shipCreationFns, one for each ship type in V1
-  public void setupShipCreationMap() {
-    shipCreationFns.put("Submarine", (p) -> shipFactory.makeSubmarine(p));
-    shipCreationFns.put("Destroyer", (p) -> shipFactory.makeDestroyer(p));
-    shipCreationFns.put("Battleship", (p) -> shipFactory.makeBattleship(p));
-    shipCreationFns.put("Carrier", (p) -> shipFactory.makeCarrier(p));
-  }
-
-  // Adds 10 ships to shipsToPlace (the 10 ships used in V1)
-  public void setupShipCreationList() {
-    shipsToPlace.addAll(Collections.nCopies(2, "Submarine"));
-    shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
-    shipsToPlace.addAll(Collections.nCopies(3, "Battleship"));
-    shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
+    super(factory, theBoard, input, out, name);
   }
 
   /**
@@ -183,18 +139,16 @@ public class TextPlayer implements Player{
     Placement p = readPlacement(
         "Ship located. Now please enter a new placement for the ship in the same format as you entered placements at the beginning of the game (e.g. M4V)");
     String shipType = shipToMove.getName();
-    // Now use the placement to create a ship of the same type as shipToMove placed at the new location
+    // Now use the placement to create a ship of the same type as shipToMove placed
+    // at the new location
     Ship<Character> potentialNewShip;
     if (shipType == "submarine") {
       potentialNewShip = shipFactory.makeSubmarine(p);
-    }
-    else if (shipType == "destroyer") {
+    } else if (shipType == "destroyer") {
       potentialNewShip = shipFactory.makeDestroyer(p);
-    }
-    else if (shipType == "battleship") {
+    } else if (shipType == "battleship") {
       potentialNewShip = shipFactory.makeBattleship(p);
-    }
-    else {
+    } else {
       potentialNewShip = shipFactory.makeCarrier(p);
     }
     // Now use a placementRuleChecker to check if the new placement is valid. If
