@@ -67,8 +67,25 @@ public class App {
     Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
     AbstractShipFactory<Character> factory = new V2ShipFactory();
     BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    TextPlayer player1 = new TextPlayer("A", b1, input, System.out, factory);
-    TextPlayer player2 = new TextPlayer("B", b2, input, System.out, factory);
+    System.out.println("Please type two characters to indicate the types of players that will be playing Battleship\n" +
+                       "HH - human vs human\n" +
+                       "HC - human vs computer\n" +
+                       "CH - computer vs human\n" +
+                       "CC - computer vs computer");
+    String playerTypes;
+    BufferedReader systemInput = new BufferedReader(new InputStreamReader(System.in));
+    while (true) {
+      playerTypes = systemInput.readLine().toUpperCase();
+      if (!playerTypes.equals("HC") && !playerTypes.equals("HH") && !playerTypes.equals("CH") && !playerTypes.equals("CC")) {
+        System.out.println("Please try again -> Input must be HH, HC, CH, or CC");
+        continue;
+      }
+      break;
+    }
+    char firstPlayerType = playerTypes.charAt(0);
+    char secondPlayerType = playerTypes.charAt(1);
+      TextPlayer player1 = new TextPlayer("A", b1, input, System.out, factory);
+      TextPlayer player2 = new TextPlayer("B", b2, input, System.out, factory);
     App app = new App(player1, player2);
     app.doPlacementPhase();
     app.doAttackingPhase();

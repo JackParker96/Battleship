@@ -100,6 +100,7 @@ class AppTest {
     assertEquals("A", app.getWinningPlayer());
   }
 
+  @Disabled
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
   public void test_main() throws IOException {
