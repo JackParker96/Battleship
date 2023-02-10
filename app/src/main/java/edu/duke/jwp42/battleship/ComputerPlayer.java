@@ -11,7 +11,7 @@ import java.util.function.Function;
 
 public class ComputerPlayer extends Player {
 
-  public ComputerPlayer(AbstractShipFactory<Character> factory, Board<Character> b, BufferedReader input, PrintStream out, String name) {
+  public ComputerPlayer(AbstractShipFactory<Character> factory, Board<Character> b) {
     super(factory, b, new BufferedReader(new StringReader("A0h\nb0h\nc0h\nd0h\ne0h\nf0d\nh0d\nj0d\nl0r\nn0r\n" +
         "f\nA0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\n" +
         "f\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\n" +
@@ -48,7 +48,7 @@ public class ComputerPlayer extends Player {
         "f\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\n" +
         "f\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\n" +
         "f\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\n" +
-        "f\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\n")), out, name);    
+        "f\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\nf\na0\n")), System.out, "Computer");    
   }
 
   public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) throws IOException {
