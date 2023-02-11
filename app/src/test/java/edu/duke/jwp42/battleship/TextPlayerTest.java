@@ -24,8 +24,37 @@ public class TextPlayerTest {
     Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
     V2ShipFactory shipFactory = new V2ShipFactory();
     return new TextPlayer("A", board, input, output, shipFactory);
+    
   }
 
+  @Test
+  public void test_out_of_moves() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player = createTextPlayer(3, 2, "s\nm\nf\nA0\n",bytes);
+    Board<Character> enemyBoard = new BattleShipBoard<Character>(3, 2, 'X');
+    BoardTextView enemyView = new BoardTextView(enemyBoard);
+    String enemyName = "B";
+    player.numMoveShipsRemaining = 0;
+    player.numSonarScansRemaining = 0;
+    player.playOneTurn(enemyBoard, enemyView, enemyName);
+    String expected = "Current state of the game:\n\n" +
+        "     Your ocean             B's ocean\n" +
+        "  0|1|2                    0|1|2\n" +
+        "A  | |  A                A  | |  A\n" +
+        "B  | |  B                B  | |  B\n" +
+        "  0|1|2                    0|1|2\n\n" +
+        "Possible actions for Player A:\n\n" +
+        "F - Fire at a square\n" +
+        "M - Move a ship to another square (0 remaining)\n" +
+        "S - Sonar scan (0 remaining)\n\n" +
+      "Player A what would you like to do?\n" +
+      "You don't have any sonar scan actions left. Please type either F or M (if you have any move ship actions left).\n" +
+      "You don't have any move ship actions left. Please type F or S (if you have any sonar scan actions left.)\n" +
+      "Please enter a coordinate on your enemy's board you'd like to fire at.\n" +
+      "You missed!\n";
+    assertEquals(expected, bytes.toString());
+  }
+  
   @Test
   public void test_playOneTurn_moveShip() throws IOException {
     String Prompt1 = "Please choose a ship you'd like to move, select any Coordinate occupied by that ship, and input the Coordinate.\n";
