@@ -25,10 +25,15 @@ public class ComputerPlayer extends Player {
                                                           "a9\nb9\nc9\nd9\ne9\nf9\ng9\nh9\ni9\nj9\nk9\nl9\nm9\nn9\no9\np9\nq9\nr9\ns9\nt9\n")), System.out, "Computer");    
   }
 
+  /**
+   * Method for a ComputerPlayer to go through an entire turn
+   * A ComputerPlayer always chooses to fire at the enemy board
+   * It iterates over all squares of the board
+   */
   public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) throws IOException {
     Coordinate c = new Coordinate(input.readLine());
     enemyBoard.fireAt(c);
-    if (enemyBoard.whatIsAtForEnemy(c) != null) {
+    if (enemyBoard.whatIsAtForEnemy(c) != 'X') {
       String shipType = null;
       if (enemyBoard.whatIsAtForEnemy(c) == 's') {
         shipType = "submarine";
