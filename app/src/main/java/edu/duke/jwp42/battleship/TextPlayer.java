@@ -189,7 +189,8 @@ public class TextPlayer extends Player {
       }
       if (action.equals("S")) {
         if (numSonarScansRemaining < 1) {
-          out.println("You don't have any sonar scan actions left. Please type either F or M (if you have any move ship actions left).");
+          out.println(
+              "You don't have any sonar scan actions left. Please type either F or M (if you have any move ship actions left).");
           continue;
         }
         sonarScanEnemyBoard(enemyBoard);
@@ -197,7 +198,8 @@ public class TextPlayer extends Player {
       }
       if (action.equals("M")) {
         if (numMoveShipsRemaining < 1) {
-          out.println("You don't have any move ship actions left. Please type F or S (if you have any sonar scan actions left.)");
+          out.println(
+              "You don't have any move ship actions left. Please type F or S (if you have any sonar scan actions left.)");
           continue;
         }
         Boolean validPlacement = moveShipOnMyBoard();

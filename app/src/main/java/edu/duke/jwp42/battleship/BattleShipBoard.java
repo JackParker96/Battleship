@@ -154,13 +154,13 @@ public class BattleShipBoard<T> implements Board<T> {
   }
 
   protected T whatIsAt(Coordinate where, boolean isSelf) {
+    if (!isSelf && enemyMisses.contains(where)) {
+      return missInfo;
+    }
     for (Ship<T> s : myShips) {
       if (s.occupiesCoordinates(where)) {
         return s.getDisplayInfoAt(where, isSelf);
       }
-    }
-    if (!isSelf && enemyMisses.contains(where)) {
-      return missInfo;
     }
     return null;
   }
