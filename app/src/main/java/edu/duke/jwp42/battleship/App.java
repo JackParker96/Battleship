@@ -3,6 +3,8 @@ package edu.duke.jwp42.battleship;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.util.ArrayList;
 
 /**
  * An App has two fields, one for each Player
@@ -63,42 +65,12 @@ public class App {
   }
 
   public static void main(String[] args) throws IOException {
-    Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
-    Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
-    AbstractShipFactory<Character> factory = new V2ShipFactory();
     BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    System.out.println("Please type two characters to indicate the types of players that will be playing Battleship\n" +
-        "HH - human vs human\n" +
-        "HC - human vs computer\n" +
-        "CH - computer vs human\n" +
-        "CC - computer vs computer");
-    String playerTypes;
-    BufferedReader systemInput = new BufferedReader(new InputStreamReader(System.in));
-    while (true) {
-      playerTypes = systemInput.readLine().toUpperCase();
-      if (!playerTypes.equals("HC") && !playerTypes.equals("HH") && !playerTypes.equals("CH")
-          && !playerTypes.equals("CC")) {
-        System.out.println("Please try again -> Input must be HH, HC, CH, or CC");
-        continue;
-      }
-      break;
-    }
-    char firstPlayerType = playerTypes.charAt(0);
-    char secondPlayerType = playerTypes.charAt(1);
-    Player player1 = null;
-    Player player2 = null;
-    if (firstPlayerType == 'H') {
-      player1 = new TextPlayer("A", b1, input, System.out, factory);
-    }
-    else {
-      player1 = new ComputerPlayer(factory, b1);
-    }
-    if (secondPlayerType == 'H') {
-      player2 = new TextPlayer("B", b2, input, System.out, factory);
-    }
-    else {
-      player2 = new ComputerPlayer(factory, b2);
-    }
+    PrintStream out = System.out;
+    PlayerSetterUpper setup = new PlayerSetterUpper(input, out);
+    ArrayList<Player> players = setup.setUpPlayers();
+    Player player1 = players.get(0);
+    Player player2 = players.get(1);
     App app = new App(player1, player2);
     app.doPlacementPhase();
     app.doAttackingPhase();
