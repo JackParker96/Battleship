@@ -28,7 +28,8 @@ public class TShapedShip<T> extends BasicShip<T> {
     int column = where.getColumn();
     char orientation = upperLeft.getOrientation();
     if (orientation != 'U' && orientation != 'D' && orientation != 'L' && orientation != 'R') {
-      throw new IllegalArgumentException("Placement orientation for a battleship must be in [U, D, L, R] but instead was " + orientation);
+      throw new IllegalArgumentException(
+          "Placement orientation for a battleship must be in [U, D, L, R] but instead was " + orientation);
     }
     if (orientation == 'U') {
       Coordinate tip = new Coordinate(row, column + 1);
@@ -102,6 +103,8 @@ public class TShapedShip<T> extends BasicShip<T> {
     return name;
   }
 
+  // Moves a TShapedShip to a different spot on the board, possible in a different
+  // orientation
   @Override
   public void move(Placement newPlacement) {
     Coordinate upperLeft = newPlacement.getWhere();

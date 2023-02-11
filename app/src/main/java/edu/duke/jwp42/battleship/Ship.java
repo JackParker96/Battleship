@@ -72,5 +72,10 @@ public interface Ship<T> {
    */
   public Iterable<Coordinate> getCoordinates();
 
+  /**
+   * Move ship to a new location
+   *
+   * @param newPlacement (provided by player) is the new placement of the ship
+   */
   public void move(Placement newPlacement);
 }

@@ -93,6 +93,7 @@ public class ZShapedShip<T> extends BasicShip<T> {
     return name;
   }
 
+  // Moves a ZShapedShip to a different spot on the board, possible in a different orientation
   @Override
   public void move(Placement newPlacement) {
     Coordinate upperLeft = newPlacement.getWhere();

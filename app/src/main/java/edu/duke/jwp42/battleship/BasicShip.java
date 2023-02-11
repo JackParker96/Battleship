@@ -75,6 +75,7 @@ public abstract class BasicShip<T> implements Ship<T> {
     return false;
   }
 
+  // Checks if the ship is sunk or not
   @Override
   public boolean isSunk() {
     for (boolean bool : myPieces.values()) {
@@ -111,6 +112,7 @@ public abstract class BasicShip<T> implements Ship<T> {
     return myPieces.keySet();
   }
 
+  // Move ship to new location
   @Override
   abstract public void move(Placement newPlacement);
 

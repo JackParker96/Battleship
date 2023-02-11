@@ -66,6 +66,8 @@ public class RectangleShip<T> extends BasicShip<T> {
     return name;
   }
 
+  // Moves a RectangleShip to a new spot on the board, possibly in a different
+  // orientation
   @Override
   public void move(Placement newPlacement) {
     Coordinate upperLeft = newPlacement.getWhere();

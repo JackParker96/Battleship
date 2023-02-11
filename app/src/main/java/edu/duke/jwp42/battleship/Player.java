@@ -23,6 +23,8 @@ public abstract class Player {
   // Map from ship names (Submarine, Battleship, etc.) to functions in
   // V1ShipFactory used to construct these ships
   protected final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
+  protected int numSonarScansRemaining;
+  protected int numMoveShipsRemaining;
 
   public Player(AbstractShipFactory<Character> f, Board<Character> b, BufferedReader input, PrintStream out, String name) {
     this.shipFactory = f;
@@ -31,19 +33,23 @@ public abstract class Player {
     this.input = input;
     this.out = out;
     this.name = name;
+    this.numSonarScansRemaining = 3;
+    this.numMoveShipsRemaining = 3;
     this.shipsToPlace = new ArrayList<String>();
     setupShipCreationList();
     this.shipCreationFns = new HashMap<String, Function<Placement, Ship<Character>>>();
     setupShipCreationMap();
   }
-  
+
+  // Uses the AbstractShipFactory to get functions used to create the four different types of ships
   public void setupShipCreationMap() {
     shipCreationFns.put("Submarine", (p) -> shipFactory.makeSubmarine(p));
     shipCreationFns.put("Destroyer", (p) -> shipFactory.makeDestroyer(p));
     shipCreationFns.put("Battleship", (p) -> shipFactory.makeBattleship(p));
     shipCreationFns.put("Carrier", (p) -> shipFactory.makeCarrier(p));
   }
-   
+
+  // Populates a list with all ten ships to be added by the player
   public void setupShipCreationList() {
     shipsToPlace.addAll(Collections.nCopies(2, "Submarine"));
     shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
@@ -51,10 +57,17 @@ public abstract class Player {
     shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
   }
 
+  // Provides all the functionality for playing a single turn of Battleship
   public abstract void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) throws IOException;
 
+  /**
+   * Method to check if the player has lost the game
+   *
+   * @returns the name of the player if they have lost, returns null otherwise
+   */
   public abstract String hasLost();
 
+  // Provides all the functionality for doing the placement phase of Battleship
   public abstract void doPlacementPhase() throws IOException;
 
 }

@@ -73,6 +73,12 @@ public class BattleShipBoard<T> implements Board<T> {
     return true;
   }
 
+  /**
+   * Fire at a specified coordinate on the board
+   *
+   * @param c is the Coordinate to fire at
+   * @return the ship that was hit or null if not ship was hit
+   */
   public Ship<T> fireAt(Coordinate c) {
     for (Ship<T> s : myShips) {
       if (s.occupiesCoordinates(c)) {
@@ -159,6 +165,12 @@ public class BattleShipBoard<T> implements Board<T> {
     return null;
   }
 
+  /**
+   * Get the ship at a particular coordinate
+   *
+   * @param c is the coordinate you want to get the ship from
+   * @returns the ship that occupies the coordinate or null otherwise
+   */
   public Ship<T> getShipAt(Coordinate c) {
     for (Ship<T> s : myShips) {
       if (s.occupiesCoordinates(c)) {

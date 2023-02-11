@@ -59,6 +59,7 @@ public class ComputerPlayer extends Player {
     return null;
   }
 
+  // The ComputerPlayer places all their ships in a very simple pattern
   public void doPlacementPhase() throws IOException {
     for (String shipName : shipsToPlace) {
       Function<Placement, Ship<Character>> createFn = shipCreationFns.get(shipName);
